@@ -16,6 +16,7 @@ import {CheckBoxModule} from '@syncfusion/ej2-angular-buttons';
 import { HttpModule, JsonpModule } from '@angular/http';
 
 import { DialogModule } from '@syncfusion/ej2-angular-popups';
+import { AdminNotifyResidentsComponent } from './modules/administrator/admin-notify-residents/admin-notify-residents.component';
 const routes: Routes = [
   { path: 'excel', component: SelectExcelDataComponent }
 ];
@@ -26,7 +27,8 @@ const routes: Routes = [
     LoginComponent,
     ResidentNewsComponent,
     NotifyResidentsComponent,
-    SelectExcelDataComponent
+    SelectExcelDataComponent,
+    AdminNotifyResidentsComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

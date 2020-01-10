@@ -1,14 +1,13 @@
-<div  id="container" style="height:300px" class="control-section">
-  <div class="col-lg-9">
-    <div class="control_wrapper">
-      <button (click)="importFile($event)">Import</button>
-      <div id="dialog">
-      </div>
-      <ejs-uploader #defaultupload id='defaultfileupload' [dropArea]='dropElement' (selected)='onFileRemove($event)' (change)="onSuccess($event)"></ejs-uploader>
-    </div>
+<div class="content-super">
+  <div class="content-import">
+      <!--<ejs-uploader #defaultupload [autoUpload]='false' [dropArea]='dropElement' (selected)='onFileRemove($event)' (change)="onSuccess($event)">
+
+      </ejs-uploader>-->
+    <ejs-uploader #defaultupload [autoUpload]='false' [dropArea]='dropEle' [asyncSettings]='path' (success)="onUploadSuccess($event)" (failure)="onUploadFailure($event)" (change)="onSuccess($event)"></ejs-uploader>
+
+
     <ejs-grid #grid id='grid'>
 
     </ejs-grid>
   </div>
-  hola
 </div>

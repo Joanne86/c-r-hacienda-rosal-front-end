@@ -11,25 +11,38 @@ import { Dialog } from '@syncfusion/ej2-popups';
   encapsulation: ViewEncapsulation.None
 })
 export class SelectExcelDataComponent implements OnInit {
+
   @ViewChild('defaultupload', {static: false})
-  public uploadObj: UploaderComponent;
+  uploadObj: UploaderComponent;
   @ViewChild('grid', {static: false})
-  public gridObj: GridComponent;
-  public dialog: Dialog;
+  gridObj: GridComponent;
+  dialog: Dialog;
+  debt: boolean;
+  public dropEle: HTMLElement ;
+  files;
 
-  public path: object = {
+  // tslint:disable-next-line:ban-types
+  public path: Object = {
     saveUrl: 'https://aspnetmvc.syncfusion.com/services/api/uploadbox/Save',
-    removeUrl: 'https://aspnetmvc.syncfusion.com/services/api/uploadbox/Remove'
-  };
+    removeUrl: 'https://aspnetmvc.syncfusion.com/services/api/uploadbox/Remove' };
+  public onUploadSuccess(args: any): void  {
+    if (args.operation === 'upload') {
+      console.log('File uploaded successfully');
+      this.parseExcel(this.files[0]);
+    }
+  }
 
-  public dropElement: HTMLElement = document.getElementsByClassName('control-fluid')[0] as HTMLElement;
+  public onUploadFailure(args: any): void  {
+    console.log('File failed to upload');
+  }
 
   public onFileRemove(args): void {
     args.cancel = true;
   }
 
   ngOnInit(): void {
-
+    this.dropEle = document.getElementById('droparea');
+    // borrar esto
     this.dialog = new Dialog({
       // Enables the header
       header: 'Dialog',
@@ -47,6 +60,7 @@ export class SelectExcelDataComponent implements OnInit {
   }
 
   parseExcel(file) {
+    console.log('file: ', file);
     // tslint:disable-next-line:prefer-const
     let reader = new FileReader();
     reader.onload = (e) => {
@@ -59,7 +73,9 @@ export class SelectExcelDataComponent implements OnInit {
         // tslint:disable-next-line:variable-name
         const XL_row_object = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName]);
         // tslint:disable-next-line:variable-name
+        console.log('response: ', XL_row_object);
         const json_object = JSON.stringify(XL_row_object);
+        // este objeto tiene que ser una clase json_object hay que hacer validaciones
         console.log(json_object);
         this.gridObj.dataSource = JSON.parse(json_object);
         this.uploadObj.clearAll();
@@ -76,12 +92,7 @@ export class SelectExcelDataComponent implements OnInit {
   }
 
   public onSuccess(args: any): void {
-    const files = args.target.files; // FileList object
-    this.parseExcel(files[0]);
+    console.log('args: ', args);
+    this.files = args.target.files;
   }
-
-  importFile(e) {
-    this.dialog.show();
-  }
-
 }
