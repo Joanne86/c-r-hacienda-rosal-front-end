@@ -1,0 +1,25 @@
+<div class="content-super">
+  <div class="header">
+    <div class="header__title">
+      <h1>Conjunto residencial Hacienda el Rosal</h1>
+      <h1>Notificaciones al residentes</h1>
+    </div>
+    <div class="header__info">
+      <h1>Bienvenido name</h1>
+      <button class="header__info--btn-close-session">Cerrar sesión</button>
+    </div>
+  </div>
+  <div class="body">
+    <div class="body__menu">
+      <ul class="body__menu--items">
+        <li class="item">
+          <a class="nav-link" routerLink="/residents" role="tab" aria-selected="false">Todos los residentes</a>
+        </li>
+        <li class="item">
+          <a class="nav-link" routerLink="/debts" role="tab" aria-selected="false">Deudores</a>
+        </li>
+      </ul>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+</div>
