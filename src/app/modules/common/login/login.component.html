@@ -1,13 +1,15 @@
 <div class="content-super">
   <div class="header">
-    <h1>Bienvenido al portal del</h1>
-    <h1>Conjunto residencial Hacienda el Rosal</h1>
+    <div class="welcome-title">
+      <p class="title">Bienvenido al portal del</p>
+      <p>Conjunto residencial Hacienda el Rosal</p>
+    </div>   
   </div>
   <div class="login">
-    <form class="login__input">
-      <input type="text" name="user" placeholder="Usuario">
-      <input type="password" name="pass" placeholder="Contraseña">
-      <button type="submit" name="login" class="btn-start btn-primary" (click)="start()">Ingresar > </button>
-    </form>
+      <p class="login__title"> <i class="fas fa-user-alt" style="color: blueviolet;"></i>  Ingresa tu usuario y contraseña</p>
+      <input class="input" type="text" name="user" placeholder="Usuario">
+      <input class="input" type="password" name="pass" placeholder="Contraseña">
+      <button type="submit" name="login" class="btn-login" (click)="start()">Ingresar ahora ›</button>
+      <p class="login__sign-in">Deseo registrarme</p>   
   </div>
 </div>
