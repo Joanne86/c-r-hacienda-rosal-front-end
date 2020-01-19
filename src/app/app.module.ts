@@ -16,9 +16,11 @@ import {CheckBoxModule} from '@syncfusion/ej2-angular-buttons';
 import { HttpModule, JsonpModule } from '@angular/http';
 
 import { DialogModule } from '@syncfusion/ej2-angular-popups';
+import { RegistryComponent } from './modules/resident/registry/registry.component';
 const routes: Routes = [
   { path: 'excel', component: SelectExcelDataComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'registry', component: RegistryComponent }
 ];
 
 @NgModule({
@@ -27,7 +29,8 @@ const routes: Routes = [
     LoginComponent,
     ResidentNewsComponent,
     NotifyResidentsComponent,
-    SelectExcelDataComponent
+    SelectExcelDataComponent,
+    RegistryComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
