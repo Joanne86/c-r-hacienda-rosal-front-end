@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './modules/common/login/login.component';
@@ -17,10 +17,14 @@ import { HttpModule, JsonpModule } from '@angular/http';
 
 import { DialogModule } from '@syncfusion/ej2-angular-popups';
 import { RegistryComponent } from './modules/resident/registry/registry.component';
+import { HomeComponent } from './modules/resident/home/home.component';
+import { HeaderWelcomeComponent } from './modules/common/header-welcome/header-welcome.component';
+import { NavMenuComponent } from './modules/common/nav-menu/nav-menu.component';
 const routes: Routes = [
   { path: 'excel', component: SelectExcelDataComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'registry', component: RegistryComponent }
+  { path: 'registry', component: RegistryComponent },
+  { path: 'home', component: HomeComponent}
 ];
 
 @NgModule({
@@ -30,7 +34,10 @@ const routes: Routes = [
     ResidentNewsComponent,
     NotifyResidentsComponent,
     SelectExcelDataComponent,
-    RegistryComponent
+    RegistryComponent,
+    HomeComponent,
+    HeaderWelcomeComponent,
+    NavMenuComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

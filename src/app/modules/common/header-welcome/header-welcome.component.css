@@ -1,0 +1,14 @@
+.close-out{
+    background-color: #e9e9e9;
+    width: 100%;
+    height: 70px;
+}
+.btn-sign-out{
+    height: 100%;
+    width: 80px;
+    float: right;
+    text-decoration: underline;
+    border: none;
+    color: rgb(79, 163, 241);
+    background-color: #e9e9e9;
+}

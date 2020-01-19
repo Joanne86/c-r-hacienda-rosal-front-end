@@ -1,0 +1,13 @@
+.nav-super{
+    display: flex;
+  }
+  .close-out{
+    width: 100%;
+}
+
+  
+  @media (max-width:600px) {
+      .close-out{
+          display: none;
+      }
+  }
