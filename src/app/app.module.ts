@@ -18,13 +18,25 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import { DialogModule } from '@syncfusion/ej2-angular-popups';
 import { RegistryComponent } from './modules/resident/registry/registry.component';
 import { HomeComponent } from './modules/resident/home/home.component';
+import { AdminHomeComponent } from './modules/administrator/home/admin-home.component';
 import { HeaderWelcomeComponent } from './modules/common/header-welcome/header-welcome.component';
 import { NavMenuComponent } from './modules/common/nav-menu/nav-menu.component';
+import { PubishComponent } from './modules/administrator/pubish/pubish.component';
+import { SendNewsComponent } from './modules/administrator/send-news/send-news.component';
+import { RememberDebtorsComponent } from './modules/administrator/remember-debtors/remember-debtors.component';
+
 const routes: Routes = [
   { path: 'excel', component: SelectExcelDataComponent },
   { path: 'login', component: LoginComponent },
   { path: 'registry', component: RegistryComponent },
-  { path: 'home', component: HomeComponent}
+  { path: 'resident-home', component: HomeComponent},
+  { path: 'admin-home', component: AdminHomeComponent, children: [
+    {path: 'publish', component: PubishComponent},
+    {path: 'send-news', component: SendNewsComponent},
+    {path: 'resident-news', component: ResidentNewsComponent},
+    {path: 'remember-debtors', component: RememberDebtorsComponent}
+  ]}
+
 ];
 
 @NgModule({
@@ -37,7 +49,11 @@ const routes: Routes = [
     RegistryComponent,
     HomeComponent,
     HeaderWelcomeComponent,
-    NavMenuComponent
+    NavMenuComponent,
+    AdminHomeComponent,
+    PubishComponent,
+    SendNewsComponent,
+    RememberDebtorsComponent 
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -54,6 +70,6 @@ const routes: Routes = [
     BrowserModule
   ],
   providers: [],
-  bootstrap: [AppComponent, SelectExcelDataComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

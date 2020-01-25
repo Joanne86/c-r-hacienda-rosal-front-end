@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-header-welcome',
@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderWelcomeComponent implements OnInit {
 
+  @Input('name') name;
   nombre = 'leidy';
+
   constructor() { }
 
   ngOnInit() {

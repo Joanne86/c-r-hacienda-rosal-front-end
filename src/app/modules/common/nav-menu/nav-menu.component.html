@@ -2,7 +2,7 @@
     <input type="checkbox" id="nav-check">
     <div class="nav-header">
       <div class="nav-title">
-        JoGeek
+        Hacienda Rosal
       </div>
     </div>
     <div class="nav-btn">
@@ -14,11 +14,7 @@
     </div>
     
     <div class="nav-links">
-      <a href="//github.io/jo_geek" target="_blank">Noticias</a>
-      <a href="http://stackoverflow.com/users/4084003/" target="_blank">Estado de mis pagos
-        <i class="fas fa-hand-holding-usd"></i>
-    </a>
-      <a href="https://in.linkedin.com/in/jonesvinothjoseph" target="_blank">Enviar petición</a>
+     <a *ngFor="let item of items" [routerLink]=item.path>{{item.titulo}}</a>
     </div>
-    
+
   </div>

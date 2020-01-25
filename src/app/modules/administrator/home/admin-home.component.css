@@ -8,12 +8,21 @@
 .menu{
   width: 130px;
 }
+
+.content{
+  width: 100%;
+  display: block;
+}
   
   @media (max-width:600px) {
+    .nav-super{
+      display: block;
+    }
       .close-out{
           display: none;
       }
       .menu{
         width: 100%;
       }
+
   }

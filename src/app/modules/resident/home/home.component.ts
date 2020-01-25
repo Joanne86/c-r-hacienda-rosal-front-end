@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Item } from '../../common/nav-menu/nav-menu.component';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  items: Item[] =  new Array();
+  item1: Item = new Item;
+  item2: Item = new Item;
+  item3: Item = new Item;
+  
   constructor() { }
 
   ngOnInit() {
+    this.item1.titulo='Noticias';
+    this.item1.image='';
+    this.item1.path='/resident/news';
+
+    this.item2.titulo='Estado de mis pagos';
+    this.item2.image='';
+    this.item2.path='/resident/payments';
+
+    this.item3.titulo='Enviar petición';
+    this.item3.image='';
+    this.item3.path='/resident/request';
+
+    this.items.push(this.item1, this.item2, this.item3);
   }
 
 }
