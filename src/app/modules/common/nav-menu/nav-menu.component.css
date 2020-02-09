@@ -14,6 +14,7 @@
     position: relative;
     display: table-caption;
     width: 130px;
+    outline:none;
   }
   
   .nav > .nav-header {
@@ -38,6 +39,7 @@
   .nav > .nav-links {
     display: inline;
     font-size: 18px;
+    outline:none;
   }
   
   .nav > .nav-links > label {
