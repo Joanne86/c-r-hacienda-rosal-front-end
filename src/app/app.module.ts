@@ -27,6 +27,7 @@ import { RememberDebtorsComponent } from './modules/administrator/remember-debto
 import { NewsComponent } from './modules/resident/news/news.component';
 import { PaymentsStateComponent } from './modules/resident/payments-state/payments-state.component';
 import { SendRequestsComponent } from './modules/resident/send-requests/send-requests.component';
+import { ModalInputComponent } from './modules/common/modal-input/modal-input.component';
 
 const routes: Routes = [
   { path: 'excel', component: SelectExcelDataComponent },
@@ -63,7 +64,8 @@ const routes: Routes = [
     RememberDebtorsComponent,
     NewsComponent,
     PaymentsStateComponent,
-    SendRequestsComponent 
+    SendRequestsComponent,
+    ModalInputComponent 
   ],
   imports: [
     RouterModule.forRoot(routes),
