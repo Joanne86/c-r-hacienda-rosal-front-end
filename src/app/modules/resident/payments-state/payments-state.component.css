@@ -1,0 +1,67 @@
+.content-super{
+    background-color: #f6f8fa;
+    width: 100%;
+    height:84.6vh;
+    justify-content: center;
+}
+
+.message{
+    color: rgb(60, 46, 63);
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 30px;
+    padding-top: 30px;
+}
+
+.contact{
+    padding-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    margin: auto;
+    width: 100%;
+    color: rgb(26, 2, 26);
+    height: 14.4vh;
+    background-color: rgba(210, 180, 238, 0.774);
+}
+.debtor{
+    height:76.8vh;
+}
+
+.detail{
+    font-size: 20px;
+    padding: 20px;
+    margin: auto;
+    width: 265px;
+    height: 140px;
+    border-radius: 6px;
+    box-shadow: 0 6px 10px 0 rgba(14, 9, 14, 0.315);
+    background-color: #ffffff;
+}
+
+@media (min-width: 425px){
+    .detail{
+        width: 380px;
+    }
+}
+
+@media (min-width: 640px){
+    .content-super{
+        height:84.6vh;
+    }
+    .detail{
+        width: 500px;
+    }
+
+    .debtor{
+        height:71.2vh;
+    }
+
+    .message{
+        font-size: 24px;
+    }
+}
+@media (min-width: 980px){
+    .detail{
+        width: 600px;
+    }
+}

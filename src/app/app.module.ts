@@ -24,12 +24,19 @@ import { NavMenuComponent } from './modules/common/nav-menu/nav-menu.component';
 import { PubishComponent } from './modules/administrator/pubish/pubish.component';
 import { SendNewsComponent } from './modules/administrator/send-news/send-news.component';
 import { RememberDebtorsComponent } from './modules/administrator/remember-debtors/remember-debtors.component';
+import { NewsComponent } from './modules/resident/news/news.component';
+import { PaymentsStateComponent } from './modules/resident/payments-state/payments-state.component';
+import { SendRequestsComponent } from './modules/resident/send-requests/send-requests.component';
 
 const routes: Routes = [
   { path: 'excel', component: SelectExcelDataComponent },
   { path: 'login', component: LoginComponent },
   { path: 'registry', component: RegistryComponent },
-  { path: 'resident-home', component: HomeComponent},
+  { path: 'resident-home', component: HomeComponent, children: [
+    { path: 'news', component: NewsComponent },
+    { path: 'payments-state', component: PaymentsStateComponent },
+    { path: 'send-requests', component: SendRequestsComponent },
+  ]},
   { path: 'admin-home', component: AdminHomeComponent, children: [
     {path: 'publish', component: PubishComponent},
     {path: 'send-news', component: SendNewsComponent},
@@ -53,7 +60,10 @@ const routes: Routes = [
     AdminHomeComponent,
     PubishComponent,
     SendNewsComponent,
-    RememberDebtorsComponent 
+    RememberDebtorsComponent,
+    NewsComponent,
+    PaymentsStateComponent,
+    SendRequestsComponent 
   ],
   imports: [
     RouterModule.forRoot(routes),

@@ -1,0 +1,20 @@
+<div class="content-super">
+    <div class="title">
+        Enviar petición al administrador
+    </div>
+    <div class="input-request">
+        <textarea class= "input-request" type="text" name="peticion" placeholder="Escribe aqui tu petición" [(ngModel)]="request"></textarea>
+    </div>
+    <div class="radios">
+        <div class="radios-borde">
+            <input type="radio" name="peticion" value="Queja" id="radio1"> <label for="radio1">  Queja</label>
+            <br>
+            <input type="radio" name="peticion" value="Sugerencia" id="radio2"> <label for="radio2">  Sugerencia</label>
+            <br>
+            <input type="radio" name="peticion" value="Reclamo" id="radio3"> <label for="radio3">  Reclamo</label>
+        </div>       
+    </div>
+    <div class="btn-send">
+        <button [disabled]="!validateField()" type="submit" name="login" id="btn-start" (click)="start()">Enviar ›</button>
+    </div>
+</div>

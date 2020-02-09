@@ -14,7 +14,7 @@
     </div>
     
     <div class="nav-links">
-     <label for="nav-check" *ngFor="let item of items" [routerLink]=item.path>
+     <label for="nav-check" *ngFor="let item of items" [routerLink]=[item.path]>
       {{item.titulo}}</label>
     </div>
   </div>
