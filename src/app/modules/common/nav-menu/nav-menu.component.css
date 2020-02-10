@@ -9,9 +9,7 @@
 
 
   .nav {
-    height: 100vh;
     background-color: #59165f;
-    position: relative;
     display: table-caption;
     width: 130px;
     outline:none;
@@ -29,7 +27,7 @@
     padding: 10px 10px 10px 10px;
     width: 100%;
     text-align: center;
-    height: 90px;
+    height: 100%;
   }
   
   .nav > .nav-btn {

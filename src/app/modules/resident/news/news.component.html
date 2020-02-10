@@ -1,13 +1,12 @@
 <div class="content-super animated fadeIn fast">
 
     <div class="title">Noticias</div>
-    <div class="new" >
+    <div class="new"*ngFor="let new of news">
         <div class="date">
-            12-12-2020
+            {{new.date}}
         </div>
         <div class="information">
-            ejejso eofnwoefn wefnwjef e wefnwejfn wefwef wefwef eofnwoefn
-            asd asd afefwefwef wefwefwef
+            {{new.information}}
         </div>
         <div class="commit"  data-toggle="modal" data-target="#exampleModal">
             Comentar

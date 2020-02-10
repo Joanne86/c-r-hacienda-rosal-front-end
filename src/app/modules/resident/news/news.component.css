@@ -1,7 +1,7 @@
 .content-super{
     background-color: #f6f8fa;
     width: 100%;
-    height:84.6vh;
+    height:100%;
     justify-content: center;
 }
 .title{
@@ -26,6 +26,7 @@
     border-radius: 6px;
     box-shadow: 0 6px 10px 0 rgba(14, 9, 14, 0.315);
     background-color: #7538a7;
+    margin-bottom: 20px;
 }
 .commit{
     font-weight: bold;
@@ -43,6 +44,7 @@
     }
     .new{
         width: 380px;
+        height: 210px;
     }
 }
 @media (min-width: 640px){

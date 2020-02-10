@@ -15,9 +15,12 @@ export class NavMenuComponent implements OnInit {
 
   @Input('items') items: Item[];
 
+  navBar;
+
   constructor() { }
 
   ngOnInit() {
+    this.navBar = document.getElementById('navBar');
     console.log('ITEMS:', this.items);
   }
 
