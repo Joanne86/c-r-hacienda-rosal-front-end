@@ -31,7 +31,11 @@ export class NewsComponent implements OnInit {
     new3.information='El dia de mañana habrá una junta directiva justo a los representantes del comite';
     new3.date = new Date();
 
-    this.news.push(new1, new2, new3);
+    let new4 : New = new New();
+    new4.information='El dia de mañana habrá una junta directiva justo a los representantes del comite';
+    new4.date = new Date();
+
+    this.news.push(new1, new2, new3, new4);
   }
 
   sendHeight(height) {
