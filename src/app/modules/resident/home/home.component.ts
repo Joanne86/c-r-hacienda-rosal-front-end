@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   item1: Item = new Item;
   item2: Item = new Item;
   item3: Item = new Item;
+  item4: Item = new Item;
   
   constructor() { }
 
@@ -28,7 +29,11 @@ export class HomeComponent implements OnInit {
     this.item3.image='fas fa-paper-plane';
     this.item3.path='/resident-home/send-requests';
 
-    this.items.push(this.item1, this.item2, this.item3);
+    this.item4.titulo='Respuestas de mis peticiones';
+    this.item4.image='fas fa-paper-plane';
+    this.item4.path='/resident-home/send-requests';
+
+    this.items.push(this.item1, this.item2, this.item3, this.item4);
   }
 
 }
