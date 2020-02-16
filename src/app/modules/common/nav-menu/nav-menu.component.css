@@ -13,6 +13,7 @@
     display: table-caption;
     width: 130px;
     outline:none;
+    height: -webkit-fill-available;
   }
   
   .nav > .nav-header {

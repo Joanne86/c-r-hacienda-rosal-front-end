@@ -27,13 +27,13 @@ export class SelectExcelDataComponent implements OnInit {
     removeUrl: 'https://aspnetmvc.syncfusion.com/services/api/uploadbox/Remove' };
   public onUploadSuccess(args: any): void  {
     if (args.operation === 'upload') {
-      console.log('File uploaded successfully');
+      console.log('Archivo subido correctamente!');
       this.parseExcel(this.files[0]);
     }
   }
 
   public onUploadFailure(args: any): void  {
-    console.log('File failed to upload');
+    console.log('Error al subir el archivo');
   }
 
   public onFileRemove(args): void {
@@ -50,7 +50,7 @@ export class SelectExcelDataComponent implements OnInit {
       showCloseIcon: true,
       visible: false,
       // Dialog content
-      content: this.uploadObj.element,
+      //content: this.uploadObj.element,
       // The Dialog shows within the target element
       target: document.getElementById('container'),
       // Dialog width
@@ -69,8 +69,6 @@ export class SelectExcelDataComponent implements OnInit {
         type: 'binary'
       });
       workbook.SheetNames.forEach((function(sheetName) {
-        // Here is your object
-        // tslint:disable-next-line:variable-name
         const XL_row_object = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName]);
         // tslint:disable-next-line:variable-name
         console.log('response: ', XL_row_object);

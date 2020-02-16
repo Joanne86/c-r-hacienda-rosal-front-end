@@ -17,6 +17,7 @@ export class SendRequestsComponent implements OnInit {
   }
 
   validateField(){
+    
     //validar radios
     this.fields = false;
     this.button.className = 'btn-login-block';

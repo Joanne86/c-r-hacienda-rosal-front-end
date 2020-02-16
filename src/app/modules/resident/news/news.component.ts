@@ -11,8 +11,6 @@ export class NewsComponent implements OnInit {
   new_: New = new New();
   news: New[] =  new Array();
 
-  @Output() heightScreen = new EventEmitter();
-
   constructor() { }
 
   ngOnInit() {
@@ -37,11 +35,4 @@ export class NewsComponent implements OnInit {
 
     this.news.push(new1, new2, new3, new4);
   }
-
-  sendHeight(height) {
-    this.heightScreen.emit(height);
-  }
-
-  
-
 }

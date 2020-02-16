@@ -1,1 +1,16 @@
-<p>pubish works! holaaaaaaa</p>
+<div class="content-super animated fadeIn fast">
+
+    <div class="title">Publicación de noticias</div>
+    <div class="new" *ngFor="let new of news">
+        <div class="date">
+            {{new.date}}
+        </div>
+        <div class="information">
+            {{new.information}}
+        </div>
+    </div>
+    <div class="add-publish">
+        <i class="fas fa-plus-circle fa-3x icon-plus" id="myBtn" (click)="addPublish()"></i>
+    </div>
+</div>
+<app-modal-input *ngIf=openModal [title]=titleModal [placeholder]=placeholder (closeModal)="closeModal($event)"></app-modal-input>
