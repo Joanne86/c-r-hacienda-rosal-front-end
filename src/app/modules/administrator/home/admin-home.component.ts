@@ -18,19 +18,19 @@ export class AdminHomeComponent implements OnInit {
 
   ngOnInit() {
     this.item1.titulo='Publicaciones';
-    this.item1.image='';
+    this.item1.image='fas fa-bullhorn';
     this.item1.path='/admin-home/publish';
 
-    this.item2.titulo='Envio de novedades';
-    this.item2.image='';
+    this.item2.titulo='Envio de novedades SMS';
+    this.item2.image='far fa-envelope';
     this.item2.path='/admin-home/send-news';
 
-    this.item3.titulo='Recordar a morosos';
-    this.item3.image='';
+    this.item3.titulo='Recordar a morosos SMS';
+    this.item3.image='far fa-envelope';
     this.item3.path='/admin-home/remember-debtors';
 
     this.item4.titulo='Novedades de residentes';
-    this.item4.image='';
+    this.item4.image='fas fa-bell';
     this.item4.path='/admin-home/resident-news';
 
     this.items.push(this.item1, this.item2, this.item3, this.item4);

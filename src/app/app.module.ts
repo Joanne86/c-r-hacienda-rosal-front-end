@@ -22,7 +22,6 @@ import { AdminHomeComponent } from './modules/administrator/home/admin-home.comp
 import { HeaderWelcomeComponent } from './modules/common/header-welcome/header-welcome.component';
 import { NavMenuComponent } from './modules/common/nav-menu/nav-menu.component';
 import { PubishComponent } from './modules/administrator/pubish/pubish.component';
-import { SendNewsComponent } from './modules/administrator/send-news/send-news.component';
 import { RememberDebtorsComponent } from './modules/administrator/remember-debtors/remember-debtors.component';
 import { NewsComponent } from './modules/resident/news/news.component';
 import { PaymentsStateComponent } from './modules/resident/payments-state/payments-state.component';
@@ -40,7 +39,7 @@ const routes: Routes = [
   ]},
   { path: 'admin-home', component: AdminHomeComponent, children: [
     {path: 'publish', component: PubishComponent},
-    {path: 'send-news', component: SendNewsComponent},
+    {path: 'send-news', component: NotifyResidentsComponent},
     {path: 'resident-news', component: ResidentNewsComponent},
     {path: 'remember-debtors', component: RememberDebtorsComponent}
   ]}
@@ -60,7 +59,6 @@ const routes: Routes = [
     NavMenuComponent,
     AdminHomeComponent,
     PubishComponent,
-    SendNewsComponent,
     RememberDebtorsComponent,
     NewsComponent,
     PaymentsStateComponent,

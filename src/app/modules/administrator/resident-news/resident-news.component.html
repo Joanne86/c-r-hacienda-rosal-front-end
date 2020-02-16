@@ -1,3 +1,27 @@
-<div>
-resident news
+<div class="content-super">
+    <div class="news-table">
+        <table class="table">
+            <thead id="thead">
+              <tr>
+                <th>Torre</th>
+                <th>Apartamento</th>
+                <th>Nombre</th>
+                <th>Petición</th> 
+                <th>Ver</th>
+             </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let request of requestResidents">
+                <td>{{request.towel}}</td>
+                <td>{{request.apartament}}</td>
+                <td>{{request.name}}</td>
+                <td>{{request.request}}</td>
+                <td>
+                  <button (click)="show()">ver</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
 </div>
+<app-modal-input *ngIf=openModal [title]=titleModal [placeholder]=placeholder (closeModal)="closeModal($event)"></app-modal-input>

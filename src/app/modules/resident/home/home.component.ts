@@ -17,15 +17,15 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.item1.titulo='Noticias';
-    this.item1.image='';
+    this.item1.image='fas fa-mail-bulk';
     this.item1.path='/resident-home/news';
 
     this.item2.titulo='Estado de mis pagos';
-    this.item2.image='';
+    this.item2.image='fas fa-money-check-alt';
     this.item2.path='/resident-home/payments-state';
 
     this.item3.titulo='Enviar petición';
-    this.item3.image='';
+    this.item3.image='fas fa-paper-plane';
     this.item3.path='/resident-home/send-requests';
 
     this.items.push(this.item1, this.item2, this.item3);
