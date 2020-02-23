@@ -4,7 +4,7 @@
     <p>{{title}}</p>
     <textarea class= "input-publish" id="input-text" type="text" name="publicacion" placeholder={{placeholder}} [(ngModel)]="request"></textarea>
     <div class="buttons">
-        <button class="btn-send" (click)="sendPublish()">Publicar</button>
+        <button [disabled]="!validateField()" id="btn-start" class="btn-send" (click)="sendPublish()">Publicar</button>
     </div>
 </div>
 </div>

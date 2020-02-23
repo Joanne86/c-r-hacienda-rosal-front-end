@@ -27,6 +27,7 @@ import { NewsComponent } from './modules/resident/news/news.component';
 import { PaymentsStateComponent } from './modules/resident/payments-state/payments-state.component';
 import { SendRequestsComponent } from './modules/resident/send-requests/send-requests.component';
 import { ModalInputComponent } from './modules/common/modal-input/modal-input.component';
+import { NewsResponseComponent } from './modules/resident/news-response/news-response.component';
 
 const routes: Routes = [
   { path: 'excel', component: SelectExcelDataComponent },
@@ -36,6 +37,7 @@ const routes: Routes = [
     { path: 'news', component: NewsComponent },
     { path: 'payments-state', component: PaymentsStateComponent },
     { path: 'send-requests', component: SendRequestsComponent },
+    { path: 'responses', component: NewsResponseComponent }
   ]},
   { path: 'admin-home', component: AdminHomeComponent, children: [
     {path: 'publish', component: PubishComponent},
@@ -63,7 +65,8 @@ const routes: Routes = [
     NewsComponent,
     PaymentsStateComponent,
     SendRequestsComponent,
-    ModalInputComponent 
+    ModalInputComponent,
+    NewsResponseComponent 
   ],
   imports: [
     RouterModule.forRoot(routes),

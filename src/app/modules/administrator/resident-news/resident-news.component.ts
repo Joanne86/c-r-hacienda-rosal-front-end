@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResidentNewsComponent implements OnInit {
 
+  requestResidents;
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  getResponse(text){
+    // call service
+  }
 }

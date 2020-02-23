@@ -10,6 +10,9 @@ export class NewsComponent implements OnInit {
 
   new_: New = new New();
   news: New[] =  new Array();
+  openModal: boolean;
+  placeholder='Comenta esta publicación aquí';
+  titleModal='Comentar publicación';
 
   constructor() { }
 
@@ -34,5 +37,9 @@ export class NewsComponent implements OnInit {
     new4.date = new Date();
 
     this.news.push(new1, new2, new3, new4);
+  }
+  commit(noticia){
+
+    this.openModal = true;
   }
 }

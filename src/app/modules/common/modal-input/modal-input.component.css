@@ -64,6 +64,19 @@
     color: #002c76;
     outline:none;
 }
+.btn-login-block{
+    
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 0px;
+    width: 180px;
+    height: 45px;
+    border-radius: 100px;
+    border: solid 2px #8d887d;
+    background-color: #d4ccba;
+    color: #23324d;
+    outline:none;
+}
 
 
 @media (min-width: 425px){

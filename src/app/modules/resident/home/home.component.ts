@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
 
     this.item4.titulo='Respuestas de mis peticiones';
     this.item4.image='fas fa-paper-plane';
-    this.item4.path='/resident-home/send-requests';
+    this.item4.path='/resident-home/responses';
 
     this.items.push(this.item1, this.item2, this.item3, this.item4);
   }

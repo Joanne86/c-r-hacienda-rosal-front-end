@@ -11,10 +11,14 @@ export class ModalInputComponent implements OnInit {
   @Input('placeholder') placeholder;
   @Output() closeModal = new EventEmitter<any>();
   modal: HTMLElement;
+  button;
+  request;
+  fields;
   constructor() { }
 
   ngOnInit() {
     this.modal = document.getElementById("myModal");
+    this.button = document.getElementById('btn-start');
   }
   spanClick() {
     this.closeModalEvent();
@@ -27,5 +31,18 @@ export class ModalInputComponent implements OnInit {
 
   sendPublish(){
     this.closeModalEvent();
+  }
+
+
+  validateField(){
+    
+    //validar radios
+    this.fields = false;
+    this.button.className = 'btn-login-block';
+    if(this.request){
+      this.fields = true;
+      this.button.className = 'btn-send';
+    }
+    return this.fields;
   }
 }
