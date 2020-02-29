@@ -39,7 +39,9 @@ export class NewsComponent implements OnInit {
     this.news.push(new1, new2, new3, new4);
   }
   commit(noticia){
-
     this.openModal = true;
+  }
+  closeModal(event){
+    this.openModal=event;
   }
 }

@@ -41,6 +41,9 @@ export class LoginComponent implements OnInit {
       this.requestService.getUser(this.user.user).then(response =>{
         sessionStorage.setItem('userInfo', JSON.stringify(response));
         this.validateUser(response);
+      }, error =>{
+        console.log('occurrio un error');
+        // abre el modal
       });
     }else{
       //abre el modal
