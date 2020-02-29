@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/core/models/user.model';
+import { Session } from 'src/app/core/models/Session.model';
+import { RepositoryService } from 'src/app/core/services/repository.service';
+import { UserType } from 'src/app/core/enums/UserType.enum';
+import { Route } from '@angular/compiler/src/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,11 +12,11 @@ import { User } from 'src/app/core/models/user.model';
 })
 export class LoginComponent implements OnInit {
 
-  user:User = new User();
+  user:Session = new Session();
   fields;
   button;
 
-  constructor() { }
+  constructor(private requestService: RepositoryService, private route: Router) { }
 
   ngOnInit() {
     this.button = document.getElementById('btn-start');
@@ -33,7 +37,22 @@ export class LoginComponent implements OnInit {
   }
 
   start() {
+    if(this.user.user === this.user.password){
+      this.requestService.getUser(this.user.user).then(response =>{
+        sessionStorage.setItem('userInfo', JSON.stringify(response));
+        this.validateUser(response);
+      });
+    }else{
+      //abre el modal
+    }
     console.log('ingresa');
+  }
+  validateUser(userResponse){
+    if(userResponse.userType === UserType.ADMINISTRADOR){
+      this.route.navigate(['/admin-home/publish']);
+    }else{
+      this.route.navigate(['/resident-home/news']); 
+    }
   }
 
 }

@@ -8,6 +8,9 @@ import { Item } from '../../common/nav-menu/nav-menu.component';
 })
 export class HomeComponent implements OnInit {
 
+  name: string;
+  infoUser;
+
   items: Item[] =  new Array();
   item1: Item = new Item;
   item2: Item = new Item;
@@ -17,6 +20,10 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.infoUser = JSON.parse(sessionStorage.getItem('userInfo'));
+    console.log
+    this.name = this.infoUser.firstName;
+
     this.item1.titulo='Noticias';
     this.item1.image='fas fa-mail-bulk';
     this.item1.path='/resident-home/news';

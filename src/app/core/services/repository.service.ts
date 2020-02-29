@@ -14,12 +14,17 @@ export class RepositoryService {
 
   constructor(private req: RequestService) { }
 //poner la url correcta por cada service
+  public getUser(userName: string){
+    return this.req.get(`/login/get-user/`, { queryParams: { userName: userName } });
+  }
+
+
   public findAll(endpoint) {
     return this.req.get(`/`+endpoint+`/findAll`);
   }
 
   public findByRoomCode(code) {
-    return this.req.get(`/artwork-api/findByRoomCode/`, { queryParams: { code: code } });
+    
   }
 
   public findSalesByRoomCode(code) {

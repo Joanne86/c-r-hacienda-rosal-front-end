@@ -10,7 +10,6 @@ import { RouterLink, Router } from '@angular/router';
 export class HeaderWelcomeComponent implements OnInit {
 
   @Input('name') name;
-  nombre = 'leidy';
 
   constructor(private route: Router) { }
 
