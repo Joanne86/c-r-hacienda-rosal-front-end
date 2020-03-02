@@ -14,13 +14,18 @@ export class RepositoryService {
 
   constructor(private req: RequestService) { }
 //poner la url correcta por cada service
-  public findAll(endpoint) {
-    return this.req.get(`/`+endpoint+`/findAll`);
+  public getUser(userName: string){
+    return this.req.get(`/login/get-user/`, { queryParams: { userName: userName } });
   }
 
-  public findByRoomCode(code) {
-    return this.req.get(`/artwork-api/findByRoomCode/`, { queryParams: { code: code } });
+  public getAllResidents(){
+    return this.req.get(`/resident/get-residents/`);
   }
+
+  public saveResidents(residents){
+    return this.req.post(`/notification/add-all-numbers/`, { data: residents })
+  }
+
 
   public findSalesByRoomCode(code) {
     return this.req.get(`/artworksaled-api/findAllByNumberRoom/`, { queryParams: { number_room: code } });

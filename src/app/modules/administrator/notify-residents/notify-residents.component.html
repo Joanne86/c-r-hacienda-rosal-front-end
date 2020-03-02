@@ -1,0 +1,42 @@
+<div class="content-super">
+  <div class="content">
+    <div class="cabecera">
+      <i class="fas fa-sms fa-3x" style="color: #fdc130"></i>
+        <p> En esta sección usted podrá notificar por mensaje de texto un aviso importante para todos los residentes o para uno en específico</p>
+    </div>
+    <div>
+        <app-select-excel-data (dataExcel)="getDataExcel($event)"></app-select-excel-data>
+    </div>
+    <div class="residents-table" *ngIf=showList>
+        <table class="table">
+            <thead class="thead">
+              <tr>
+                <th>Torre Apartamento</th>
+                <th>Documento</th>
+                <th>Nombre</th> 
+                <th>Celular</th>
+                <th>
+                    <button class="btn-notificar-todos">Enviar mensaje a todos</button>
+                </th>
+             </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let resident of residentList">
+                <td>{{resident.towerNumberHome}}</td>
+                <td>{{resident.documentNumber}}</td>
+                <td>{{resident.name}}</td>
+                <td>{{resident.cellphone}}</td>
+                <td>
+                    <button class="btn-notificar">
+                      <i class="fas fa-paper-plane"></i>
+                      Notificar</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+  </div>
+</div>
+
+
+

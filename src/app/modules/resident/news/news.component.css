@@ -18,11 +18,11 @@
 .new{
     display: block;
     color: white;
-    font-size: 18px;
+    font-size: 15px;
     padding: 20px;
     margin: auto;
     width: 265px;
-    height: 200px;
+    height: 224px;
     border-radius: 6px;
     box-shadow: 0 6px 10px 0 rgba(14, 9, 14, 0.315);
     background-color: #7538a7;

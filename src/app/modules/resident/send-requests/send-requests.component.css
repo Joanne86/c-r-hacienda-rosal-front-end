@@ -18,6 +18,9 @@
     margin-bottom: 20px;
     margin-top: 20px;
 }
+#input-text{
+    padding: 20px;
+}
 
 input[type="radio"]:checked + label:after {
     content: "";

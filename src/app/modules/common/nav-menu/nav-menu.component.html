@@ -15,6 +15,8 @@
     
     <div class="nav-links" routerLinkActive="active">
      <label for="nav-check" *ngFor="let item of items" [routerLink]=[item.path]>
-      {{item.titulo}}</label>
+      {{item.titulo}}
+      <br>
+      <i class={{item.image}}></i></label>
     </div>
   </div>

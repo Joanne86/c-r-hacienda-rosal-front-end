@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Route } from '@angular/compiler/src/core';
+import { RouterLink, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header-welcome',
@@ -8,11 +10,13 @@ import { Component, OnInit, Input } from '@angular/core';
 export class HeaderWelcomeComponent implements OnInit {
 
   @Input('name') name;
-  nombre = 'leidy';
 
-  constructor() { }
+  constructor(private route: Router) { }
 
   ngOnInit() {
   }
-
+  loginOut(){
+    this.route.navigate(['login']);
+    sessionStorage.clear();
+  }
 }

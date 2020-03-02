@@ -24,7 +24,7 @@
   }
   .modal-content p {
     text-align: center;
-    font-size: 17px;
+    font-size: 20px;
   }
   
   /* The Close Button */
@@ -80,9 +80,6 @@
 
 
 @media (min-width: 425px){
-    .modal-content p {
-        font-size: 20px;
-      }
     .add-publish{
         padding-right: 48px;
     }

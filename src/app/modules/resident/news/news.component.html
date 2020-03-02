@@ -8,8 +8,9 @@
         <div class="information">
             {{new.information}}
         </div>
-        <div class="commit"  data-toggle="modal" data-target="#exampleModal">
+        <div class="commit" (click)="commit(new)">
             Comentar
         </div>
     </div>
 </div>
+<app-modal-input *ngIf=openModal [title]=titleModal [placeholder]=placeholder (closeModal)="closeModal($event)"></app-modal-input>

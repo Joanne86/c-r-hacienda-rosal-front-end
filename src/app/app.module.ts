@@ -22,12 +22,16 @@ import { AdminHomeComponent } from './modules/administrator/home/admin-home.comp
 import { HeaderWelcomeComponent } from './modules/common/header-welcome/header-welcome.component';
 import { NavMenuComponent } from './modules/common/nav-menu/nav-menu.component';
 import { PubishComponent } from './modules/administrator/pubish/pubish.component';
-import { SendNewsComponent } from './modules/administrator/send-news/send-news.component';
 import { RememberDebtorsComponent } from './modules/administrator/remember-debtors/remember-debtors.component';
 import { NewsComponent } from './modules/resident/news/news.component';
 import { PaymentsStateComponent } from './modules/resident/payments-state/payments-state.component';
 import { SendRequestsComponent } from './modules/resident/send-requests/send-requests.component';
 import { ModalInputComponent } from './modules/common/modal-input/modal-input.component';
+import { NewsResponseComponent } from './modules/resident/news-response/news-response.component';
+import { ModalInfoComponent } from './modules/common/modal-info/modal-info.component';
+import { RepositoryService } from './core/services/repository.service';
+import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
+import { RequestService } from './core/services/request.service';
 
 const routes: Routes = [
   { path: 'excel', component: SelectExcelDataComponent },
@@ -37,10 +41,11 @@ const routes: Routes = [
     { path: 'news', component: NewsComponent },
     { path: 'payments-state', component: PaymentsStateComponent },
     { path: 'send-requests', component: SendRequestsComponent },
+    { path: 'responses', component: NewsResponseComponent }
   ]},
   { path: 'admin-home', component: AdminHomeComponent, children: [
     {path: 'publish', component: PubishComponent},
-    {path: 'send-news', component: SendNewsComponent},
+    {path: 'send-news', component: NotifyResidentsComponent},
     {path: 'resident-news', component: ResidentNewsComponent},
     {path: 'remember-debtors', component: RememberDebtorsComponent}
   ]}
@@ -60,12 +65,13 @@ const routes: Routes = [
     NavMenuComponent,
     AdminHomeComponent,
     PubishComponent,
-    SendNewsComponent,
     RememberDebtorsComponent,
     NewsComponent,
     PaymentsStateComponent,
     SendRequestsComponent,
-    ModalInputComponent 
+    ModalInputComponent,
+    NewsResponseComponent,
+    ModalInfoComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -79,9 +85,9 @@ const routes: Routes = [
     ReactiveFormsModule,
     HttpModule,
     JsonpModule,
-    BrowserModule
+    HttpClientModule
   ],
-  providers: [],
+  providers: [RepositoryService, RequestService, HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

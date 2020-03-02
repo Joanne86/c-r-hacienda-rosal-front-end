@@ -1,4 +1,4 @@
-export class User{
+export class Session{
     user: string;
     password: string;
 }
