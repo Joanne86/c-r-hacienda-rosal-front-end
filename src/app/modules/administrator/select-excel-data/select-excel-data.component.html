@@ -1,7 +1,6 @@
 <div class="content-super">
-  <div class="content-import">
-    <ejs-uploader #defaultupload [autoUpload]='false' [dropArea]='dropEle' [asyncSettings]='path' (success)="onUploadSuccess($event)" (failure)="onUploadFailure($event)" (change)="onSuccess($event)"></ejs-uploader>
-    <ejs-grid #grid id='grid'>
-    </ejs-grid>
+  <div class="control_wrapper">
+    <ejs-uploader #defaultupload [autoUpload]='false' [dropArea]='dropEle' [asyncSettings]='path' (success)="onUploadSuccess($event)" 
+    (failure)="onUploadFailure($event)" (change)="onSuccess($event)"></ejs-uploader>
   </div>
 </div>

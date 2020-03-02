@@ -8,6 +8,9 @@ import { Item } from '../../common/nav-menu/nav-menu.component';
 })
 export class AdminHomeComponent implements OnInit {
 
+  name: string;
+  infoUser;
+
   items: Item[] =  new Array();
   item1: Item = new Item;
   item2: Item = new Item;
@@ -17,6 +20,10 @@ export class AdminHomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
+    this.infoUser = JSON.parse(sessionStorage.getItem('userInfo'));
+    this.name = this.infoUser.name;
+
     this.item1.titulo='Publicaciones';
     this.item1.image='fas fa-bullhorn';
     this.item1.path='/admin-home/publish';

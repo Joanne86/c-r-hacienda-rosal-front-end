@@ -18,14 +18,14 @@ export class RepositoryService {
     return this.req.get(`/login/get-user/`, { queryParams: { userName: userName } });
   }
 
-
-  public findAll(endpoint) {
-    return this.req.get(`/`+endpoint+`/findAll`);
+  public getAllResidents(){
+    return this.req.get(`/resident/get-residents/`);
   }
 
-  public findByRoomCode(code) {
-    
+  public saveResidents(residents){
+    return this.req.post(`/notification/add-all-numbers/`, { data: residents })
   }
+
 
   public findSalesByRoomCode(code) {
     return this.req.get(`/artworksaled-api/findAllByNumberRoom/`, { queryParams: { number_room: code } });

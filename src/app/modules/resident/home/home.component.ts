@@ -21,8 +21,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.infoUser = JSON.parse(sessionStorage.getItem('userInfo'));
-    console.log
-    this.name = this.infoUser.firstName;
+    this.name = this.infoUser.name;
 
     this.item1.titulo='Noticias';
     this.item1.image='fas fa-mail-bulk';
