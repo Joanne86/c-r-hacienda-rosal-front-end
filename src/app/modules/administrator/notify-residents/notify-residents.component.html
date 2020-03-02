@@ -13,10 +13,10 @@
               <tr>
                 <th>Torre Apartamento</th>
                 <th>Documento</th>
-                <th>Nombre</th> 
+                <th>Nombre</th>
                 <th>Celular</th>
                 <th>
-                    <button class="btn-notificar-todos">Enviar mensaje a todos</button>
+                    <button class="btn-notificar-todos" (click)="notifyAllResidents()">Enviar mensaje a todos</button>
                 </th>
              </tr>
             </thead>
@@ -27,7 +27,7 @@
                 <td>{{resident.name}}</td>
                 <td>{{resident.cellphone}}</td>
                 <td>
-                    <button class="btn-notificar">
+                    <button class="btn-notificar" (click)="notifyResident(resident)">
                       <i class="fas fa-paper-plane"></i>
                       Notificar</button>
                 </td>
@@ -37,6 +37,8 @@
     </div>
   </div>
 </div>
+
+<app-modal-input *ngIf=openModal [title]=titleModal [placeholder]=placeholder (closeModal)="closeModal($event)"></app-modal-input>
 
 
 

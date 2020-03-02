@@ -1,5 +1,7 @@
 .nav-super{
     display: flex;
+  background-color: #59165f;
+  height: 100%;
   }
   .close-out{
     width: 100%;
@@ -14,7 +16,7 @@
   width: 100%;
   display: block;
 }
-  
+
   @media (max-width:600px) {
     .nav-super{
       display: block;

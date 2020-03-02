@@ -13,19 +13,25 @@ const httpOptions = {
 export class RepositoryService {
 
   constructor(private req: RequestService) { }
-//poner la url correcta por cada service
   public getUser(userName: string){
     return this.req.get(`/login/get-user/`, { queryParams: { userName: userName } });
   }
 
-  public getAllResidents(){
+  public getAllResidents() {
     return this.req.get(`/resident/get-residents/`);
   }
 
-  public saveResidents(residents){
-    return this.req.post(`/notification/add-all-numbers/`, { data: residents })
+  public saveResidents(residents) {
+    return this.req.post(`/notification/add-all-numbers/`, { data: residents });
   }
 
+  public notifyResident(messageDto) {
+    return this.req.post(`/notification/send-message-to-one/`, { data: messageDto });
+  }
+
+  public notifyAllResidents(message) {
+    return this.req.post(`/notification/send-message-to-all/`, { data: message });
+  }
 
   public findSalesByRoomCode(code) {
     return this.req.get(`/artworksaled-api/findAllByNumberRoom/`, { queryParams: { number_room: code } });
@@ -36,7 +42,7 @@ export class RepositoryService {
   }
   public getCode(document){
     return this.req.get(`/room-api/getCode/`, { queryParams: { document } });
- 
+
   }
   public getTotal (room){
     return this.req.get(`/artworksaled-api/getTotal/`, { queryParams: { number_room: room } });

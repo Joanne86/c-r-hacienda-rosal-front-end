@@ -33,10 +33,7 @@ export class ModalInputComponent implements OnInit {
     this.closeModalEvent();
   }
 
-
   validateField(){
-    
-    //validar radios
     this.fields = false;
     this.button.className = 'btn-login-block';
     if(this.request){

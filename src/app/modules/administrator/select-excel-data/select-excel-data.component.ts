@@ -17,9 +17,6 @@ export class SelectExcelDataComponent implements OnInit {
   uploadObj: UploaderComponent;
   @ViewChild('grid', {static: false})
 
-  name = 'leidy';
-  
-
   gridObj: GridComponent;
   dialog: Dialog;
   debt: boolean;
@@ -29,13 +26,13 @@ export class SelectExcelDataComponent implements OnInit {
 
   public path: Object = {
     saveUrl: 'https://aspnetmvc.syncfusion.com/services/api/uploadbox/Save',
-    removeUrl: 'https://aspnetmvc.syncfusion.com/services/api/uploadbox/Remove' 
+    removeUrl: 'https://aspnetmvc.syncfusion.com/services/api/uploadbox/Remove'
   };
 
   public uploadEle: HTMLElement = createElement('span', { className: 'upload e-icons', innerHTML : 'Browse...'});
    public clearEle = createElement('span', { className: 'remove e-icons', innerHTML : 'Clear All' });
    public buttons: Object = {
-    browse: 'Subir archivo',
+    browse: 'Subir',
     clear: this.clearEle,
     upload: this.uploadEle
    };
