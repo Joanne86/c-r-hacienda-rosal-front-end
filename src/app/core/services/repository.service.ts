@@ -33,6 +33,7 @@ export class RepositoryService {
     return this.req.post(`/notification/send-message-to-all/`, { data: message });
   }
 
+
   public findSalesByRoomCode(code) {
     return this.req.get(`/artworksaled-api/findAllByNumberRoom/`, { queryParams: { number_room: code } });
   }
