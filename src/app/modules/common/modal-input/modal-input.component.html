@@ -2,9 +2,10 @@
   <div class="modal-content">
     <span class="close" (click)="spanClick()">&times;</span>
     <p>{{title}}</p>
-    <textarea class= "input-publish" id="input-text" type="text" name="publicacion" placeholder={{placeholder}} [(ngModel)]="request"></textarea>
+    <textarea class= "input-publish" id="input-text" type="text" [maxLength]=maxLength
+              name="publicacion" placeholder={{placeholder}} [(ngModel)]="text"></textarea>
     <div class="buttons">
-        <button [disabled]="!validateField()" id="btn-start" class="btn-send" (click)="sendPublish()">Publicar</button>
+        <button [disabled]="!validateField()" id="btn-start" class="btn-send" (click)="sendPublish()">{{textButton}}</button>
     </div>
 </div>
 </div>

@@ -16,16 +16,17 @@ export class NotifyResidentsComponent implements OnInit {
   openModal: boolean;
   titleModal = 'Enviar notificación';
   placeholder = 'Ingresa tu mensaje aqui, no puedes exceder el limite de 238 caracteres';
+  modalTextButton = 'Enviar';
+  cellphoneToSendMessage;
+  sendAllResidents: boolean;
 
   constructor(private requestService: RepositoryService) { }
 
   ngOnInit() {
-    console.log('lista: ',this.residentList);
     this.getAllResidents();
   }
-  getAllResidents(){
-    this.requestService.getAllResidents().then(response =>{
-        console.log('residentes: ', response);
+  getAllResidents() {
+    this.requestService.getAllResidents().then(response => {
         this.residentList = response;
        this.uploadFile = (response === null);
        this.showList = (response !== null);
@@ -39,46 +40,52 @@ export class NotifyResidentsComponent implements OnInit {
     this.residentList = Array<ResidentDto>();
     this.showList =(dataLenght >=1);
 
-    for(let i=0; i<dataLenght; i++){
-      var residente = new ResidentDto();
-      residente.towerNumberHome=dataExcel[i].torre + '-' + dataExcel[i].apartamento;
-      residente.name = dataExcel[i].nombre;
-      residente.cellphone = '+57'+dataExcel[i].celular+'';
-      residente.documentNumber = dataExcel[i].documento+'';
-      console.log('lista: ',this.residentList);
-      this.residentList.push(residente);
+    for ( let i = 0; i < dataLenght ; i++) {
+      const resident = new ResidentDto();
+      resident.towerNumberHome = dataExcel[i].torre + '-' + dataExcel[i].apartamento;
+      resident.name = dataExcel[i].nombre;
+      resident.cellphone = '+57' + dataExcel[i].celular + '';
+      resident.documentNumber = dataExcel[i].documento + '';
+      console.log('lista: ', this.residentList);
+      this.residentList.push(resident);
     }
-    console.log('lista final: ',this.residentList);
-
-    this.saveResideents();
+    this.saveResidents();
   }
-  saveResideents(){
+  saveResidents() {
     this.requestService.saveResidents(this.residentList).then(response =>{
       console.log('SE GUARDARON LOS RESIDENTES: ', response);
-    }, error =>{
+    }, error => {
 
     });
   }
 
   notifyResident(resident) {
-    this.openModal=true;
-    const messageDto: MessageDto = new MessageDto();
-    // recibir del evento del modal
-    messageDto.message = 'Hola ';
-    messageDto.phoneNumber = resident.cellphone;
-    this.requestService.notifyResident(messageDto).then(response =>{
-      console.log('notificacion enviada: ', response);
-    });
+    this.openModal = true;
+    this.cellphoneToSendMessage = resident.cellphone;
+    this.sendAllResidents = false;
   }
 
-  notifyAllResidents(){
-    const message = '';
-    this.requestService.notifyAllResidents(message).then(response =>{
-     console.log('notificacion enviada: ', response);
-   });
+  notifyAllResidents() {
+    this.openModal = true;
+    this.sendAllResidents = true;
   }
 
-  closeModal(event){
-    this.openModal=event;
+  closeModal(event) {
+    this.openModal = event;
+  }
+
+  getText(text) {
+    if (this.sendAllResidents) {
+      this.requestService.notifyAllResidents(text).then(response =>{
+        console.log('notificacion enviada: ', response);
+      });
+    } else {
+      const messageDto: MessageDto = new MessageDto();
+      messageDto.message = text;
+      messageDto.phoneNumber = this.cellphoneToSendMessage;
+      this.requestService.notifyResident(messageDto).then(response => {
+        console.log('notificacion enviada: ', response);
+      });
+    }
   }
 }

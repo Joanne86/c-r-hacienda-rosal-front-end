@@ -38,7 +38,12 @@
   </div>
 </div>
 
-<app-modal-input *ngIf=openModal [title]=titleModal [placeholder]=placeholder (closeModal)="closeModal($event)"></app-modal-input>
+<div>
+
+</div>
+
+<app-modal-input *ngIf=openModal [title]=titleModal [placeholder]=placeholder [notification]=true [textButton]=modalTextButton
+                 (closeModal)="closeModal($event)" (sendText)= "getText($event)"></app-modal-input>
 
 
 

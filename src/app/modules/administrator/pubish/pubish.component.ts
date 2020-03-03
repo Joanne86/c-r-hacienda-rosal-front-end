@@ -13,11 +13,12 @@ export class PubishComponent implements OnInit {
   openModal = false;
   titleModal = 'Publicar noticia';
   placeholder = 'Escribe aquí una publicación';
+  modalTextButton = 'Publicar';
 
   constructor() { }
 
   ngOnInit() {
-    
+
     this.mock();
   }
   mock(){
@@ -44,5 +45,8 @@ export class PubishComponent implements OnInit {
   }
   closeModal(event){
     this.openModal=event;
+  }
+  getText(text) {
+    console.log(text);
   }
 }
