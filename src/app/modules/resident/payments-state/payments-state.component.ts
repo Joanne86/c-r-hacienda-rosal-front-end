@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaymentsStateComponent implements OnInit {
 
+  months;
+  amount;
   constructor() { }
 
   ngOnInit() {
+    this.getDebtInfo();
+  }
+
+  getDebtInfo(){
+
   }
 
 }
