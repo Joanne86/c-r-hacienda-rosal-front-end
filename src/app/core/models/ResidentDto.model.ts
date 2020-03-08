@@ -3,4 +3,6 @@ export class ResidentDto {
   name: string;
   cellphone: string;
   towerNumberHome: string;
+  months: number;
+  debt: number;
 }

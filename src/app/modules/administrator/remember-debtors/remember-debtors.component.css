@@ -1,0 +1,49 @@
+
+.content-super{
+    background-color: #f6f8fa;
+    justify-content: center;
+    display: flex;
+    height: 89.8%;
+}
+.content{
+    margin-top: 30px;
+    width: 80%;
+}
+.cabecera{
+    display: flex;
+    border-radius: 6px;
+    background-color: white;
+    padding: 10px;
+}
+
+.cabecera p {
+    margin-left: 10px;
+    font-size: 18px;
+}
+
+.residents-table{
+    border-radius: 6px;
+    box-shadow: 0 6px 10px 0 rgba(14, 9, 14, 0.315);
+    background-color: white;
+}
+.thead{
+    background-color: rgb(238, 234, 225);
+}
+.btn-notificar-todos{
+    height: 40px;
+    width: 200px;
+    color: #002c76;
+    border-radius: 100px;
+    border: solid 1px #fdc130;
+    background-color: #fdc130;
+    outline:none;
+}
+.btn-notificar{
+    width: 120px;
+    height: 40px;
+    color: #002c76;
+    border-radius: 100px;
+    border: solid 1px #fdc130;
+    background-color: #fdc130;
+    outline:none;
+}

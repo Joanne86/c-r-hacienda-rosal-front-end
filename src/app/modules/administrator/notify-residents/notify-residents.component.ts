@@ -46,6 +46,8 @@ export class NotifyResidentsComponent implements OnInit {
       resident.name = dataExcel[i].nombre;
       resident.cellphone = '+57' + dataExcel[i].celular + '';
       resident.documentNumber = dataExcel[i].documento + '';
+      resident.months = dataExcel[i].meses_deuda;
+      resident.debt = dataExcel[i].total_deuda;
       console.log('lista: ', this.residentList);
       this.residentList.push(resident);
     }

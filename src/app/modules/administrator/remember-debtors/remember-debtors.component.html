@@ -1,5 +1,49 @@
-<div>
-    <p>En esta sección usted podrá notificar por mensaje de texto un aviso importante para todos los residentes MOROSOS o para uno en específico</p>
-</div>
-
-<app-select-excel-data></app-select-excel-data>
+<div class="content-super">
+    <div class="content">
+      <div class="cabecera">
+        <i class="fas fa-comment-dollar fa-3x"style="color: #fdc130"></i>
+          <p> En esta sección usted podrá notificar por mensaje de texto un aviso importante para todos los deudores de administración o para uno en específico</p>
+      </div>
+      <div class="residents-table" >
+          <table class="table">
+              <thead class="thead">
+                <tr>
+                  <th>Torre Apartamento</th>
+                  <th>Nombre</th>
+                  <th>Cédula</th>
+                  <th>Meses en mora</th>
+                  <th>Deuda total</th>
+                  <th>
+                      <button class="btn-notificar-todos">Enviar mensaje a todos</button>
+                  </th>
+               </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let debtor of debtors">
+                  <td>{{debtor.towerNumberHome}}</td>
+                  <td>{{debtor.name}}</td>
+                  <td>{{debtor.documentNumber}}</td>
+                  <td>{{debtor.months}}</td>
+                  <td>{{debtor.debt}}</td>
+                  <td>
+                      <button class="btn-notificar">
+                        <i class="fas fa-paper-plane"></i>
+                        Notificar</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+      </div>
+    </div>
+  </div>
+  
+  <div>
+  
+  </div>
+  
+  <app-modal-input *ngIf=openModal [title]=titleModal [placeholder]=placeholder [notification]=true [textButton]=modalTextButton
+                   ></app-modal-input>
+  
+  
+  
+  
