@@ -13,6 +13,7 @@
                   <th>Cédula</th>
                   <th>Meses en mora</th>
                   <th>Deuda total</th>
+                  <th></th>
                   <th>
                       <button class="btn-notificar-todos">Enviar mensaje a todos</button>
                   </th>
@@ -23,8 +24,13 @@
                   <td>{{debtor.towerNumberHome}}</td>
                   <td>{{debtor.name}}</td>
                   <td>{{debtor.documentNumber}}</td>
-                  <td>{{debtor.months}}</td>
-                  <td>{{debtor.debt}}</td>
+                  <td>
+                    <input class="input-text" type="text" [(ngModel)]="debtor.months">
+                  </td>
+                  <td>
+                    <input class="input-text" type="text" [(ngModel)]="debtor.debt">
+                  </td>
+                  <td> <i class="fas fa-save fa-2x" style="color: #008cff"></i> </td>
                   <td>
                       <button class="btn-notificar">
                         <i class="fas fa-paper-plane"></i>
@@ -36,14 +42,13 @@
       </div>
     </div>
   </div>
-  
+
   <div>
-  
+
   </div>
-  
+
   <app-modal-input *ngIf=openModal [title]=titleModal [placeholder]=placeholder [notification]=true [textButton]=modalTextButton
                    ></app-modal-input>
-  
-  
-  
-  
+
+
+

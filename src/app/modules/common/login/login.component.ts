@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Session } from 'src/app/core/models/Session.model';
 import { RepositoryService } from 'src/app/core/services/repository.service';
 import { UserType } from 'src/app/core/enums/UserType.enum';
-import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  user:Session = new Session();
+  user: Session = new Session();
   fields;
   button;
 
@@ -54,7 +53,7 @@ export class LoginComponent implements OnInit {
     if(userResponse.userType === UserType.ADMINISTRADOR){
       this.route.navigate(['/admin-home/publish']);
     }else{
-      this.route.navigate(['/resident-home/news']); 
+      this.route.navigate(['/resident-home/news']);
     }
   }
 
