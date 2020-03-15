@@ -1,9 +1,13 @@
 <div class="content-super">
     <div class="content">
+      <div>
+        <p>DEUDORES MOROSOS DE PAGO DE ADMINISTRACIÓN</p>
+      </div>
       <div class="cabecera">
         <i class="fas fa-comment-dollar fa-3x"style="color: #fdc130"></i>
           <p> En esta sección usted podrá notificar por mensaje de texto un aviso importante para todos los deudores de administración o para uno en específico</p>
       </div>
+      <app-input-search></app-input-search>
       <div class="residents-table" >
           <table class="table">
               <thead class="thead">
@@ -14,7 +18,7 @@
                   <th>Meses en mora</th>
                   <th>Deuda total</th>
                   <th>
-                      <button class="btn-notificar-todos">Enviar mensaje a todos</button>
+                      <button class="btn-notificar-todos" (click)="notifyAllResidents()">Enviar mensaje a todos</button>
                   </th>
                </tr>
               </thead>
@@ -26,7 +30,7 @@
                   <td>{{debtor.months}} </td>
                   <td>{{debtor.debt}}</td>
                   <td>
-                      <button class="btn-notificar">
+                      <button class="btn-notificar" (click)="notifyResident(debtor)">
                         <i class="fas fa-paper-plane"></i>
                         Notificar</button>
                   </td>
@@ -42,7 +46,7 @@
   </div>
 
   <app-modal-input *ngIf=openModal [title]=titleModal [placeholder]=placeholder [notification]=true [textButton]=modalTextButton
-                   ></app-modal-input>
+  (closeModal)="closeModal($event)" (sendText)= "getText($event)"></app-modal-input>
 
 
 

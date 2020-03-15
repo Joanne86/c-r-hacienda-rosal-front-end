@@ -1,4 +1,4 @@
 <div class="search">
-    <input class="input-search" type="text" placeholder="  Torre-apartamento">
-    <button class="btn-search"><i class="fas fa-search"></i></button>
+    <input class="input-search" type="text" placeholder="  Torre-apartamento" [(ngModel)]="text">
+    <button [class]= classButton [disabled] ="validateField()"><i class="fas fa-search"></i></button>
   </div>

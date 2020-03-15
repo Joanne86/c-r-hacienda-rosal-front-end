@@ -33,6 +33,7 @@ import { RepositoryService } from './core/services/repository.service';
 import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
 import { RequestService } from './core/services/request.service';
 import { InputSearchComponent } from './modules/common/input-search/input-search.component';
+import { AddResidentComponent } from './modules/administrator/add-resident/add-resident.component';
 
 const routes: Routes = [
   { path: 'excel', component: SelectExcelDataComponent },
@@ -73,7 +74,8 @@ const routes: Routes = [
     ModalInputComponent,
     NewsResponseComponent,
     ModalInfoComponent,
-    InputSearchComponent
+    InputSearchComponent,
+    AddResidentComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

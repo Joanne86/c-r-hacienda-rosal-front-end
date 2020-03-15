@@ -25,12 +25,24 @@ export class RepositoryService {
     return this.req.post(`/notification/add-all-numbers/`, { data: residents });
   }
 
+  public saveDebtorNumbers(residents) {
+    return this.req.post(`/notification/add-debtors-numbers/`, { data: residents });
+  }
+
+  public saveResident(resident) {
+    return this.req.post(`/resident/save-resident/`, { data: resident });
+  }
+
   public notifyResident(messageDto) {
     return this.req.post(`/notification/send-message-to-one/`, { data: messageDto });
   }
 
   public notifyAllResidents(message) {
     return this.req.post(`/notification/send-message-to-all/`, { data: message });
+  }
+
+  public notifyAllDebtors(message) {
+    return this.req.post(`/notification/send-message-to-debtors/`, { data: message });
   }
 
   public getAllDebtors(){

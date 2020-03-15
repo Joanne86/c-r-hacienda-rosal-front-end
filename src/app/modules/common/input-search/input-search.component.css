@@ -16,6 +16,17 @@
   
 }
 
+.btn-search-disable{
+  border-radius: 0px 100px 100px 0px;
+  background-color: #d1d3d4;
+  border: solid 1.5px #798086;
+  color: rgb(119, 116, 116);
+  width: 80px;
+  height: 32px;
+  outline:none;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.05);
+}
+
 .input-search{
     text-align: center;
     outline: none;

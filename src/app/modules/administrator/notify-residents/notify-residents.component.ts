@@ -12,11 +12,15 @@ export class NotifyResidentsComponent implements OnInit {
 
   uploadFile: boolean;
   residentList = new Array<ResidentDto>();
+  residentDebtorsList = new Array<ResidentDto>();
   showList: boolean;
   openModal: boolean;
+  openModalAddResident: boolean;
+
   titleModal = 'Enviar notificación';
   placeholder = 'Ingresa tu mensaje aqui, no puedes exceder el limite de 238 caracteres';
   modalTextButton = 'Enviar';
+
   cellphoneToSendMessage;
   sendAllResidents: boolean;
 
@@ -50,7 +54,12 @@ export class NotifyResidentsComponent implements OnInit {
       resident.debt = dataExcel[i].total_deuda;
       console.log('lista: ', this.residentList);
       this.residentList.push(resident);
+      if(resident.debt>0 && resident.months>0){
+        console.log('valida deudor');
+        this.residentDebtorsList.push(resident);
+      }
     }
+
     this.saveResidents();
   }
   saveResidents() {
@@ -59,6 +68,14 @@ export class NotifyResidentsComponent implements OnInit {
     }, error => {
 
     });
+console.log('this.residentDebtorsList.length: ', this.residentDebtorsList.length);
+    if(this.residentDebtorsList.length>0){
+      this.requestService.saveDebtorNumbers(this.residentDebtorsList).then(response =>{
+        console.log('SE GUARDARON LOS NUMEROS DE LOS DEUDORES : ', response);
+      }, error => {
+  
+      });
+    }
   }
 
   notifyResident(resident) {
@@ -76,6 +93,10 @@ export class NotifyResidentsComponent implements OnInit {
     this.openModal = event;
   }
 
+  closeModalAddResident(event){
+    this.openModalAddResident = event;
+  }
+
   getText(text) {
     if (this.sendAllResidents) {
       this.requestService.notifyAllResidents(text).then(response =>{
@@ -90,6 +111,13 @@ export class NotifyResidentsComponent implements OnInit {
       });
     }
   }
+
+  addResident(){
+    this.openModalAddResident = true;
+  }
+
+
+
   saveInfo(resident: ResidentDto){
     
   }
