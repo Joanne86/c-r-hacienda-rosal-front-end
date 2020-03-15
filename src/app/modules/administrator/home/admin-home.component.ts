@@ -28,9 +28,9 @@ export class AdminHomeComponent implements OnInit {
     this.item1.image='fas fa-bullhorn';
     this.item1.path='/admin-home/publish';
 
-    this.item2.titulo='Envio de novedades SMS';
+    this.item2.titulo='Administración de residentes y SMS';
     this.item2.image='far fa-envelope';
-    this.item2.path='/admin-home/send-news';
+    this.item2.path='/admin-home/send-sms';
 
     this.item3.titulo='Recordar a morosos SMS';
     this.item3.image='far fa-envelope';

@@ -90,4 +90,7 @@ export class NotifyResidentsComponent implements OnInit {
       });
     }
   }
+  saveInfo(resident: ResidentDto){
+    
+  }
 }

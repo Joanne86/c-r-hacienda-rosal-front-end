@@ -2,11 +2,16 @@
   <div class="content">
     <div class="cabecera">
       <i class="fas fa-sms fa-3x" style="color: #fdc130"></i>
-        <p> En esta sección usted podrá notificar por mensaje de texto un aviso importante para todos los residentes o para uno en específico</p>
+        <p> En esta sección usted registrar todos los residentes del conjunto adjuntando un archivo excel y también
+          notificar por mensaje de texto un aviso importante para todos los residentes o para uno en específico</p>
     </div>
-    <div>
+    <div *ngIf=!showList>
         <app-select-excel-data (dataExcel)="getDataExcel($event)"></app-select-excel-data>
     </div>
+    <div>
+      <p>Información de los residentes del conjunto residencial</p>
+    </div>
+    <app-input-search></app-input-search>
     <div class="residents-table" *ngIf=showList>
         <table class="table">
             <thead class="thead">
@@ -15,6 +20,9 @@
                 <th>Documento</th>
                 <th>Nombre</th>
                 <th>Celular</th>
+                <th>Meses en deuda</th>
+                <th>Deuda total</th>
+                <th></th>
                 <th>
                     <button class="btn-notificar-todos" (click)="notifyAllResidents()">Enviar mensaje a todos</button>
                 </th>
@@ -25,7 +33,17 @@
                 <td>{{resident.towerNumberHome}}</td>
                 <td>{{resident.documentNumber}}</td>
                 <td>{{resident.name}}</td>
-                <td>{{resident.cellphone}}</td>
+                <td>
+                  <input class="input-text" type="text" [(ngModel)]="resident.cellphone">
+                </td>
+                <td>
+                  <input class="input-text" type="text" [(ngModel)]="resident.months">
+                </td>
+                <td>
+                  <input class="input-text" type="text" [(ngModel)]="resident.debt">
+                </td>
+                <td> <i class="fas fa-save fa-2x icon-save" (click)="saveInfo(resident)"></i>
+                </td>
                 <td>
                     <button class="btn-notificar" (click)="notifyResident(resident)">
                       <i class="fas fa-paper-plane"></i>

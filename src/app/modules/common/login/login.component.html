@@ -9,7 +9,9 @@
       <p class="login__title"> <i class="fas fa-user-alt" style="color: blueviolet;"></i>  Ingresa tu usuario y contraseña</p>
       <input class="input" [(ngModel)]="user.user" type="text" name="user" placeholder="Usuario">
       <input class="input" [(ngModel)]="user.password" type="password" name="pass" placeholder="Contraseña">
-      <button [disabled]="!validateFields()" type="submit" name="login" id="btn-start" (click)="start()">Ingresar ahora ›</button>
+      <button [disabled]="!validateFields()" type="submit" name="login" id="btn-start" (click)="start()">
+        <i *ngIf=loading class="fas fa-spinner fa-spin"></i>
+        Ingresar ahora ›</button>
       <p class="login__sign-in">Deseo registrarme</p>   
   </div>
 </div>

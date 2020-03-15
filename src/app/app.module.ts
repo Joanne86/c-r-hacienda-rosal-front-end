@@ -32,6 +32,7 @@ import { ModalInfoComponent } from './modules/common/modal-info/modal-info.compo
 import { RepositoryService } from './core/services/repository.service';
 import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
 import { RequestService } from './core/services/request.service';
+import { InputSearchComponent } from './modules/common/input-search/input-search.component';
 
 const routes: Routes = [
   { path: 'excel', component: SelectExcelDataComponent },
@@ -45,7 +46,7 @@ const routes: Routes = [
   ]},
   { path: 'admin-home', component: AdminHomeComponent, children: [
     {path: 'publish', component: PubishComponent},
-    {path: 'send-news', component: NotifyResidentsComponent},
+    {path: 'send-sms', component: NotifyResidentsComponent},
     {path: 'resident-news', component: ResidentNewsComponent},
     {path: 'remember-debtors', component: RememberDebtorsComponent}
   ]}
@@ -71,7 +72,8 @@ const routes: Routes = [
     SendRequestsComponent,
     ModalInputComponent,
     NewsResponseComponent,
-    ModalInfoComponent
+    ModalInfoComponent,
+    InputSearchComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

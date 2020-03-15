@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   user: Session = new Session();
   fields;
   button;
+  loading;
 
   constructor(private requestService: RepositoryService, private route: Router) { }
 
@@ -37,8 +38,10 @@ export class LoginComponent implements OnInit {
 
   start() {
     if(this.user.user === this.user.password){
+      this.loading = true;
       this.requestService.getUser(this.user.user).then(response =>{
         sessionStorage.setItem('userInfo', JSON.stringify(response));
+        this.loading =false;
         this.validateUser(response);
       }, error =>{
         console.log('occurrio un error');

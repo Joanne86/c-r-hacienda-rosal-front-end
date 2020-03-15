@@ -21,10 +21,27 @@
     font-size: 18px;
 }
 
+.input-text {
+    text-align: center;
+    outline: none;
+    width: 130px;
+    height: 32px;
+    border-radius: 6px;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.05);
+    border: solid 1px #6ecbf7;
+    background-color: #ffffff;
+    color: #06161b;
+  }
+.icon-save{
+    cursor: pointer;
+    color: #008cff;
+}
 .residents-table{
+    outline:none;
     border-radius: 6px;
     box-shadow: 0 6px 10px 0 rgba(14, 9, 14, 0.315);
     background-color: white;
+    overflow-x: scroll;
 }
 .thead{
     background-color: rgb(238, 234, 225);
