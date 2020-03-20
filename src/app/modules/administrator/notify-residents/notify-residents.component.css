@@ -6,9 +6,13 @@
     height: 89.8%;
 }
 .content{
-    margin-top: 30px;
-    width: 80%;
+  margin-top: 30px;
+  width: 80%;
 }
+h3{
+  text-align: center;
+}
+
 .cabecera{
     display: flex;
     border-radius: 6px;
@@ -37,11 +41,26 @@
     color: #008cff;
 }
 .residents-table{
-    outline:none;
     border-radius: 6px;
     box-shadow: 0 6px 10px 0 rgba(14, 9, 14, 0.315);
     background-color: white;
     overflow-x: scroll;
+    overflow-y: scroll;
+    max-height: 500px;
+}
+.content-nav{
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-add{
+  margin-top: 20px;
+  outline: none;
+  border-radius: 100px;
+  width: 160px;
+  height: 40px;
+  background-color: #008cff;
+  color: white;
 }
 .thead{
     background-color: rgb(238, 234, 225);

@@ -10,15 +10,15 @@ import { MessageDto } from 'src/app/core/models/MessageDto.model';
 })
 export class RememberDebtorsComponent implements OnInit {
 
-  uploadFile: boolean;
   debtors = new Array<ResidentDto>();
-  showList: boolean;
+  residentListTemp = new Array<ResidentDto>();
   openModal: boolean;
   titleModal = 'Enviar notificación';
   placeholder = 'Ingresa tu mensaje aqui, no puedes exceder el limite de 238 caracteres';
   modalTextButton = 'Enviar';
   cellphoneToSendMessage;
   sendAllResidents: boolean;
+  showList: boolean;
 
   constructor(private requestService: RepositoryService) { }
 
@@ -29,6 +29,8 @@ export class RememberDebtorsComponent implements OnInit {
   getAllDebtors(){
     this.requestService.getAllDebtors().then(response =>{
       this.debtors = response;
+      this.residentListTemp = this.debtors;
+      this.showList = (response !== null);
     });
   }
 
@@ -59,6 +61,14 @@ export class RememberDebtorsComponent implements OnInit {
       this.requestService.notifyResident(messageDto).then(response => {
         console.log('notificacion enviada: ', response);
       });
+    }
+  }
+
+  searchTowelHome(towelHome){
+    if(towelHome){
+      this.debtors = this.residentListTemp.filter(r => r.towerNumberHome.includes(towelHome));
+    }else{
+      this.debtors = this.residentListTemp;
     }
   }
 }

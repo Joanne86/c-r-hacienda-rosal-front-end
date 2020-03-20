@@ -1,5 +1,6 @@
 <div class="content-super">
   <div class="content">
+    <h3>Información de los residentes del conjunto residencial</h3>
     <div class="cabecera">
       <i class="fas fa-sms fa-3x" style="color: #fdc130"></i>
         <p> En esta sección usted registrar todos los residentes del conjunto adjuntando un archivo excel y también
@@ -8,11 +9,10 @@
     <div *ngIf=!showList>
         <app-select-excel-data (dataExcel)="getDataExcel($event)"></app-select-excel-data>
     </div>
-    <div>
-      <p>Información de los residentes del conjunto residencial</p>
-      <button (click)="addResident()">Añadir residente</button>
+    <div class="content-nav" *ngIf=showList>
+      <app-input-search (textSearch)="searchTowelHome($event)"></app-input-search>
+      <button class="btn-add" (click)="addResident()">Añadir residente</button>
     </div>
-    <app-input-search></app-input-search>
     <div class="residents-table" *ngIf=showList>
         <table class="table">
             <thead class="thead">
@@ -30,7 +30,7 @@
              </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let resident of residentList">
+              <tr *ngFor="let resident of residentList let i = index">
                 <td>{{resident.towerNumberHome}}</td>
                 <td>{{resident.documentNumber}}</td>
                 <td>{{resident.name}}</td>
@@ -38,12 +38,12 @@
                   <input class="input-text" type="text" [(ngModel)]="resident.cellphone">
                 </td>
                 <td>
-                  <input class="input-text" type="text" [(ngModel)]="resident.months">
+                  <input class="input-text" type="number" [(ngModel)]="resident.months">
                 </td>
                 <td>
-                  <input class="input-text" type="text" [(ngModel)]="resident.debt">
+                  <input class="input-text" type="number" [(ngModel)]="resident.debt">
                 </td>
-                <td> <i class="fas fa-save fa-2x icon-save" (click)="saveInfo(resident)"></i>
+                <td> <i class="fas fa-save fa-2x icon-save" (click)="saveInfo(resident)" *ngIf="validateFields(i)"></i>
                 </td>
                 <td>
                     <button class="btn-notificar" (click)="notifyResident(resident)">

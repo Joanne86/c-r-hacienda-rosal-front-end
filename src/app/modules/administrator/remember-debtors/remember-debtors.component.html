@@ -1,14 +1,14 @@
 <div class="content-super">
     <div class="content">
       <div>
-        <p>DEUDORES MOROSOS DE PAGO DE ADMINISTRACIÓN</p>
+        <h3>Deudores morosos de pago de administración</h3>
       </div>
       <div class="cabecera">
         <i class="fas fa-comment-dollar fa-3x"style="color: #fdc130"></i>
           <p> En esta sección usted podrá notificar por mensaje de texto un aviso importante para todos los deudores de administración o para uno en específico</p>
       </div>
-      <app-input-search></app-input-search>
-      <div class="residents-table" >
+      <app-input-search (textSearch)="searchTowelHome($event)" *ngIf=showList></app-input-search>
+      <div class="residents-table" *ngIf=showList>
           <table class="table">
               <thead class="thead">
                 <tr>
@@ -28,7 +28,7 @@
                   <td>{{debtor.name}}</td>
                   <td>{{debtor.documentNumber}}</td>
                   <td>{{debtor.months}} </td>
-                  <td>{{debtor.debt}}</td>
+                  <td>{{debtor.debt | currency}}</td>
                   <td>
                       <button class="btn-notificar" (click)="notifyResident(debtor)">
                         <i class="fas fa-paper-plane"></i>

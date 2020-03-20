@@ -12,7 +12,10 @@ export class NotifyResidentsComponent implements OnInit {
 
   uploadFile: boolean;
   residentList = new Array<ResidentDto>();
+  residentListTemp = new Array<ResidentDto>();
+  residentListSearch = new Array<ResidentDto>();
   residentDebtorsList = new Array<ResidentDto>();
+  residentListSearchShow = new Array<ResidentDto>();
   showList: boolean;
   openModal: boolean;
   openModalAddResident: boolean;
@@ -31,7 +34,10 @@ export class NotifyResidentsComponent implements OnInit {
   }
   getAllResidents() {
     this.requestService.getAllResidents().then(response => {
-        this.residentList = response;
+      this.residentListTemp = JSON.parse(JSON.stringify(response)); // sera el filtro
+      this.residentListSearch = JSON.parse(JSON.stringify(response)); // lista original
+      this.residentListSearchShow = JSON.parse(JSON.stringify(response));
+      this.residentList = JSON.parse(JSON.stringify(response)); // lista que se muestra y se modifica
        this.uploadFile = (response === null);
        this.showList = (response !== null);
     }, error =>{
@@ -52,14 +58,13 @@ export class NotifyResidentsComponent implements OnInit {
       resident.documentNumber = dataExcel[i].documento + '';
       resident.months = dataExcel[i].meses_deuda;
       resident.debt = dataExcel[i].total_deuda;
-      console.log('lista: ', this.residentList);
       this.residentList.push(resident);
+
       if(resident.debt>0 && resident.months>0){
-        console.log('valida deudor');
         this.residentDebtorsList.push(resident);
       }
     }
-
+    this.residentListTemp = this.residentList;
     this.saveResidents();
   }
   saveResidents() {
@@ -73,7 +78,7 @@ console.log('this.residentDebtorsList.length: ', this.residentDebtorsList.length
       this.requestService.saveDebtorNumbers(this.residentDebtorsList).then(response =>{
         console.log('SE GUARDARON LOS NUMEROS DE LOS DEUDORES : ', response);
       }, error => {
-  
+
       });
     }
   }
@@ -116,9 +121,26 @@ console.log('this.residentDebtorsList.length: ', this.residentDebtorsList.length
     this.openModalAddResident = true;
   }
 
+  searchTowelHome(towelHome){
+    if(towelHome){
+      this.residentListTemp = this.residentListSearch;
+      this.residentList = this.residentListTemp.filter(r => r.towerNumberHome.includes(towelHome));
+      this.residentListTemp = this.residentListTemp.filter(r => r.towerNumberHome.includes(towelHome));
+    }else{
+      this.residentListTemp = this.residentListSearch;
+      this.residentList = this.residentListSearchShow;
+    }
+  }
 
+
+  validateFields(i) {
+
+    return ((this.residentList[i].cellphone !== this.residentListTemp[i].cellphone) ||
+      (this.residentList[i].months !== this.residentListTemp[i].months)||
+      (this.residentList[i].debt !== this.residentListTemp[i].debt));
+  }
 
   saveInfo(resident: ResidentDto){
-    
+    console.log('resident to update: ', resident);
   }
 }

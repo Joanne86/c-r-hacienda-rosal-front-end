@@ -19,7 +19,6 @@ export class SelectExcelDataComponent implements OnInit {
 
   gridObj: GridComponent;
   dialog: Dialog;
-  debt: boolean;
   public dropEle: HTMLElement ;
   files;
   XL_row_object;

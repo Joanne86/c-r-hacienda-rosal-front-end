@@ -14,7 +14,7 @@ label{
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
-  
+
   /* Modal Content/Box */
   .modal-content {
     background-color: #fefefe;
@@ -28,7 +28,7 @@ label{
     text-align: center;
     font-size: 17px;
   }
-  
+
   /* The Close Button */
   .close {
     color: #aaa;
@@ -36,7 +36,7 @@ label{
     font-size: 28px;
     font-weight: bold;
   }
-  
+
   .close:hover,
   .close:focus {
     color: black;
@@ -73,7 +73,6 @@ label{
     outline:none;
 }
 .btn-login-block{
-    
     margin: auto;
     margin-top: 15px;
     margin-bottom: 0px;
@@ -99,7 +98,7 @@ label{
 
 @media (min-width: 425px){
     .modal-content p {
-        font-size: 20px;
+        font-size: 16px;
       }
     .add-publish{
         padding-right: 48px;

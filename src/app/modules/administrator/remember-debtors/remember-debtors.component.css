@@ -15,18 +15,20 @@
     background-color: white;
     padding: 10px;
 }
-
+h3{
+  text-align: center;
+}
 .cabecera p {
     margin-left: 10px;
     font-size: 18px;
 }
-
-
-
 .residents-table{
     border-radius: 6px;
     box-shadow: 0 6px 10px 0 rgba(14, 9, 14, 0.315);
     background-color: white;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    max-height: 500px;
 }
 .thead{
     background-color: rgb(238, 234, 225);

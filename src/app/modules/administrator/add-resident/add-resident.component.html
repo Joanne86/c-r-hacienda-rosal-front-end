@@ -4,31 +4,31 @@
 
       <p>Añadir residente</p>
       <label>Torre - apartamento</label>
-      <input class= "input-publish" id="input-text" type="text" placeholder=xx-xxx [(ngModel)]="residentDto.towerNumberHome">
-      
+      <input class= "input-publish"  type="text" placeholder=xx-xxx [(ngModel)]="residentDto.towerNumberHome">
+
       <label>Número de documento</label>
-      <input class= "input-publish" id="input-text" type="text" placeholder=Documento [(ngModel)]="residentDto.documentNumber">
+      <input class= "input-publish"  type="text" placeholder=Documento [maxLength]=10 [(ngModel)]="residentDto.documentNumber">
 
       <label>Nombre completo</label>
-      <input class= "input-publish" id="input-text" type="text" placeholder=Nombre [(ngModel)]="residentDto.name">
+      <input class= "input-publish"  type="text" placeholder=Nombre [(ngModel)]="residentDto.name">
 
       <label>Número de celular</label>
-      <input class= "input-publish" id="input-text" type="text" placeholder=Celular [(ngModel)]="residentDto.cellphone">
-      
+      <input class= "input-publish"  type="text" placeholder=Celular [(ngModel)]="residentDto.cellphone">
+
       <label>Número de meses en deuda de administración</label>
-      <input class= "input-publish" id="input-text" type="text" placeholder=Meses [(ngModel)]="residentDto.months">
-      
+      <input class= "input-publish"  type="number" placeholder=Meses [(ngModel)]="residentDto.months">
+
       <label>Deuda total</label>
-      <input class= "input-publish" id="input-text" type="text" placeholder=Total [(ngModel)]="residentDto.debt">
-      
+      <input class= "input-publish"  type="number" placeholder=Total [(ngModel)]="residentDto.debt">
+
       <div class="buttons">
-          <button [disabled]="!validateField()" id="btn-save" class="btn-send" (click)="saveResident(residentDto)">
+          <button [disabled]="!validateButton()" id="btn-save" class="btn-send" (click)="saveResident(residentDto)">
             <i *ngIf=loading class="fas fa-spinner fa-spin"></i>
             {{textButton}}</button>
       </div>
       <div *ngIf=showMessage>
-          <p *ngIf=goodSave class="text-when-save">El residente se acaba de guardar con exito!</p>
-          <p *ngIf=!goodSave class="text-when-save-error">Ocurrio un error al guardar el residente</p>
+          <p *ngIf=goodSave class="text-when-save" >{{messageGood}}</p>
+          <p *ngIf=!goodSave class="text-when-save-error" >{{messageFail}}</p>
       </div>
   </div>
   </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-input-search',
@@ -6,22 +6,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./input-search.component.css']
 })
 export class InputSearchComponent implements OnInit {
-
-  classButton = 'btn-search-disable';
+  @Output('textSearch') textSearch = new EventEmitter<any>();
   text;
+  button;
   constructor() { }
 
   ngOnInit() {
+    this.button = document.getElementById('btn-search-id');
   }
 
-  validateField(){
-    if(this.text){
-      this.classButton = 'btn-search';
+  validateField() {
+    this.textSearch.emit(this.text);
+    if (this.text){
+      this.button.className = 'btn-search';
       return false;
-    }else{
-      this.classButton = 'btn-search-disable';
+    } else {
+      this.button.className = 'btn-search-disable';
       return true;
     }
+  }
+
+  search() {
+    console.log('text: ', this.text);
+    this.textSearch.emit(this.text);
   }
 
 }
