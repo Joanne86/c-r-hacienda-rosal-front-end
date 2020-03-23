@@ -43,7 +43,8 @@
                 <td>
                   <input class="input-text" type="number" [(ngModel)]="resident.debt">
                 </td>
-                <td> <i class="fas fa-save fa-2x icon-save" (click)="saveInfo(resident)" *ngIf="validateFields(i)"></i>
+                <td> <i class="fas fa-save fa-2x icon-save" (click)="saveInfo(i)" *ngIf="validateFields(i) && !validateShowLoadingUpdate(i)"></i>
+                  <img *ngIf="validateShowLoadingUpdate(i)" alt="" src="../../../../assets/gif/loading.gif">
                 </td>
                 <td>
                     <button class="btn-notificar" (click)="notifyResident(resident)">
@@ -64,5 +65,6 @@
 <app-modal-input *ngIf=openModal [title]=titleModal [placeholder]=placeholder [notification]=true [textButton]=modalTextButton
                  (closeModal)="closeModal($event)" (sendText)= "getText($event)"></app-modal-input>
 
-<app-add-resident *ngIf=openModalAddResident (closeModalAddResident)="closeModalAddResident($event)"></app-add-resident>
+<app-add-resident *ngIf=openModalAddResident (closeModalAddResident)="closeModalAddResident($event)"
+                  (residentSaved)="pushResidentSavedInList($event)"></app-add-resident>
 

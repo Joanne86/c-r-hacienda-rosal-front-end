@@ -22,7 +22,7 @@ export class RequestService {
       }
       return headers;
     }
-  
+
     /**
        * GET request function
        * @param uri  resource of the request
@@ -36,7 +36,7 @@ export class RequestService {
       options = pParams.requestOptions ? Object.assign(options, pParams.requestOptions) : this.headers;
       pParams.responseType = pParams.responseType ? pParams.responseType : 'json';
       pUri = pParams.externalEndpoint ? pUri : Properties.baseUrl.concat(pUri);
-  
+
       return new Promise((resolve, reject) => {
         this.http.get(pUri, { headers: options, params: pParams.queryParams, responseType: pParams.responseType })
           .subscribe(
@@ -46,7 +46,7 @@ export class RequestService {
             });
       });
     }
-  
+
     /**
        * POST request function
        * @param uri  resource of the request
@@ -57,17 +57,17 @@ export class RequestService {
        */
     post(pUri: string, pParams?: RequestParams): Promise<any> {
       let options: HttpHeaders;
-  
+
       pParams = pParams || {};
       pParams.data = pParams.data ? pParams.data : {};
       options = pParams.requestOptions ? Object.assign(options, pParams.requestOptions) : this.headers;
       pParams.responseType = pParams.responseType ? pParams.responseType : 'json';
       pUri = pParams.externalEndpoint ? pUri : Properties.baseUrl.concat(pUri);
-  
+
       if (pParams.data.constructor.name === 'FormData') {
         options = options.delete('Content-Type', '');
       }
-  
+
       return new Promise((resolve, reject) => {
         this.http.post(pUri, pParams.data, { headers: options, params: pParams.queryParams, responseType: pParams.responseType })
           .subscribe(
@@ -77,7 +77,7 @@ export class RequestService {
             });
       });
     }
-  
+
     /**
        * PUT request function
        * @param uri  resource of the request
@@ -88,18 +88,18 @@ export class RequestService {
        */
     put(pUri: string, pParams?: RequestParams): Promise<any> {
       let options: HttpHeaders;
-  
+
       pParams = pParams || {};
       pParams.data = pParams.data ? pParams.data : {};
       pParams.queryParams = pParams.queryParams ? pParams.queryParams : null;
       options = pParams.requestOptions ? Object.assign(options, pParams.requestOptions) : this.headers;
       pParams.responseType = pParams.responseType ? pParams.responseType : 'json';
       pUri = pParams.externalEndpoint ? pUri : Properties.baseUrl.concat(pUri);
-  
+
       if (pParams.data.constructor.name === 'FormData') {
         options = options.delete('Content-Type', '');
       }
-  
+
       return new Promise((resolve, reject) => {
         this.http.put(pUri, pParams.data, { headers: options, params: pParams.queryParams, responseType: pParams.responseType })
           .subscribe(
@@ -109,7 +109,7 @@ export class RequestService {
             });
       });
     }
-  
+
     /**
        * DELETE request function
        * @param uri  resource of the request
@@ -119,12 +119,12 @@ export class RequestService {
        */
     delete(pUri: string, pParams?: RequestParams, pRequestOptions?: any, pResponseType?: any): Promise<any> {
       let options: HttpHeaders;
-  
+
       pParams = pParams || {};
       options = pParams.requestOptions ? Object.assign(options, pParams.requestOptions) : this.headers;
       pParams.responseType = pParams.responseType ? pParams.responseType : 'json';
       pUri = pParams.externalEndpoint ? pUri : Properties.baseUrl.concat(pUri);
-  
+
       return new Promise((resolve, reject) => {
         this.http.delete(pUri, { headers: options, params: pParams.queryParams, responseType: pParams.responseType })
           .subscribe(
@@ -134,7 +134,7 @@ export class RequestService {
             });
       });
     }
-  
+
 
 
 }

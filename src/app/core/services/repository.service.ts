@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-//import * as proxy from '../../../proxy.config.json';
+import { HttpHeaders } from '@angular/common/http';
 
 import { RequestService } from './request.service';
 
@@ -23,6 +22,18 @@ export class RepositoryService {
 
   public saveResidents(residents) {
     return this.req.post(`/notification/add-all-numbers/`, { data: residents });
+  }
+
+  public deleteNumber(cellphone){
+    return this.req.delete(`/notification/delete-number/`, { queryParams: { cellphone: cellphone } });
+  }
+
+  public addNumber(cellphone){
+    return this.req.post(`/notification/add-number/`, { queryParams: { cellphone: cellphone } });
+  }
+
+  public addDebtorNumber(cellphone){
+    return this.req.post(`/notification/add-debtor-number/`, { queryParams: { cellphone: cellphone } });
   }
 
   public saveDebtorNumbers(residents) {

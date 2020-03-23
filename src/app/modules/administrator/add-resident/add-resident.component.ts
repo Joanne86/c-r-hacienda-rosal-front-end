@@ -10,6 +10,7 @@ import { RepositoryService } from 'src/app/core/services/repository.service';
 export class AddResidentComponent implements OnInit {
 
   @Output() closeModalAddResident = new EventEmitter<any>();
+  @Output() residentSaved = new EventEmitter<any>();
   residentDto: ResidentDto = new ResidentDto();
   button;
   modal: HTMLElement;
@@ -58,6 +59,7 @@ export class AddResidentComponent implements OnInit {
     console.log('residentdto: ', residentDto);
     residentDto.cellphone = '+57'+residentDto.cellphone;
     this.requestService.saveResident(residentDto).then(response =>{
+      this.residentSaved.emit(residentDto);
       this.setValuesWhenSave();
       console.log('Residente guardado');
       this.goodSave=true;

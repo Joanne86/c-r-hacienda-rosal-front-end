@@ -19,6 +19,7 @@ export class NotifyResidentsComponent implements OnInit {
   showList: boolean;
   openModal: boolean;
   openModalAddResident: boolean;
+  showLoadingUpdate = -1;
 
   titleModal = 'Enviar notificación';
   placeholder = 'Ingresa tu mensaje aqui, no puedes exceder el limite de 238 caracteres';
@@ -54,7 +55,7 @@ export class NotifyResidentsComponent implements OnInit {
       const resident = new ResidentDto();
       resident.towerNumberHome = dataExcel[i].torre + '-' + dataExcel[i].apartamento;
       resident.name = dataExcel[i].nombre;
-      resident.cellphone = '+57' + dataExcel[i].celular + '';
+      resident.cellphone = dataExcel[i].celular;
       resident.documentNumber = dataExcel[i].documento + '';
       resident.months = dataExcel[i].meses_deuda;
       resident.debt = dataExcel[i].total_deuda;
@@ -64,7 +65,7 @@ export class NotifyResidentsComponent implements OnInit {
         this.residentDebtorsList.push(resident);
       }
     }
-    this.residentListTemp = this.residentList;
+    this.resetLists();
     this.saveResidents();
   }
   saveResidents() {
@@ -123,24 +124,61 @@ console.log('this.residentDebtorsList.length: ', this.residentDebtorsList.length
 
   searchTowelHome(towelHome){
     if(towelHome){
-      this.residentListTemp = this.residentListSearch;
-      this.residentList = this.residentListTemp.filter(r => r.towerNumberHome.includes(towelHome));
+      this.residentList = this.residentList.filter(r => r.towerNumberHome.includes(towelHome));
       this.residentListTemp = this.residentListTemp.filter(r => r.towerNumberHome.includes(towelHome));
     }else{
-      this.residentListTemp = this.residentListSearch;
       this.residentList = this.residentListSearchShow;
+      this.residentListTemp = this.residentListSearch;
     }
   }
 
 
   validateFields(i) {
-
     return ((this.residentList[i].cellphone !== this.residentListTemp[i].cellphone) ||
       (this.residentList[i].months !== this.residentListTemp[i].months)||
       (this.residentList[i].debt !== this.residentListTemp[i].debt));
   }
 
-  saveInfo(resident: ResidentDto){
-    console.log('resident to update: ', resident);
+  saveInfo(i){
+    this.showLoadingUpdate=i;
+    console.log('resident to update: ', this.residentList[i]);
+    if(this.residentList[i].cellphone !== this.residentListTemp[i].cellphone){
+      console.log('telefono con cambios');
+      this.requestService.deleteNumber(this.residentListTemp[i].cellphone).then(responseDel =>{
+       this.requestService.addNumber(this.residentList[i].cellphone).then(responseAdd =>{
+         this.showLoadingUpdate=-1;
+          if(this.residentList[i].debt>0 && this.residentList[i].months>0){
+            this.showLoadingUpdate=i;
+            this.requestService.addDebtorNumber(this.residentList[i].cellphone).then(responseAddDebtor =>{
+              this.showLoadingUpdate=-1;
+              this.residentListTemp[i].cellphone = this.residentList[i].cellphone;
+            }, error =>{
+              this.showLoadingUpdate=-1;
+            });
+          }else{
+            this.residentListTemp[i].cellphone = this.residentList[i].cellphone;
+          }
+        }, error =>{
+         this.showLoadingUpdate=-1;
+        });
+      }, error =>{
+        this.showLoadingUpdate=-1;
+      });
+    }
+  }
+
+  validateShowLoadingUpdate(i){
+    return(this.showLoadingUpdate===i);
+  }
+
+  pushResidentSavedInList(residentSaved){
+    this.residentList.push(residentSaved);
+    this.resetLists();
+  }
+
+  resetLists(){
+    this.residentListSearch = JSON.parse(JSON.stringify(this.residentList));
+    this.residentListSearchShow = JSON.parse(JSON.stringify(this.residentList));
+    this.residentListTemp = JSON.parse(JSON.stringify(this.residentList));
   }
 }
