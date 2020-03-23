@@ -28,6 +28,10 @@ export class RepositoryService {
     return this.req.delete(`/notification/delete-number/`, { queryParams: { cellphone: cellphone } });
   }
 
+  public updateResident(resident){
+    return this.req.put(`/resident/update/`, { data: resident });
+  }
+
   public addNumber(cellphone){
     return this.req.post(`/notification/add-number/`, { queryParams: { cellphone: cellphone } });
   }

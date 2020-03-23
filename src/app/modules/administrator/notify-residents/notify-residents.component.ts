@@ -143,28 +143,40 @@ console.log('this.residentDebtorsList.length: ', this.residentDebtorsList.length
     this.showLoadingUpdate=i;
     console.log('resident to update: ', this.residentList[i]);
     if(this.residentList[i].cellphone !== this.residentListTemp[i].cellphone){
-      console.log('telefono con cambios');
       this.requestService.deleteNumber(this.residentListTemp[i].cellphone).then(responseDel =>{
+
        this.requestService.addNumber(this.residentList[i].cellphone).then(responseAdd =>{
          this.showLoadingUpdate=-1;
+
           if(this.residentList[i].debt>0 && this.residentList[i].months>0){
             this.showLoadingUpdate=i;
             this.requestService.addDebtorNumber(this.residentList[i].cellphone).then(responseAddDebtor =>{
               this.showLoadingUpdate=-1;
-              this.residentListTemp[i].cellphone = this.residentList[i].cellphone;
+              this.updateResidentInBD(i);
             }, error =>{
               this.showLoadingUpdate=-1;
             });
           }else{
-            this.residentListTemp[i].cellphone = this.residentList[i].cellphone;
+            this.updateResidentInBD(i);
           }
+
         }, error =>{
          this.showLoadingUpdate=-1;
         });
       }, error =>{
         this.showLoadingUpdate=-1;
       });
+    }else{
+      this.updateResidentInBD(i);
     }
+  }
+
+  updateResidentInBD(i){
+    this.requestService.updateResident(this.residentList[i]).then(response=>{
+      this.residentListTemp[i].cellphone = this.residentList[i].cellphone;
+    }, error =>{
+      this.showLoadingUpdate=-1;
+    });
   }
 
   validateShowLoadingUpdate(i){
