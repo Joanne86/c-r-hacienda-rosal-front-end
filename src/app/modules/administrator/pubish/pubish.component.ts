@@ -27,18 +27,14 @@ export class PubishComponent implements OnInit {
     new1.date = new Date();
 
     let new2 : New = new New();
-    new2.information='El dia de mañana habrá una junta directiva justo a los representantes del comite';
+    new2.information='Las nuevas reglas del conjunto las puedes ver ingresando al siguiente enlace https://drive.google.com/drive/u/0/folders/15Jryrm3mhzzkeAjD8Ou vHMslL2RWez_C';
     new2.date = new Date();
 
     let new3 : New = new New();
-    new3.information='El dia de mañana habrá una junta directiva justo a los representantes del comite';
+    new3.information='El dia de hoy habrá un cambio en el cobro de la administración por favor acercarce a la administracion a las 3:00pm';
     new3.date = new Date();
 
-    let new4 : New = new New();
-    new4.information='El dia de mañana habrá una junta directiva justo a los representantes del comite';
-    new4.date = new Date();
-
-    this.news.push(new1, new2, new3, new4);
+    this.news.push(new1, new2, new3);
   }
   addPublish(){
     this.openModal=true;

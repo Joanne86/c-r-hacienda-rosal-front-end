@@ -5,7 +5,10 @@
     <textarea class= "input-publish" id="input-text" type="text" [maxLength]=maxLength
               name="publicacion" placeholder={{placeholder}} [(ngModel)]="text"></textarea>
     <div class="buttons">
-        <button [disabled]="!validateField()" id="btn-start" class="btn-send" (click)="sendPublish()">{{textButton}}</button>
+        <button [disabled]="!validateField()" id="btn-start" class="btn-send" (click)="sendPublish()">
+          <i *ngIf=loadingSend class="fas fa-spinner fa-spin"></i>
+          {{textButton}}</button>
     </div>
+    <p class="message" *ngIf="validateMessage()">{{message}}</p>
 </div>
 </div>

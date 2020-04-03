@@ -21,7 +21,7 @@ export class RepositoryService {
   }
 
   public saveResidents(residents) {
-    return this.req.post(`/notification/add-all-numbers/`, { data: residents });
+    return this.req.post(`/notification/add-all-residents/`, { data: residents });
   }
 
   public deleteNumber(cellphone){

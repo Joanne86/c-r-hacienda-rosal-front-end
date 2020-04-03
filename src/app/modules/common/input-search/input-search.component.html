@@ -1,5 +1,4 @@
 <div class="search">
-    <input class="input-search" type="text" placeholder="  Torre-apartamento" [(ngModel)]="text">
-    <button class= "btn-search-disable" [disabled] ="validateField()"
-            id="btn-search-id" (click)="search()"><i class="fas fa-search"></i></button>
+    <input class="input-search" type="text" placeholder="  Torre-apartamento"
+           [(ngModel)]="text" *ngIf="validateField()">
   </div>

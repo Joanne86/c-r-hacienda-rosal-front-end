@@ -20,6 +20,8 @@ export class NotifyResidentsComponent implements OnInit {
   openModal: boolean;
   openModalAddResident: boolean;
   showLoadingUpdate = -1;
+  loadingSend: boolean;
+  messageInModal: string;
 
   titleModal = 'Enviar notificación';
   placeholder = 'Ingresa tu mensaje aqui, no puedes exceder el limite de 238 caracteres';
@@ -86,7 +88,7 @@ console.log('this.residentDebtorsList.length: ', this.residentDebtorsList.length
 
   notifyResident(resident) {
     this.openModal = true;
-    this.cellphoneToSendMessage = resident.cellphone;
+    this.cellphoneToSendMessage = "+57"+resident.cellphone;
     this.sendAllResidents = false;
   }
 
@@ -107,6 +109,9 @@ console.log('this.residentDebtorsList.length: ', this.residentDebtorsList.length
     if (this.sendAllResidents) {
       this.requestService.notifyAllResidents(text).then(response =>{
         console.log('notificacion enviada: ', response);
+        this.setTextSuccessfulInModal();
+      }, error =>{
+        this.setTextFailInModal();
       });
     } else {
       const messageDto: MessageDto = new MessageDto();
@@ -114,8 +119,28 @@ console.log('this.residentDebtorsList.length: ', this.residentDebtorsList.length
       messageDto.phoneNumber = this.cellphoneToSendMessage;
       this.requestService.notifyResident(messageDto).then(response => {
         console.log('notificacion enviada: ', response);
+        this.setTextSuccessfulInModal();
+      }, error =>{
+        this.setTextFailInModal();
       });
     }
+  }
+
+  setTextSuccessfulInModal(){
+    this.loadingSend=false;
+    this.messageInModal = 'Mensaje enviando exitosamente!';
+    this.resetMessage();
+  }
+  resetMessage() {
+    setTimeout(() => {
+      this.messageInModal='';
+      this.loadingSend = false;
+    }, 3000);
+  }
+  setTextFailInModal(){
+    this.loadingSend=false;
+    this.messageInModal = 'Ocurrio un error al enviar el mensaje';
+    this.resetMessage();
   }
 
   addResident(){
@@ -185,6 +210,9 @@ console.log('this.residentDebtorsList.length: ', this.residentDebtorsList.length
 
   pushResidentSavedInList(residentSaved){
     this.residentList.push(residentSaved);
+    this.residentListTemp.push(residentSaved);
+    this.residentListSearchShow.push(residentSaved);
+    this.residentListSearch.push(residentSaved);
     this.resetLists();
   }
 

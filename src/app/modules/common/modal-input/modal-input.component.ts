@@ -12,6 +12,8 @@ export class ModalInputComponent implements OnInit {
   @Input('placeholder') placeholder;
   @Input('notification') notification: boolean;
   @Input('textButton') textButton: string;
+  @Input('loadingSend') loadingSend: boolean;
+  @Input('message') message: string;
   @Output() closeModal = new EventEmitter<any>();
   @Output() sendText = new EventEmitter<any>();
   modal: HTMLElement;
@@ -19,6 +21,7 @@ export class ModalInputComponent implements OnInit {
   text;
   fields;
   maxLength: number;
+
   constructor() { }
 
   ngOnInit() {
@@ -40,8 +43,23 @@ export class ModalInputComponent implements OnInit {
   }
 
   sendPublish(){
-    this.closeModalEvent();
+    this.textButton = 'Enviando...';
+    this.button.className = 'btn-login-block';
+    this.loadingSend = true;
     this.sendText.emit(this.text);
+  }
+
+  validateMessage(){
+    this.loadingSend = false;
+    if(this.message){
+      this.textButton = 'Enviar';
+      setTimeout(() => {
+        this.text='';
+        this.message = '';
+        this.loadingSend = false;
+      }, 3000);
+    }
+    return this.message;
   }
 
   validateField(){

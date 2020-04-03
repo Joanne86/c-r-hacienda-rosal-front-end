@@ -56,10 +56,11 @@ export class AddResidentComponent implements OnInit {
 
   saveResident(residentDto: ResidentDto){
     this.setValuesBeforeSave();
-    console.log('residentdto: ', residentDto);
-    residentDto.cellphone = '+57'+residentDto.cellphone;
-    this.requestService.saveResident(residentDto).then(response =>{
-      this.residentSaved.emit(residentDto);
+    let request = JSON.parse(JSON.stringify(residentDto));
+    console.log('residentdto: ', request);
+    this.requestService.saveResident(request).then(response =>{
+      console.log('residente desde el modal: ', request);
+      this.residentSaved.emit(request);
       this.setValuesWhenSave();
       console.log('Residente guardado');
       this.goodSave=true;

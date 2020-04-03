@@ -4,35 +4,12 @@
     font-size: 14px;
 }
 
-.btn-search{
-  border-radius: 0px 100px 100px 0px;
-  background-color: #008cff;
-  border: solid 1px #008cff;
-  color: white;
-  width: 80px;
-  height: 32px;
-  outline:none;
-  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.05);
-  
-}
-
-.btn-search-disable{
-  border-radius: 0px 100px 100px 0px;
-  background-color: #d1d3d4;
-  border: solid 1.5px #798086;
-  color: rgb(119, 116, 116);
-  width: 80px;
-  height: 32px;
-  outline:none;
-  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.05);
-}
-
 .input-search{
     text-align: center;
     outline: none;
-  width: 145px;
+  width: 190px;
   height: 32px;
-  border-radius: 100px 0px 0px 100px;
+  border-radius: 100px 100px 100px 100px;
   box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.05);
   border: solid 1px #6ecbf7;
   background-color: #ffffff;
