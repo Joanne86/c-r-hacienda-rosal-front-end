@@ -63,4 +63,15 @@ export class RepositoryService {
   public getAllDebtors(){
     return this.req.get(`/resident/get-debtors/`);
   }
+
+  public getNews(){
+    return this.req.get(`/publish/get-news/`);
+  }
+
+  public publish(news){
+    return this.req.post(`/publish/save-new/`, { data: news });
+  }
+  public saveCommentary(commentaryDto){
+    return this.req.post(`/publish/save-commentary/`, { data: commentaryDto });
+  }
 }

@@ -3,7 +3,7 @@
     <div class="title">Noticias</div>
     <div class="new"*ngFor="let new of news">
         <div class="date">
-            {{new.date}}
+            {{new.publish}}
         </div>
         <div class="information">
             {{new.information}}
@@ -13,4 +13,8 @@
         </div>
     </div>
 </div>
-<app-modal-input *ngIf=openModal [title]=titleModal [placeholder]=placeholder (closeModal)="closeModal($event)"></app-modal-input>
+
+<app-modal-input *ngIf=openModal [title]=titleModal [placeholder]=placeholder
+                 (closeModal)="closeModal($event)" [loadingSend]="loadingSend"
+                 [textButton]="modalTextButton" [message]="messageInModal"
+                 (sendText)= "getText($event)"></app-modal-input>

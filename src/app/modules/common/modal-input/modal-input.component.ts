@@ -21,10 +21,12 @@ export class ModalInputComponent implements OnInit {
   text;
   fields;
   maxLength: number;
+  textButtonAux: string;
 
   constructor() { }
 
   ngOnInit() {
+    this.textButtonAux = this.textButton;
     this.modal = document.getElementById("myModal");
     this.button = document.getElementById('btn-start');
     if(this.notification){
@@ -52,7 +54,7 @@ export class ModalInputComponent implements OnInit {
   validateMessage(){
     this.loadingSend = false;
     if(this.message){
-      this.textButton = 'Enviar';
+      this.textButton = this.textButtonAux;
       setTimeout(() => {
         this.text='';
         this.message = '';

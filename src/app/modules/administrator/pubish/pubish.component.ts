@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { New } from 'src/app/core/models/New.model';
+import {RepositoryService} from '../../../core/services/repository.service';
 
 @Component({
   selector: 'app-pubish',
@@ -8,33 +9,31 @@ import { New } from 'src/app/core/models/New.model';
 })
 export class PubishComponent implements OnInit {
 
-  new_: New = new New();
-  news: New[] =  new Array();
+  news: New[] =  [];
   openModal = false;
   titleModal = 'Publicar noticia';
   placeholder = 'Escribe aquí una publicación';
   modalTextButton = 'Publicar';
+  loadingSend;
+  messageInModal;
 
-  constructor() { }
+  constructor(private requestService: RepositoryService) { }
 
   ngOnInit() {
-
-    this.mock();
+    this.getNews();
   }
-  mock(){
-    let new1 : New = new New();
-    new1.information='El dia de mañana habrá una junta directiva justo a los representantes del comite';
-    new1.date = new Date();
 
-    let new2 : New = new New();
-    new2.information='Las nuevas reglas del conjunto las puedes ver ingresando al siguiente enlace https://drive.google.com/drive/u/0/folders/15Jryrm3mhzzkeAjD8Ou vHMslL2RWez_C';
-    new2.date = new Date();
+  getNews(){
+    this.requestService.getNews().then(response =>{
+      this.news = response.reverse();
+      console.log('news: ', this.news);
+    },error =>{
 
-    let new3 : New = new New();
-    new3.information='El dia de hoy habrá un cambio en el cobro de la administración por favor acercarce a la administracion a las 3:00pm';
-    new3.date = new Date();
+    });
+  }
 
-    this.news.push(new1, new2, new3);
+  validateNews(){
+    return this.news.length>0;
   }
   addPublish(){
     this.openModal=true;
@@ -44,5 +43,30 @@ export class PubishComponent implements OnInit {
   }
   getText(text) {
     console.log(text);
+    let new_ : New = new New();
+    new_.information = text;
+    this.requestService.publish(new_).then(response =>{
+      this.news.unshift(response);
+      this.setTextSuccessfulInModal();
+    }, error =>{
+      this.setTextFailInModal();
+    });
+  }
+
+  setTextSuccessfulInModal(){
+    this.loadingSend=false;
+    this.messageInModal = 'Noticia publicada exitosamente!';
+    this.resetMessage();
+  }
+  resetMessage() {
+    setTimeout(() => {
+      this.messageInModal='';
+      this.loadingSend = false;
+    }, 3000);
+  }
+  setTextFailInModal(){
+    this.loadingSend=false;
+    this.messageInModal = 'Ocurrio un error al publicar noticia';
+    this.resetMessage();
   }
 }

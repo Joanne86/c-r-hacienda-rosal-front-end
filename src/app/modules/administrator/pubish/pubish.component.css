@@ -44,9 +44,18 @@
 }
 
 .icon-plus{
-    color: rgb(240, 205, 11);;
+  color: rgb(240, 205, 11);
+  cursor: pointer;
 }
 
+.icon-position{
+  margin-left: 113px;
+}
+
+.no-publish{
+  display: flex;
+  justify-content: center;
+}
 
 @media (min-width: 425px){
     .title{

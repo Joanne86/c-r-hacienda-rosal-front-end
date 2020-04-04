@@ -1,5 +1,5 @@
 export class New {
+  id: number;
     information: string;
-    date: Date;
-    
+    publish: string;
 }
