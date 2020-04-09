@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import {EndErrorLine} from 'tslint/lib/verify/lines';
 
 @Component({
   selector: 'app-modal-input',
@@ -14,6 +13,9 @@ export class ModalInputComponent implements OnInit {
   @Input('textButton') textButton: string;
   @Input('loadingSend') loadingSend: boolean;
   @Input('message') message: string;
+  @Input('textArea') textArea = true;
+  @Input('parrafo') parrafo;
+
   @Output() closeModal = new EventEmitter<any>();
   @Output() sendText = new EventEmitter<any>();
   modal: HTMLElement;
@@ -66,10 +68,13 @@ export class ModalInputComponent implements OnInit {
 
   validateField(){
     this.fields = false;
-    this.button.className = 'btn-login-block';
-    if(this.text){
-      this.fields = true;
-      this.button.className = 'btn-send';
+    if(this.textArea){
+      this.button = document.getElementById('btn-start');
+      this.button.className = 'btn-login-block';
+      if(this.text){
+        this.fields = true;
+        this.button.className = 'btn-send';
+      }
     }
     return this.fields;
   }

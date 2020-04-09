@@ -7,4 +7,5 @@ export class RequestDto {
   type: number;
   publishDate: string;
   state: string;
+  id: number;
 }

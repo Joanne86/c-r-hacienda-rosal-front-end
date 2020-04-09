@@ -40,8 +40,8 @@
                 <td>
                   <input class="input-text" type="number" [(ngModel)]="resident.months">
                 </td>
-                <td>
-                  <input class="input-text" type="number" [(ngModel)]="resident.debt">
+                <td class="td-currency">
+                  $<input class="input-text" type="number" [(ngModel)]="resident.debt">
                 </td>
                 <td> <i class="fas fa-save fa-2x icon-save" (click)="saveInfo(i)" *ngIf="validateFields(i) && !validateShowLoadingUpdate(i)"></i>
                   <img *ngIf="validateShowLoadingUpdate(i)" alt="" src="../../../../assets/gif/loading.gif">

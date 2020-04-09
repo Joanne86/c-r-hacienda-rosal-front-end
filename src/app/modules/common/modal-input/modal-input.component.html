@@ -1,10 +1,11 @@
 <div id="myModal" class="modal">
   <div class="modal-content">
     <span class="close" (click)="spanClick()">&times;</span>
-    <p>{{title}}</p>
+    <p style="font-weight: bold;">{{title}}</p>
+    <p *ngIf="parrafo">{{parrafo}}</p>
     <textarea class= "input-publish" id="input-text" type="text" [maxLength]=maxLength
-              name="publicacion" placeholder={{placeholder}} [(ngModel)]="text"></textarea>
-    <div class="buttons">
+              name="publicacion" placeholder={{placeholder}} [(ngModel)]="text" *ngIf="textArea"></textarea>
+    <div class="buttons" *ngIf="textArea">
         <button [disabled]="!validateField()" id="btn-start" class="btn-send" (click)="sendPublish()">
           <i *ngIf=loadingSend class="fas fa-spinner fa-spin"></i>
           {{textButton}}</button>

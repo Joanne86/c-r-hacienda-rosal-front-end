@@ -5,6 +5,9 @@
     display: flex;
   height: -webkit-fill-available;
 }
+.td-currency{
+  display: flex;
+}
 .content{
   margin-top: 30px;
   width: 80%;

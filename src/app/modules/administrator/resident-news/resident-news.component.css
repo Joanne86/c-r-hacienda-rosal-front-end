@@ -7,6 +7,9 @@
 .select-filtro{
   border-color: #6ecbf7;
 }
+.total-request{
+  margin-top: 20px;
+}
 .content{
   max-width: 80%;
   padding: 30px;
@@ -15,8 +18,11 @@
   text-align: center;
   display: flex;
 }
+.all-filters{
+  display: block;
+}
 .filtro{
-  width: 200px;
+  width: 220px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
@@ -72,6 +78,10 @@
   }
 }
 @media (min-width: 980px){
-
+  .all-filters{
+    display: flex;
+    width: 500px;
+    justify-content: space-between;
+  }
 }
 

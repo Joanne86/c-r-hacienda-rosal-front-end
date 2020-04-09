@@ -1,27 +1,32 @@
 <div class="content-super">
   <div class="content">
-      <h3 style="text-align: center; width: 100%;">Peticiones de los residentes del conjunto</h3>
+      <h3 style="text-align: center; width: 100%;">Solicitudes de los residentes del conjunto</h3>
     <div class="text">
       <i class="fas fa-bullhorn fa-2x icon-title"></i>
-      <p class="subtitle">En esta sección usted puede ver las peticiones que realizan los residentes del conjunto residencial Hacienda el Rosal.</p>
+      <p class="subtitle">En esta sección usted puede ver y responder las solicitudes que realizan los residentes del conjunto residencial Hacienda el Rosal.</p>
+    </div>
+    <div class="all-filters">
+      <div class="filtro">
+        <p>Filtrar por tipo de solicitud: </p>
+        <select name="select" class="form-control select-filtro"
+                placeholder="Tipo de novedad" (change)="filterRequestType($event.target.value)">
+          <option value="1">Queja</option>
+          <option value="2">Sugerencia</option>
+          <option value="3">Petición</option>
+          <option value="4">Todas</option>
+        </select>
+      </div>
+      <div class="filtro">
+        <p>Filtrar por estado de solicitud: </p>
+        <select name="select" class="form-control select-filtro"
+                placeholder="Tipo de novedad" (change)="filterRequestState($event.target.value)">
+          <option value="1">Sin respuesta</option>
+          <option value="2">Atendido</option>
+          <option value="3">Todos</option>
+        </select>
+      </div>
     </div>
 
-      <div class="instructions">
-        <i class="fas fa-reply fa-2x icon"></i>Dar respuesta a la solicitud
-      </div>
-      <div class="instructions">
-        <i class="far fa-eye fa-2x icon-eye"></i>Ver respuesta de la solicitud
-      </div>
-
-    <div class="filtro">
-      <p>Buscar por: </p>
-      <select name="select" class="form-control select-filtro"
-              placeholder="Tipo de novedad">
-        <option value="1">Queja</option>
-        <option value="2">Sugerencia</option>
-        <option value="3">Petición</option>
-      </select>
-    </div>
     <div class="content-table">
       <div class="news-table">
         <table class="table">
@@ -45,13 +50,24 @@
             <td>{{typeRequestEnum[request.type]}}</td>
             <td>{{request.state}}</td>
             <td>
-              <i class="fas fa-reply fa-2x icon" *ngIf="request.state==='Sin respuesta'"></i>
-              <i class="far fa-eye fa-2x icon-eye" *ngIf="request.state==='Atendido'"></i>
+              <i class="fas fa-reply fa-2x icon" *ngIf="request.state==='Sin respuesta'" (click)="openAction(1, request)"></i>
+              <i class="far fa-eye fa-2x icon-eye" *ngIf="request.state==='Atendido'" (click)="openAction(2, request)"></i>
             </td>
           </tr>
           </tbody>
         </table>
       </div>
     </div>
+    <div class="total-request">
+      Total solicitudes ({{requestResidents.length}})
+       - Con respuesta ({{atendidas}})
+       - Sin respuesta ({{sinAtender}})
+    </div>
   </div>
 </div>
+
+<app-modal-input *ngIf=openModal [title]=titleModal [placeholder]=placeholder
+                 (closeModal)="closeModal($event)" [loadingSend]="loadingSend"
+                 [textButton]=modalTextButton [message]="messageInModal"
+                 [textArea]="textArea" [parrafo]="parrafo"
+                 (sendText)= "getText($event)"></app-modal-input>

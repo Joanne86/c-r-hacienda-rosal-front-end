@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
 
 import { RequestService } from './request.service';
+import {RequestDto} from '../models/RequestDto.model';
 
 
 const httpOptions = {
@@ -89,5 +90,9 @@ export class RepositoryService {
 
   public getAllRequest(){
     return this.req.get(`/request/find-all/`);
+  }
+
+  public updateResponse(request: RequestDto){
+    return this.req.put(`/request/update-response/`,{ data: request });
   }
 }
