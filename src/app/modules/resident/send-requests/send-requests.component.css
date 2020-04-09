@@ -1,8 +1,10 @@
 .content-super {
     justify-content: center;
-    background-color: #f6f8fa;
-    height:86.4vh;
+  height: -webkit-fill-available;
+  display: grid;
+  background-color: #f6f8fa;
 }
+
 .title{
     margin: auto;
     text-align: center;
@@ -12,6 +14,10 @@
 .input-request{
     margin: auto;
 }
+.content-request{
+  background-color: #f6f8fa;
+}
+
 .radios{
     margin: auto;
     justify-content: center;
@@ -22,16 +28,6 @@
     padding: 20px;
 }
 
-input[type="radio"]:checked + label:after {
-    content: "";
-    width: 0;
-    height: 0;
-    border: 8px solid #8a0883;
-    float: left;
-    margin-left: -18px;
-    margin-top: 5px;
-    border-radius: 100%;
-}
 input[type=radio]{
     margin-right: 5px;
 }
@@ -56,7 +52,7 @@ input[type=radio]{
     outline:none;
 }
 .btn-login-block{
-    
+
     margin: auto;
     margin-bottom: 0px;
     width: 235px;
@@ -77,6 +73,9 @@ input[type=radio]{
 
 
 @media (min-width: 590px){
+  .content-super{
+    background-color: #bddafd;
+  }
     .input-request {
         width: 500px;
       height: 245px;
@@ -88,5 +87,12 @@ input[type=radio]{
     .radios-borde{
         width: 500px;
         font-size: 18px;
+    }
+    .content-request{
+      margin-top: 30px;
+      box-shadow: 0 3px 13px 0 rgba(0, 0, 0, 0.11);
+      border-radius: 12px;
+      padding: 40px;
+      background-color: #f6f8fa;
     }
 }

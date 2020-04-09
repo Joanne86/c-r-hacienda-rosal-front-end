@@ -36,6 +36,7 @@ export class NotifyResidentsComponent implements OnInit {
     this.getAllResidents();
   }
   getAllResidents() {
+   console.log( window.innerHeight);
     this.requestService.getAllResidents().then(response => {
       this.residentListTemp = JSON.parse(JSON.stringify(response)); // sera el filtro
       this.residentListSearch = JSON.parse(JSON.stringify(response)); // lista original
@@ -199,6 +200,9 @@ console.log('this.residentDebtorsList.length: ', this.residentDebtorsList.length
   updateResidentInBD(i){
     this.requestService.updateResident(this.residentList[i]).then(response=>{
       this.residentListTemp[i].cellphone = this.residentList[i].cellphone;
+      this.residentListTemp[i].months = this.residentList[i].months;
+      this.residentListTemp[i].debt = this.residentList[i].debt;
+      this.showLoadingUpdate=-1;
     }, error =>{
       this.showLoadingUpdate=-1;
     });

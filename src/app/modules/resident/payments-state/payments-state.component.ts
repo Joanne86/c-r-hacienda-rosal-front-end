@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {RepositoryService} from '../../../core/services/repository.service';
+import {DebtInfo} from '../../../core/models/DebtInfo.model';
 
 @Component({
   selector: 'app-payments-state',
@@ -7,16 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaymentsStateComponent implements OnInit {
 
-  months;
-  amount;
-  constructor() { }
+  debtInfo: DebtInfo = new DebtInfo();
+  userInfo;
+  constructor(private requestService: RepositoryService) { }
 
   ngOnInit() {
+    this.getResidentInfo();
     this.getDebtInfo();
   }
-
+  getResidentInfo(){
+    this.userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
+  }
   getDebtInfo(){
+    this.requestService.getDebtInfo(this.userInfo.towerNumberHome).then(response =>{
+      this.debtInfo = response;
+    }, error =>{
 
+    });
   }
 
 }

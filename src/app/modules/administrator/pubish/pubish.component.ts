@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { New } from 'src/app/core/models/New.model';
 import {RepositoryService} from '../../../core/services/repository.service';
+import {Commentary} from '../../../core/models/Commentary.model';
 
 @Component({
   selector: 'app-pubish',
@@ -16,10 +17,13 @@ export class PubishComponent implements OnInit {
   modalTextButton = 'Publicar';
   loadingSend;
   messageInModal;
+  openModalCommentaries: boolean;
+  commentaries: Commentary[];
 
   constructor(private requestService: RepositoryService) { }
 
   ngOnInit() {
+    console.log(document.documentElement.scrollHeight);
     this.getNews();
   }
 
@@ -41,11 +45,15 @@ export class PubishComponent implements OnInit {
   closeModal(event){
     this.openModal=event;
   }
+  closeModalCommentaries(event){
+    this.openModalCommentaries = event;
+  }
   getText(text) {
     console.log(text);
     let new_ : New = new New();
     new_.information = text;
     this.requestService.publish(new_).then(response =>{
+      response.commentaries = 0;
       this.news.unshift(response);
       this.setTextSuccessfulInModal();
     }, error =>{
@@ -68,5 +76,15 @@ export class PubishComponent implements OnInit {
     this.loadingSend=false;
     this.messageInModal = 'Ocurrio un error al publicar noticia';
     this.resetMessage();
+  }
+
+  showCommentaries(new_: New){
+    this.openModalCommentaries = true;
+    this.requestService.getCommentaries(new_.id).then(response =>{
+      console.log('comentarios: ', response);
+      this.commentaries = response;
+    }, error =>{
+
+    });
   }
 }

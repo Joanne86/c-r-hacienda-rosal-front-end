@@ -1,0 +1,14 @@
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="spanClick()">&times;</span>
+    <p>Comentarios</p>
+    <div *ngIf="validateCommentaries()">No hay comentarios</div>
+    <div class="content" *ngIf="!validateCommentaries()">
+      <div class="commentary-target" *ngFor="let commentary of commentaries">
+        <p class="commentary-date">{{commentary.publishDate}}</p>
+        <p>{{commentary.name}} escribió: </p>
+        <p>{{commentary.message}}</p>
+      </div>
+    </div>
+  </div>
+</div>

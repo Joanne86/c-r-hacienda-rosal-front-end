@@ -5,4 +5,5 @@ export class ResidentDto {
   towerNumberHome: string;
   months: number;
   debt: number;
+  userType: number;
 }

@@ -3,7 +3,7 @@
     background-color: #f6f8fa;
     justify-content: center;
     display: flex;
-    height: 89.8%;
+  height: -webkit-fill-available;
 }
 .content{
     margin-top: 30px;

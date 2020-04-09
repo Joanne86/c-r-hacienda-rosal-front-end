@@ -48,6 +48,10 @@ export class RepositoryService {
     return this.req.post(`/resident/save-resident/`, { data: resident });
   }
 
+  public getDebtInfo(towerNumberHome){
+    return this.req.get(`/resident/debt-info/`, { queryParams: { towerNumberHome: towerNumberHome } });
+  }
+
   public notifyResident(messageDto) {
     return this.req.post(`/notification/send-message-to-one/`, { data: messageDto });
   }
@@ -73,5 +77,17 @@ export class RepositoryService {
   }
   public saveCommentary(commentaryDto){
     return this.req.post(`/publish/save-commentary/`, { data: commentaryDto });
+  }
+
+  public getCommentaries(idNew){
+    return this.req.get(`/publish/get-commentaries/`, { queryParams: { idNew: idNew }});
+  }
+
+  public sendRequest(request){
+    return this.req.post(`/request/send-request/`, { data: request });
+  }
+
+  public getAllRequest(){
+    return this.req.get(`/request/find-all/`);
   }
 }

@@ -1,35 +1,57 @@
 <div class="content-super">
-  <p class="title">Peticiones de los residentes del conjunto</p>
-  <div class="content-table">
-      <div class="news-table">
-          <table class="table">
-              <thead class="thead">
-                <tr>
-                  <th id="torre">Torre Apartamento</th>
-                  <th>Fecha</th>
-                  <th>Nombre</th>
-                  <th>Petición</th> 
-                  <th>Tipo</th>
-                  <th>Estado</th>
-                  <th>Ver</th>
-              </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let request of requestResidents">
-                  <td >{{request.towelNumberHome}}</td>
-                  <td>{{request.publishDate}}</td>
-                  <td>{{request.name}}</td>
-                  <td>{{request.type}}</td>
-                  <td>{{request.state}}</td>
-                  <td>{{request.request}}</td>
-                  <td>
-                    <button class="btn-enviar" (click)="show()">
-                      <i class="far fa-eye"></i>ver</button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+  <div class="content">
+      <h3 style="text-align: center; width: 100%;">Peticiones de los residentes del conjunto</h3>
+    <div class="text">
+      <i class="fas fa-bullhorn fa-2x icon-title"></i>
+      <p class="subtitle">En esta sección usted puede ver las peticiones que realizan los residentes del conjunto residencial Hacienda el Rosal.</p>
+    </div>
+
+      <div class="instructions">
+        <i class="fas fa-reply fa-2x icon"></i>Dar respuesta a la solicitud
       </div>
+      <div class="instructions">
+        <i class="far fa-eye fa-2x icon-eye"></i>Ver respuesta de la solicitud
+      </div>
+
+    <div class="filtro">
+      <p>Buscar por: </p>
+      <select name="select" class="form-control select-filtro"
+              placeholder="Tipo de novedad">
+        <option value="1">Queja</option>
+        <option value="2">Sugerencia</option>
+        <option value="3">Petición</option>
+      </select>
+    </div>
+    <div class="content-table">
+      <div class="news-table">
+        <table class="table">
+          <thead class="thead">
+          <tr>
+            <th id="torre">Torre Apartamento</th>
+            <th>Fecha</th>
+            <th>Nombre</th>
+            <th class="peticion">Petición</th>
+            <th>Tipo</th>
+            <th>Estado</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let request of requestResidents">
+            <td >{{request.userDto.towerNumberHome}}</td>
+            <td>{{request.publishDate}}</td>
+            <td>{{request.userDto.name}}</td>
+            <td>{{request.message}}</td>
+            <td>{{typeRequestEnum[request.type]}}</td>
+            <td>{{request.state}}</td>
+            <td>
+              <i class="fas fa-reply fa-2x icon" *ngIf="request.state==='Sin respuesta'"></i>
+              <i class="far fa-eye fa-2x icon-eye" *ngIf="request.state==='Atendido'"></i>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
-<app-modal-input (text)="getResponse($event)" *ngIf=openModal [title]=titleModal [placeholder]=placeholder (closeModal)="closeModal($event)"></app-modal-input>

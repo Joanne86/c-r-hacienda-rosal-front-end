@@ -2,23 +2,27 @@
 
 
     <div class="debtor">
-        <div class="message">
+        <div class="message" *ngIf="debtInfo.months>0 && debtInfo.amount>0">
             <i class="fas fa-exclamation-triangle" style="color: darkorange;"></i>
-            Usted se encuentra en estado de mora 
+            Usted se encuentra en estado de mora
+        </div>
+        <div class="message" *ngIf="!(debtInfo.months>0 && debtInfo.amount>0)">
+          <i class="fas fa-thumbs-up" style="color: #53a7fd;"></i>
+            Usted se encuentra al día con sus pagos
         </div>
         <div class="detail">
             <div class="month">
-                Meses: {{months}}
+                Meses:                {{debtInfo.months}}
             </div>
             <hr>
             <div class="debt">
-                Monto total: {{amount}}
+                Monto total:          {{debtInfo.amount | currency}}
             </div>
         </div>
     </div>
     <footer>
         <div class="contact">
-            Si tiene alguna inquietud contacte al administrador por medio del modulo de envio de peticiones.
+            Si tiene alguna inquietud, contacte al administrador por medio del modulo de envio de peticiones.
         </div>
     </footer>
 </div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {RepositoryService} from '../../../core/services/repository.service';
+import {RequestDto} from '../../../core/models/RequestDto.model';
 
 @Component({
   selector: 'app-resident-news',
@@ -7,14 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResidentNewsComponent implements OnInit {
 
-  requestResidents;
+  requestResidents = new Array<RequestDto>();
+  typeRequestEnum = {
+    1: 'Queja',
+    2: 'Sugerencia',
+    3: 'Petición'
+  };
 
-  constructor() { }
+  constructor(private requestService : RepositoryService) { }
 
   ngOnInit() {
+    this.getAllRequest();
   }
+  getAllRequest(){
+    this.requestService.getAllRequest().then(response =>{
+      this.requestResidents = response.reverse();
+    }, error =>{
 
-  getResponse(text){
-    // call service
+    });
   }
 }

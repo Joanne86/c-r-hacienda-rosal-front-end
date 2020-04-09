@@ -34,11 +34,14 @@ import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http'
 import { RequestService } from './core/services/request.service';
 import { InputSearchComponent } from './modules/common/input-search/input-search.component';
 import { AddResidentComponent } from './modules/administrator/add-resident/add-resident.component';
+import { ModalCommentariesComponent } from './modules/common/modal-commentaries/modal-commentaries.component';
 
 const routes: Routes = [
   { path: 'excel', component: SelectExcelDataComponent },
   { path: 'login', component: LoginComponent },
   { path: 'registry', component: RegistryComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '*', redirectTo: '/login' },
   { path: 'resident-home', component: HomeComponent, children: [
     { path: 'news', component: NewsComponent },
     { path: 'payments-state', component: PaymentsStateComponent },
@@ -75,10 +78,11 @@ const routes: Routes = [
     NewsResponseComponent,
     ModalInfoComponent,
     InputSearchComponent,
-    AddResidentComponent
+    AddResidentComponent,
+    ModalCommentariesComponent
   ],
   imports: [
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, {useHash: true}),
     BrowserModule,
     CheckBoxModule,
     GridAllModule,

@@ -1,20 +1,25 @@
 <div class="content-super">
+  <div class="content-request">
     <div class="title">
-        Enviar petición al administrador
+      Enviar petición al administrador
     </div>
     <div class="input-request">
-        <textarea class= "input-request" id="input-text" type="text" name="peticion" placeholder="Escribe aqui tu petición" [(ngModel)]="request"></textarea>
+      <textarea class= "input-request" id="input-text" type="text" name="peticion" placeholder="Escribe aqui tu petición" [(ngModel)]="message"></textarea>
     </div>
     <div class="radios">
-        <div class="radios-borde">
-            <input type="radio" name="peticion" value="Queja" id="radio1"> <label for="radio1">  Queja</label>
-            <br>
-            <input type="radio" name="peticion" value="Sugerencia" id="radio2"> <label for="radio2">  Sugerencia</label>
-            <br>
-            <input type="radio" name="peticion" value="Reclamo" id="radio3"> <label for="radio3">  Solicitud</label>
-        </div>       
+      <div class="radios-borde">
+        <input type="radio" name="peticion" value="Queja" id="radio1" (click)="select(1)"> <label for="radio1" (click)="select(1)">  Queja</label>
+        <br>
+        <input type="radio" name="peticion" value="Sugerencia" id="radio2" (click)="select(2)"> <label for="radio2" (click)="select(2)">  Sugerencia</label>
+        <br>
+        <input type="radio" name="peticion" value="Reclamo" id="radio3"(click)="select(3)"> <label for="radio3" (click)="select(3)">  Peticíon</label>
+      </div>
     </div>
     <div class="btn-send">
-        <button [disabled]="!validateField()" type="submit" name="login" id="btn-start" (click)="start()">Enviar ›</button>
+      <button [disabled]="!validateField()" type="submit" name="login" id="btn-start" (click)="start()">
+        <i *ngIf=showLoading class="fas fa-spinner fa-spin"></i>
+        Enviar ›</button>
+      <p *ngIf="responseText">{{responseText}}</p>
     </div>
+  </div>
 </div>

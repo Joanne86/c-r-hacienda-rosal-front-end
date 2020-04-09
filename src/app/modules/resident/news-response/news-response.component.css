@@ -1,5 +1,7 @@
 .content-super{
     margin: 30px;
+  height: -webkit-fill-available;
+  display: grid;
 }
 .title{
     font-size: 25px;
