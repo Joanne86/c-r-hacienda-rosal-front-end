@@ -1,8 +1,19 @@
 .content-super{
-    background-color: #f6f8fa;
-    width: 100%;
-    justify-content: center;
+  background-color: #f6f8fa;
+  display: flex;
+  justify-content: center;
+}
+.content-super-height{
+  background-color: #f6f8fa;
+  display: flex;
+  height: -webkit-fill-available;
+  justify-content: center;
+}
+
+.content{
+  display: block;
   height: auto;
+  height: -webkit-fill-available;
 }
 .modal-content{
   width: 50%;

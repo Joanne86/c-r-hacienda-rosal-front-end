@@ -1,36 +1,47 @@
 <div class="content-super">
-    <p class="title">Mis peticiones</p>
-    <div class="content-table">
-        <div class="news-table">
-            <table class="table">
-                <thead class="thead">
-                  <tr>
-                    <th id="torre">Torre Apartamento</th>
-                    <th>Fecha</th>
-                    <th>Nombre</th>
-                    <th>Petición</th> 
-                    <th>Tipo</th>
-                    <th>Estado</th>
-                    <th>Ver</th>
-                </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let request of requestResidents">
-                    <td >{{request.towelNumberHome}}</td>
-                    <td>{{request.publishDate}}</td>
-                    <td>{{request.name}}</td>
-                    <td>{{request.type}}</td>
-                    <td>{{request.state}}</td>
-                    <td>{{request.request}}</td>
-                    <td>
-                      <button class="btn-enviar" (click)="show()">
-                        <i class="far fa-eye"></i>ver</button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-        </div>
+  <div class="content">
+    <h3 class="title">Mis peticiones</h3>
+    <p class="subtitle">En esta sección usted podrá ver las solicitudes que ha enviado al administrador del conjunto.</p>
+    <div *ngIf="requestResidents.length==0" class="empty-content">
+      <p>Aún no has realizado solicitudes al administrador.</p>
+      <div class="icon-empty">
+        <i class="fas fa-envelope-open-text fa-5x"></i>
+      </div>
+    </div>
+    <div class="content-table" *ngIf="requestResidents.length>0">
+      <div class="news-table">
+        <table class="table">
+          <thead class="thead">
+          <tr>
+            <th>Fecha</th>
+            <th>Tipo</th>
+            <th class="peticion">Petición</th>
+            <th>Estado</th>
+            <th>Ver</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let request of requestResidents">
+            <td>{{request.publishDate}}</td>
+            <td>{{typeRequestEnum[request.type]}}</td>
+            <td>{{request.message}}</td>
+            <td>{{request.state}}</td>
+            <td>
+                <i class="far fa-eye fa-2x icon" *ngIf="request.state === 'Atendido'"
+                (click)="showResponse(request)"></i>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="total-request">
+      Total solicitudes ({{requestResidents.length}})
+      - Con respuesta ({{atendidas}})
+      - Sin respuesta ({{sinAtender}})
     </div>
   </div>
-  <app-modal-input (text)="getResponse($event)" *ngIf=openModal [title]=titleModal [placeholder]=placeholder (closeModal)="closeModal($event)"></app-modal-input>
-  
+  </div>
+<app-modal-input *ngIf=openModal [title]=titleModal
+                 (closeModal)="closeModal($event)"
+                 [textArea]="textArea" [parrafo]="parrafo"></app-modal-input>

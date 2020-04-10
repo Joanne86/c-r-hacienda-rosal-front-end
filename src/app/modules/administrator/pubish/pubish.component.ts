@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { New } from 'src/app/core/models/New.model';
 import {RepositoryService} from '../../../core/services/repository.service';
 import {Commentary} from '../../../core/models/Commentary.model';
+import get = Reflect.get;
 
 @Component({
   selector: 'app-pubish',
@@ -23,14 +24,19 @@ export class PubishComponent implements OnInit {
   constructor(private requestService: RepositoryService) { }
 
   ngOnInit() {
-    console.log(document.documentElement.scrollHeight);
     this.getNews();
+
   }
 
   getNews(){
     this.requestService.getNews().then(response =>{
       this.news = response.reverse();
-      console.log('news: ', this.news);
+      let content = document.getElementById('content-super');
+      if(this.news.length>0){
+        content.className = 'content-super';
+      }else{
+        content.className ='content-super-height';
+      }
     },error =>{
 
     });

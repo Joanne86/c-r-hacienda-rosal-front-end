@@ -20,7 +20,12 @@
     padding: 20px;
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
-    height: 270px;
+    height: 60%;
+  }
+  .parrafo{
+    text-align: left;
+    max-height: 150px;
+    overflow-y: scroll;
   }
   .modal-content p {
     text-align: center;
@@ -46,6 +51,7 @@
     width: 90%;
     margin: auto;
     height: 100px;
+    border-color: #53a7fd;
 }
 .buttons{
     display: flex;
@@ -84,9 +90,17 @@
 
 
 @media (min-width: 425px){
-    .modal-content p {
-        font-size: 18px;
-      }
+  .modal-content{
+    height: 40%;
+  }
+  .modal-content p {
+    font-size: 18px;
+  }
+  .parrafo{
+    text-align: left;
+    max-height: 80px;
+    overflow-y: scroll;
+  }
     .add-publish{
         padding-right: 48px;
     }

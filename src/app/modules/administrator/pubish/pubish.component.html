@@ -1,25 +1,28 @@
-<div class="content-super animated fadeIn fast">
-  <div class="title">Publicación de noticias</div>
-  <div class="no-publish" *ngIf="!validateNews()">
-    <div>
-      <p>No hay publicaciones aún, añade una!</p>
-      <i class="fas fa-plus-circle fa-3x icon-plus icon-position" id="myBtn" (click)="addPublish()"></i>
+<div id="content-super">
+  <div class="content">
+    <div class="title">Publicación de noticias</div>
+    <div class="no-publish" *ngIf="!validateNews()">
+      <div>
+        <p>No hay publicaciones aún, añade una!</p>
+        <i class="fas fa-plus-circle fa-3x icon-plus icon-position" id="myBtn" (click)="addPublish()"></i>
+      </div>
+    </div>
+    <div *ngIf="validateNews()">
+      <div class="new" (click)="showCommentaries(new_)" *ngFor="let new_ of news">
+        <div class="date">
+          Fecha de publicación: {{new_.publish}}
+        </div>
+        <div class="information">
+          {{new_.information}}
+        </div>
+        <p>Comentarios ({{new_.commentaries}})</p>
+      </div>
+      <div class="add-publish">
+        <i class="fas fa-plus-circle fa-3x icon-plus" id="myBtn" (click)="addPublish()"></i>
+      </div>
     </div>
   </div>
-  <div *ngIf="validateNews()">
-    <div class="new" (click)="showCommentaries(new_)" *ngFor="let new_ of news">
-      <div class="date">
-        Fecha de publicación: {{new_.publish}}
-      </div>
-      <div class="information">
-        {{new_.information}}
-      </div>
-      <p>Comentarios ({{new_.commentaries}})</p>
-    </div>
-    <div class="add-publish">
-      <i class="fas fa-plus-circle fa-3x icon-plus" id="myBtn" (click)="addPublish()"></i>
-    </div>
-  </div>
+
 </div>
 <app-modal-input *ngIf=openModal [title]=titleModal [placeholder]=placeholder
                  (closeModal)="closeModal($event)" [loadingSend]="loadingSend"

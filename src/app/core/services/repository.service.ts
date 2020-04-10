@@ -95,4 +95,8 @@ export class RepositoryService {
   public updateResponse(request: RequestDto){
     return this.req.put(`/request/update-response/`,{ data: request });
   }
+
+  public getResponses(towerNumberHome){
+    return this.req.get(`/request/get-responses/`, { queryParams: { towerNumberHome: towerNumberHome }});
+  }
 }

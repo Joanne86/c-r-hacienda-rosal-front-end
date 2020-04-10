@@ -23,8 +23,10 @@ export class ResidentNewsComponent implements OnInit {
   textArea: boolean;
   parrafo: string;
   requestToUpdateResponse: RequestDto;
-  typeRequest;
-  stateRequest;
+  typeRequest = null;
+  stateRequest = null;
+  allTypeRequest;
+  allStateRequest;
 
   typeRequestEnum = {
     1: 'Queja',
@@ -42,6 +44,8 @@ export class ResidentNewsComponent implements OnInit {
   }
   getAllRequest(){
     this.requestService.getAllRequest().then(response =>{
+      console.log('lista ordenada: ', response);
+      console.log('lista al reves: ', response.reverse());
       this.requestResidents = response.reverse();
       this.requestResidentsAux = response.reverse();
       this.calculateRequest();
@@ -58,13 +62,24 @@ export class ResidentNewsComponent implements OnInit {
   public filterRequestType(typeRequest){
     this.typeRequest = typeRequest;
     if(typeRequest === '4'){
-      this.requestResidents = this.requestResidentsAux;
+
+      this.allTypeRequest = true;
+
+      if(this.allTypeRequest && this.allStateRequest){
+        this.requestResidents = this.requestResidentsAux;
+      }else if(this.stateRequest){
+        this.requestResidents = this.requestResidentsAux.filter(r => r.state == this.stateRequestEnum[this.stateRequest]);
+      }else {
+        this.requestResidents = this.requestResidentsAux;
+      }
     }else{
-      if(this.stateRequest){
+      this.allTypeRequest = false;
+
+      if(this.stateRequest && this.stateRequest!=='3'){
         this.requestResidents = this.requestResidentsAux.filter(r =>
-          (r.type === typeRequest && r.state === this.stateRequestEnum[this.stateRequest]));
+          (r.type == typeRequest && r.state == this.stateRequestEnum[this.stateRequest]));
       }else{
-        this.requestResidents = this.requestResidentsAux.filter(r => r.type === typeRequest);
+        this.requestResidents = this.requestResidentsAux.filter(r => r.type == typeRequest);
       }
     }
   }
@@ -72,13 +87,21 @@ export class ResidentNewsComponent implements OnInit {
   public filterRequestState(stateRequest){
     this.stateRequest=stateRequest;
     if(stateRequest === '3'){
-      this.requestResidents = this.requestResidentsAux;
-    }else{
-      if(this.typeRequest){
-        this.requestResidents = this.requestResidentsAux.filter(r =>
-          (r.state === this.stateRequestEnum[stateRequest]&&r.type === this.typeRequest));
+      this.allStateRequest = true;
+      if(this.allTypeRequest && this.allStateRequest){
+        this.requestResidents = this.requestResidentsAux;
+      }else if(this.typeRequest){
+        this.requestResidents = this.requestResidentsAux.filter(r => r.type == this.typeRequest);
       }else{
-        this.requestResidents = this.requestResidentsAux.filter(r => r.state === this.stateRequestEnum[stateRequest]);
+        this.requestResidents = this.requestResidentsAux;
+      }
+    }else{
+      this.allStateRequest = false;
+      if(this.typeRequest && this.typeRequest!== '4'){
+        this.requestResidents = this.requestResidentsAux.filter(r =>
+          (r.state == this.stateRequestEnum[stateRequest]&&r.type == this.typeRequest));
+      }else{
+        this.requestResidents = this.requestResidentsAux.filter(r => r.state == this.stateRequestEnum[stateRequest]);
       }
     }
   }
@@ -91,7 +114,7 @@ export class ResidentNewsComponent implements OnInit {
 
     }else{
       this.textArea = true;
-      this.titleModal = 'Comentario: ';
+      this.titleModal = 'Solicitud: ';
       this.parrafo = request.message;
       this.requestToUpdateResponse = request;
     }

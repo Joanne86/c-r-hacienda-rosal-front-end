@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   fields;
   button;
   loading;
+  showText: string;
 
   constructor(private requestService: RepositoryService, private route: Router) { }
 
@@ -37,19 +38,20 @@ export class LoginComponent implements OnInit {
   }
 
   start() {
-    if(this.user.user === this.user.password){
-      this.loading = true;
-      this.requestService.getUser(this.user.user).then(response =>{
-        sessionStorage.setItem('userInfo', JSON.stringify(response));
-        this.loading =false;
+    this.loading = true;
+    this.requestService.getUser(this.user.user).then(response =>{
+      sessionStorage.setItem('userInfo', JSON.stringify(response));
+      console.log('response: ', response);
+      this.loading =false;
+
+      if(response){
         this.validateUser(response);
-      }, error =>{
-        console.log('occurrio un error');
-        // abre el modal
-      });
-    }else{
-      //abre el modal
-    }
+      }else{
+        this.showText= 'Usuario y/o contraseña incorrectos';
+      }
+    }, error =>{
+      this.loading =false;
+    });
     console.log('ingresa');
   }
   validateUser(userResponse){

@@ -2,10 +2,17 @@
   <div class="content">
       <h3 style="text-align: center; width: 100%;">Solicitudes de los residentes del conjunto</h3>
     <div class="text">
-      <i class="fas fa-bullhorn fa-2x icon-title"></i>
+      <i class="fas fa-bell fa-2x icon-title"></i>
       <p class="subtitle">En esta sección usted puede ver y responder las solicitudes que realizan los residentes del conjunto residencial Hacienda el Rosal.</p>
     </div>
-    <div class="all-filters">
+    <div *ngIf="requestResidents.length==0" class="empty-content">
+      <p>Los residentes aún no han hecho solicitudes.</p>
+      <div class="icon-empty">
+        <i class="fas fa-envelope-open-text fa-5x"></i>
+      </div>
+    </div>
+
+    <div class="all-filters" *ngIf="requestResidents.length>0">
       <div class="filtro">
         <p>Filtrar por tipo de solicitud: </p>
         <select name="select" class="form-control select-filtro"
@@ -13,7 +20,7 @@
           <option value="1">Queja</option>
           <option value="2">Sugerencia</option>
           <option value="3">Petición</option>
-          <option value="4">Todas</option>
+          <option value="4" selected="selected">Todos</option>
         </select>
       </div>
       <div class="filtro">
@@ -22,14 +29,14 @@
                 placeholder="Tipo de novedad" (change)="filterRequestState($event.target.value)">
           <option value="1">Sin respuesta</option>
           <option value="2">Atendido</option>
-          <option value="3">Todos</option>
+          <option value="3" selected="selected">Todos</option>
         </select>
       </div>
     </div>
 
-    <div class="content-table">
+    <div class="content-table" *ngIf="requestResidents.length>0">
       <div class="news-table">
-        <table class="table">
+        <table class="table" cellspacing="10px">
           <thead class="thead">
           <tr>
             <th id="torre">Torre Apartamento</th>
@@ -41,12 +48,12 @@
             <th></th>
           </tr>
           </thead>
-          <tbody>
-          <tr *ngFor="let request of requestResidents">
-            <td >{{request.userDto.towerNumberHome}}</td>
+          <tbody class="table-body">
+          <tr class="rows" *ngFor="let request of requestResidents">
+            <td>{{request.userDto.towerNumberHome}}</td>
             <td>{{request.publishDate}}</td>
             <td>{{request.userDto.name}}</td>
-            <td>{{request.message}}</td>
+            <td style="overflow-y: scroll;">{{request.message}}</td>
             <td>{{typeRequestEnum[request.type]}}</td>
             <td>{{request.state}}</td>
             <td>

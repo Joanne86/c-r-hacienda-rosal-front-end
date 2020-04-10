@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ResidentDto } from 'src/app/core/models/ResidentDto.model';
 import { RepositoryService } from 'src/app/core/services/repository.service';
+import {MessageDto} from '../../../core/models/MessageDto.model';
 
 @Component({
   selector: 'app-add-resident',
@@ -45,8 +46,8 @@ export class AddResidentComponent implements OnInit {
       validCellphone = !!this.residentDto.cellphone.match(patternCellphone);
     }
 
-    if(validCellphone && this.residentDto.debt
-      && documentPass && this.residentDto.months
+    if(validCellphone && this.residentDto.debt>=0
+      && documentPass && this.residentDto.months>=0
       && this.residentDto.name && towelPass){
       this.fields = true;
       this.button.className = 'btn-send';
@@ -57,19 +58,27 @@ export class AddResidentComponent implements OnInit {
   saveResident(residentDto: ResidentDto){
     this.setValuesBeforeSave();
     let request = JSON.parse(JSON.stringify(residentDto));
-    console.log('residentdto: ', request);
     this.requestService.saveResident(request).then(response =>{
-      console.log('residente desde el modal: ', request);
       this.residentSaved.emit(request);
-      this.setValuesWhenSave();
-      console.log('Residente guardado');
       this.goodSave=true;
+      this.alertResident(residentDto);
     }, error =>{
       this.setValuesWhenSave(error);
       this.goodSave=false;
     });
   }
-
+  alertResident(residentDto: ResidentDto){
+    console.log('requestDto: ', residentDto);
+    let messageDto: MessageDto = new MessageDto();
+    messageDto.message = 'usted con cedula '+ residentDto.documentNumber+' se ecuentra registrado en la aplicacion del conjunto residencial, ' +
+      'ingrese a este link para acceder a la apliacion web -> conjunto-hacienda-rosal.com/#/login ingresando su cedula en ambos campos';
+    messageDto.phoneNumber = '+57'+residentDto.cellphone;
+    this.requestService.notifyResident(messageDto).then(response => {
+      this.setValuesWhenSave();
+    }, error =>{
+      this.setValuesWhenSave();
+    });
+  }
   setValuesBeforeSave(){
     this.messageGood = 'El residente se acaba de guardar con exito!';
     this.messageFail = 'Ocurrio un error al guardar el residente';

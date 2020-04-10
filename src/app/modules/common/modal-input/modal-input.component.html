@@ -2,7 +2,7 @@
   <div class="modal-content">
     <span class="close" (click)="spanClick()">&times;</span>
     <p style="font-weight: bold;">{{title}}</p>
-    <p *ngIf="parrafo">{{parrafo}}</p>
+    <p class="parrafo" *ngIf="parrafo">{{parrafo}}</p>
     <textarea class= "input-publish" id="input-text" type="text" [maxLength]=maxLength
               name="publicacion" placeholder={{placeholder}} [(ngModel)]="text" *ngIf="textArea"></textarea>
     <div class="buttons" *ngIf="textArea">
@@ -11,5 +11,5 @@
           {{textButton}}</button>
     </div>
     <p class="message" *ngIf="validateMessage()">{{message}}</p>
-</div>
+  </div>
 </div>
