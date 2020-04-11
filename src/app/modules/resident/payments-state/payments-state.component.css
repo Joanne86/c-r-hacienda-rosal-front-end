@@ -2,7 +2,7 @@
   height: -webkit-fill-available;
   display: flex;
   justify-content: center;
-  background-image: url("../../../../assets/images/parqueFondoDark.png");
+  background-image: url("../../../../assets/images/parquefondoDarkMin.png");
 }
 .content{
   display: block;

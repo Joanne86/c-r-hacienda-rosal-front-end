@@ -77,7 +77,7 @@ input[type=radio]{
 
 @media (min-width: 590px){
   .content-super{
-    background-image: url("../../../../assets/images/entrada.png");
+    background-image: url("../../../../assets/images/entradaMin.png");
   }
     .input-request {
         width: 500px;

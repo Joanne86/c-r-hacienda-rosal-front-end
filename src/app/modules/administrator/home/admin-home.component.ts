@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Item } from '../../common/nav-menu/nav-menu.component';
+import {SecurityComponentsService} from '../../../core/services/security-components.service';
 
 @Component({
   selector: 'app-home',
@@ -18,10 +19,10 @@ export class AdminHomeComponent implements OnInit {
   item4: Item = new Item;
   item5: Item = new Item;
 
-  constructor() { }
+  constructor(private security: SecurityComponentsService) { }
 
   ngOnInit() {
-
+    this.security.validateLogin();
     this.infoUser = JSON.parse(sessionStorage.getItem('userInfo'));
     this.name = this.infoUser.name;
 

@@ -30,7 +30,7 @@ export class RememberDebtorsComponent implements OnInit {
     this.requestService.getAllDebtors().then(response =>{
       this.debtors = response;
       this.residentListTemp = this.debtors;
-      this.showList = (response !== null);
+      this.showList = (this.debtors.length > 0);
     });
   }
 

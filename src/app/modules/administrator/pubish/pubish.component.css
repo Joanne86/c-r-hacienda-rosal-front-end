@@ -1,14 +1,16 @@
 .content-super{
-  background-color: #f6f8fa;
   display: flex;
   justify-content: center;
-  background-image: url("../../../../assets/images/parqueFondoDark.png");
+  background-image: url("../../../../assets/images/parqueFondoDarkMin.png");
 }
 .content-super-height{
-  background-color: #f6f8fa;
   display: flex;
   height: -webkit-fill-available;
   justify-content: center;
+  background-image: url("../../../../assets/images/parqueFondoDarkMin.png");
+}
+.subtitle{
+  color: white;
 }
 .commentaries{
   font-weight: bold;

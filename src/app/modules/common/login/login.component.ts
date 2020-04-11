@@ -51,6 +51,7 @@ export class LoginComponent implements OnInit {
         this.showText= 'Usuario y/o contraseña incorrectos';
       }
     }, error =>{
+      alert('Ocurrio un error al iniciar la sesión intentelo de nuevo mas tarde.');
       this.loading =false;
     });
     console.log('ingresa');

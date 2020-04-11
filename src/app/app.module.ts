@@ -34,6 +34,7 @@ import { RequestService } from './core/services/request.service';
 import { InputSearchComponent } from './modules/common/input-search/input-search.component';
 import { AddResidentComponent } from './modules/administrator/add-resident/add-resident.component';
 import { ModalCommentariesComponent } from './modules/common/modal-commentaries/modal-commentaries.component';
+import {SecurityComponentsService} from './core/services/security-components.service';
 
 const routes: Routes = [
   { path: 'excel', component: SelectExcelDataComponent },
@@ -93,7 +94,7 @@ const routes: Routes = [
     JsonpModule,
     HttpClientModule
   ],
-  providers: [RepositoryService, RequestService, HttpClient],
+  providers: [RepositoryService, RequestService, HttpClient, SecurityComponentsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

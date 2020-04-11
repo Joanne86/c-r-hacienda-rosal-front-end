@@ -4,7 +4,7 @@
     justify-content: center;
     display: flex;
   height: -webkit-fill-available;
-  background-image: url("../../../../assets/images/entrada.png");
+  background-image: url("../../../../assets/images/entradaMin.png");
 }
 .td-currency{
   display: flex;
