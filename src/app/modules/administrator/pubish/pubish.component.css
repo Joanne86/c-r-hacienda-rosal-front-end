@@ -9,6 +9,10 @@
   height: -webkit-fill-available;
   justify-content: center;
 }
+.commentaries{
+  font-weight: bold;
+  color: #00245d;
+}
 
 .content{
   display: block;
@@ -36,7 +40,7 @@
     padding: 20px;
     margin: auto;
     width: 265px;
-    height: 200px;
+    height: 220px;
     border-radius: 6px;
     box-shadow: 0 6px 10px 0 rgba(14, 9, 14, 0.315);
     background-color: #53a7fd;
@@ -55,7 +59,10 @@
     padding-right: 30px;
 }
 .information{
+  font-size: 16px;
     height: 115px;
+  overflow-y: scroll;
+  color: #002c76;
 }
 
 .icon-plus{
@@ -73,6 +80,9 @@
 }
 
 @media (min-width: 425px){
+  .information{
+    font-size: 18px;
+  }
     .title{
         font-size: 24px;
     }

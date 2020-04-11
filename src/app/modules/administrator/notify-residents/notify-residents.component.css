@@ -51,6 +51,7 @@
     overflow-x: scroll;
     overflow-y: scroll;
     max-height: 500px;
+  font-size: 13px;
 }
 .content-nav{
   display: block;
@@ -64,6 +65,7 @@
   border-radius: 100px;
   width: 160px;
   height: 40px;
+  border: solid 1px #fdc130;
   background-color: #008cff;
   color: white;
 }
@@ -92,8 +94,15 @@
 .total-residents{
   text-align: center;
   margin-top: 30px;
+  margin-bottom: 30px;
 }
 @media (min-width: 425px){
+  .title{
+    font-size: 1.75rem;
+  }
+  .residents-table{
+    font-size: 1rem;
+  }
   .content-nav{
     display: flex;
     margin-bottom: 0;

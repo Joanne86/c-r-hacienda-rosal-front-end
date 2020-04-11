@@ -7,9 +7,19 @@
 .select-filtro{
   border-color: #6ecbf7;
 }
+.title{
+  text-align: center;
+  width: 100%;
+  font-size: 20px;
+}
+.subtitle{
+  font-size: 13px;
+  text-align: left;
+}
 .total-request{
   margin-top: 20px;
   text-align: center;
+  margin-bottom: 20px;
 }
 .rows{
   height: 50px !important;
@@ -32,8 +42,8 @@
 }
 
 .content{
-  max-width: 80%;
-  padding: 30px;
+  max-width: 90%;
+  padding: 15px;
 }
 .text{
   text-align: center;
@@ -80,6 +90,7 @@
   overflow-x: scroll;
   overflow-y: scroll;
   max-height: 420px;
+  font-size: 13px;
 }
 .btn-enviar{
     background-color:  rgb(6, 152, 189);
@@ -90,9 +101,15 @@
 @media (min-width: 480px){
   .subtitle{
     font-size: 18px;
+    text-align: center;
+  }
+  .content{
+    max-width: 80%;
+    padding: 30px;
   }
     .content-table{
         overflow-x: unset;
+      font-size: 1rem;
     }
   .peticion{
     width: 250px;

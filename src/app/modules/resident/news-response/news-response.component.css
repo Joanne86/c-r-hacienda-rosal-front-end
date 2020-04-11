@@ -1,8 +1,9 @@
 .content-super{
-    margin: 30px;
+    margin: 15px;
   height: -webkit-fill-available;
   display: flex;
   justify-content: center;
+  background-color: #f6f8fa;
 }
 .title{
     font-size: 25px;
@@ -20,6 +21,8 @@
 .total-request{
   text-align: center;
   margin-top: 20px;
+  margin-bottom: 20px;
+  color: #595757;
 }
 .icon-empty{
   color: #a6a9b0;
@@ -55,6 +58,9 @@
     width: 168px;
 }
 @media (min-width: 480px){
+  .content-super{
+    margin: 30px;
+  }
   .subtitle{
     text-align: center;
     font-size: 18px;

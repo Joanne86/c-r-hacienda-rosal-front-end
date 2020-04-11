@@ -1,7 +1,7 @@
 * {
     box-sizing: border-box;
   }
-  
+
   body {
     margin: 0px;
     font-family: 'segoe ui';
@@ -15,11 +15,11 @@
     outline:none;
     height: -webkit-fill-available;
   }
-  
+
   .nav > .nav-header {
     display: inline;
   }
-  
+
   .nav > .nav-header > .nav-title {
     display: inline-block;
     font-size: 22px;
@@ -30,17 +30,17 @@
     text-align: center;
     height: 100%;
   }
-  
+
   .nav > .nav-btn {
     display: none;
   }
-  
+
   .nav > .nav-links {
     display: inline;
     font-size: 18px;
     outline:none;
   }
-  
+
   .nav > .nav-links > label {
     display: inline-block;
     padding: 13px 10px 13px 10px;
@@ -52,15 +52,15 @@
     text-align: center;
     vertical-align:middle;
   }
-  
+
   .nav > .nav-links > label:hover {
     background-color: rgba(111, 9, 121, 0.726);
   }
-  
+
   .nav > #nav-check {
     display: none;
   }
-  
+
   @media (max-width:600px) {
     .nav {
         height: 55px;
@@ -110,7 +110,7 @@
       height: 0px;
     }
     .nav > #nav-check:checked ~ .nav-links {
-      height: calc(100vh - 300px);
+      height: calc(130vh - 300px);
       overflow-y: auto;
     }
   }

@@ -2,3 +2,7 @@
 html, body {
     height: 100%;
   }
+.message-resident{
+  height: 70px;
+  overflow-y: scroll;
+}

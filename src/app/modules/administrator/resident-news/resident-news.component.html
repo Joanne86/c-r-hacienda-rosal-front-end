@@ -1,6 +1,6 @@
 <div class="content-super">
   <div class="content">
-      <h3 style="text-align: center; width: 100%;">Solicitudes de los residentes del conjunto</h3>
+      <h3 class="title">Solicitudes de los residentes del conjunto</h3>
     <div class="text">
       <i class="fas fa-bell fa-2x icon-title"></i>
       <p class="subtitle">En esta sección usted puede ver y responder las solicitudes que realizan los residentes del conjunto residencial Hacienda el Rosal.</p>
@@ -53,7 +53,11 @@
             <td>{{request.userDto.towerNumberHome}}</td>
             <td>{{request.publishDate}}</td>
             <td>{{request.userDto.name}}</td>
-            <td style="overflow-y: scroll;">{{request.message}}</td>
+            <td>
+              <div class="message-resident">
+                {{request.message}}
+              </div>
+             </td>
             <td>{{typeRequestEnum[request.type]}}</td>
             <td>{{request.state}}</td>
             <td>

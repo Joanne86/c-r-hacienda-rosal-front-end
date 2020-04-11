@@ -1,8 +1,8 @@
 .content-super {
-    justify-content: center;
   height: -webkit-fill-available;
-  display: grid;
   background-color: #f6f8fa;
+  display: flex;
+  justify-content: center;
 }
 
 .title{
@@ -15,7 +15,10 @@
     margin: auto;
 }
 .content-request{
+  width: 600px;
+  height: 70%;
   background-color: #f6f8fa;
+
 }
 
 .radios{
@@ -74,7 +77,7 @@ input[type=radio]{
 
 @media (min-width: 590px){
   .content-super{
-    background-color: #bddafd;
+    background-image: url("../../../../assets/images/entrada.png");
   }
     .input-request {
         width: 500px;

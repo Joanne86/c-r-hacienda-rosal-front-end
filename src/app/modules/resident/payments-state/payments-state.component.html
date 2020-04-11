@@ -1,29 +1,27 @@
 <div class="content-super">
-
-
-    <div class="debtor">
-        <div class="message" *ngIf="debtInfo.months>0 && debtInfo.amount>0">
-            <i class="fas fa-exclamation-triangle" style="color: darkorange;"></i>
-            Usted se encuentra en estado de mora
+  <div class="content">
+    <div class="info">
+      <div class="message" *ngIf="debtInfo.months>0 && debtInfo.amount>0">
+        <i class="fas fa-exclamation-triangle fa-2x" style="color: darkorange;"></i>
+        <p class="title">Usted se encuentra en estado de mora</p>
+      </div>
+      <div class="message" *ngIf="!(debtInfo.months>0 && debtInfo.amount>0)">
+        <i class="fas fa-hand-holding-usd fa-3x" style="color: #53a7fd;"></i>
+        <p class="title">Usted se encuentra al día con sus pagos</p>
+      </div>
+      <div class="detail">
+        <div class="month">
+          Meses:                {{debtInfo.months}}
         </div>
-        <div class="message" *ngIf="!(debtInfo.months>0 && debtInfo.amount>0)">
-          <i class="fas fa-thumbs-up" style="color: #53a7fd;"></i>
-            Usted se encuentra al día con sus pagos
+        <hr>
+        <div class="debt">
+          Monto total:          {{debtInfo.amount | currency}}
         </div>
-        <div class="detail">
-            <div class="month">
-                Meses:                {{debtInfo.months}}
-            </div>
-            <hr>
-            <div class="debt">
-                Monto total:          {{debtInfo.amount | currency}}
-            </div>
-        </div>
+      </div>
     </div>
-    <footer>
-        <div class="contact">
-            Si tiene alguna inquietud, contacte al administrador por medio del modulo de envio de peticiones.
-        </div>
-    </footer>
+    <div class="contact">
+      <p>Si tiene alguna inquietud, contacte al administrador por medio del modulo de envio de solicitudes.</p>
+    </div>
+  </div>
 </div>
 

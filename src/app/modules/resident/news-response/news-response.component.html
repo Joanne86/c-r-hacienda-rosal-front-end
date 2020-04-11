@@ -24,7 +24,11 @@
           <tr *ngFor="let request of requestResidents">
             <td>{{request.publishDate}}</td>
             <td>{{typeRequestEnum[request.type]}}</td>
-            <td>{{request.message}}</td>
+            <td>
+              <div class="message-resident">
+                {{request.message}}
+              </div>
+              </td>
             <td>{{request.state}}</td>
             <td>
                 <i class="far fa-eye fa-2x icon" *ngIf="request.state === 'Atendido'"
