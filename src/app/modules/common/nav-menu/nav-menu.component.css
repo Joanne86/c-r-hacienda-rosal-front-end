@@ -47,7 +47,7 @@
     text-decoration: none;
     color: #efefef;
     width: 100%;
-    height: 125px;
+    height: 145px;
     margin: auto;
     text-align: center;
     vertical-align:middle;
@@ -56,6 +56,10 @@
   .nav > .nav-links > label:hover {
     background-color: rgba(111, 9, 121, 0.726);
   }
+
+.nav > .nav-links > label:focus {
+ background-color: rgba(111, 9, 121, 0.726);
+}
 
   .nav > #nav-check {
     display: none;

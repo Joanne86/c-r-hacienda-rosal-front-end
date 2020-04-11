@@ -1,14 +1,19 @@
 .content-super{
-    margin: 15px;
   height: -webkit-fill-available;
   display: flex;
   justify-content: center;
-  background-color: #f6f8fa;
+  background-image: url("../../../../assets/images/parque2.png");
 }
 .title{
+  color: white;
     font-size: 25px;
     text-align: center;
   margin-bottom: 30px;
+  margin-top: 30px;
+}
+.subtitle{
+  color: #ffffff;
+  text-align: center;
 }
 .content-table{
   border-radius: 6px;
@@ -22,10 +27,10 @@
   text-align: center;
   margin-top: 20px;
   margin-bottom: 20px;
-  color: #595757;
+  color: white;
 }
 .icon-empty{
-  color: #a6a9b0;
+  color: #b5b8bf;
   margin: auto;
   justify-content: center;
   width: 100%;
@@ -58,9 +63,6 @@
     width: 168px;
 }
 @media (min-width: 480px){
-  .content-super{
-    margin: 30px;
-  }
   .subtitle{
     text-align: center;
     font-size: 18px;
@@ -72,7 +74,3 @@
         overflow-x: unset;
     }
 }
-@media (min-width: 980px){
-
-}
-

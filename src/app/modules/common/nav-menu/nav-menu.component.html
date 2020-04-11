@@ -12,11 +12,13 @@
         <span></span>
       </label>
     </div>
-    
+
     <div class="nav-links" routerLinkActive="active">
      <label for="nav-check" *ngFor="let item of items" [routerLink]=[item.path]>
       {{item.titulo}}
       <br>
       <i class={{item.image}}></i></label>
     </div>
+
+    <div (window:resize)="validateItems()"></div>
   </div>

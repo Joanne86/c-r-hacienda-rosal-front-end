@@ -2,11 +2,11 @@
   <div class="content">
     <div class="info">
       <div class="message" *ngIf="debtInfo.months>0 && debtInfo.amount>0">
-        <i class="fas fa-exclamation-triangle fa-2x" style="color: darkorange;"></i>
+        <i class="fas fa-exclamation-triangle fa-2x" style="color: #ffd93f;"></i>
         <p class="title">Usted se encuentra en estado de mora</p>
       </div>
       <div class="message" *ngIf="!(debtInfo.months>0 && debtInfo.amount>0)">
-        <i class="fas fa-hand-holding-usd fa-3x" style="color: #53a7fd;"></i>
+        <i class="fas fa-hand-holding-usd fa-3x" style="color: rgb(70,210,238);"></i>
         <p class="title">Usted se encuentra al día con sus pagos</p>
       </div>
       <div class="detail">

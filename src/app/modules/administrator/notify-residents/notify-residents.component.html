@@ -4,7 +4,7 @@
     <div class="cabecera">
       <i class="fas fa-sms fa-3x" style="color: #fdc130"></i>
         <p> En esta sección usted puede registrar todos los residentes del conjunto adjuntando un archivo excel y también
-          notificar por mensaje de texto un aviso importante para todos los residentes o para uno en específico</p>
+          notificar por mensaje de texto un aviso importante para todos los residentes o para uno en específico.</p>
     </div>
     <div *ngIf=!showList>
         <app-select-excel-data (dataExcel)="getDataExcel($event)"></app-select-excel-data>

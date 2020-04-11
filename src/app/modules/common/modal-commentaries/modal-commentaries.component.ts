@@ -27,7 +27,7 @@ export class ModalCommentariesComponent implements OnInit {
   }
 
   validateCommentaries(){
-    return this.commentaries.length===0;
+    return (this.commentaries)?this.commentaries.length===0:this.commentaries;
   }
 
 }

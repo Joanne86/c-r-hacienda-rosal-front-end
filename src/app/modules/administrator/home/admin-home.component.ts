@@ -16,7 +16,8 @@ export class AdminHomeComponent implements OnInit {
   item2: Item = new Item;
   item3: Item = new Item;
   item4: Item = new Item;
-  
+  item5: Item = new Item;
+
   constructor() { }
 
   ngOnInit() {
@@ -40,7 +41,11 @@ export class AdminHomeComponent implements OnInit {
     this.item4.image='fas fa-bell';
     this.item4.path='/admin-home/resident-news';
 
-    this.items.push(this.item1, this.item2, this.item3, this.item4);
+    this.item5.titulo='Cerrar sesión';
+    this.item5.image='fas fa-sign-out-alt';
+    this.item5.path='';
+
+    this.items.push(this.item1, this.item2, this.item3, this.item4, this.item5);
   }
 
 }
