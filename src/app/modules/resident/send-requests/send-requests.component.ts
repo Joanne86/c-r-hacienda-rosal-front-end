@@ -70,10 +70,10 @@ export class SendRequestsComponent implements OnInit {
     console.info('request: ', request);
     this.requestService.sendRequest(request).then(response =>{
       this.resentLoading();
-      this.responseText = 'Tu '.concat(this.typeRequestEnum[this.typeRequest]).concat(' ha sido enviada con exito');
+      this.responseText = 'Tu '.concat(this.typeRequestEnum[this.typeRequest]).concat(' ha sido enviada con exito!');
     }, error =>{
       this.resentLoading();
-      this.responseText = 'Tu '.concat(this.typeRequestEnum[this.typeRequest]).concat('');
+      this.responseText = 'Ha ocurrido un error al enviar tu '.concat(this.typeRequestEnum[this.typeRequest]);
     });
   }
 

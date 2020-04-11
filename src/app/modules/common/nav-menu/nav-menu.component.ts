@@ -22,13 +22,11 @@ export class NavMenuComponent implements OnInit {
   ngOnInit() {
     this.itemsAux= this.items;
     this.navBar = document.getElementById('navBar');
-    console.log('ITEMS:', this.items);
     this.validateItems();
   }
   validateItems(){
     if (window.matchMedia("(min-width: 600px)").matches) {
       this.items = this.items.filter(i => i.path!=='');
-      console.log('items: ', this.items);
     }else{
       this.items = this.itemsAux;
     }

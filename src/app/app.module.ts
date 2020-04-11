@@ -28,7 +28,6 @@ import { PaymentsStateComponent } from './modules/resident/payments-state/paymen
 import { SendRequestsComponent } from './modules/resident/send-requests/send-requests.component';
 import { ModalInputComponent } from './modules/common/modal-input/modal-input.component';
 import { NewsResponseComponent } from './modules/resident/news-response/news-response.component';
-import { ModalInfoComponent } from './modules/common/modal-info/modal-info.component';
 import { RepositoryService } from './core/services/repository.service';
 import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
 import { RequestService } from './core/services/request.service';
@@ -76,7 +75,6 @@ const routes: Routes = [
     SendRequestsComponent,
     ModalInputComponent,
     NewsResponseComponent,
-    ModalInfoComponent,
     InputSearchComponent,
     AddResidentComponent,
     ModalCommentariesComponent

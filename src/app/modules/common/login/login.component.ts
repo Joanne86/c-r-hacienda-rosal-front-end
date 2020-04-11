@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.button = document.getElementById('btn-start');
+    sessionStorage.clear();
   }
 
   login() {
