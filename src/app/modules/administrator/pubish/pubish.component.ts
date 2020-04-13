@@ -32,8 +32,8 @@ export class PubishComponent implements OnInit {
       this.news = response.reverse();
       let content = document.getElementById('content-super');
       if(this.news.length>0){
-        content.className = 'content-super-height';
-      }else{
+        content.className = 'content-super';
+      } else {
         content.className ='content-super-height';
       }
     },error =>{

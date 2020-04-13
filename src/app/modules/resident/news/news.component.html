@@ -1,17 +1,26 @@
-<div class="content-super animated fadeIn fast">
-
+<div id="content-super">
+  <div class="content">
     <div class="title">Noticias</div>
-    <div class="new"*ngFor="let new of news">
+    <div *ngIf="news.length===0" class="subtitle">
+      <p>Aún no se han publicado noticias.</p>
+      <div class="icon-empty">
+        <i class="fas fa-envelope-open-text fa-5x"></i>
+      </div>
+    </div>
+    <div *ngIf="news.length>0">
+      <div class="new"*ngFor="let new of news">
         <div class="date">
           Fecha de publicación: {{new.publish}}
         </div>
         <div class="information">
-            {{new.information}}
+          {{new.information}}
         </div>
         <div class="commit" (click)="commit(new)">
-            Comentar
+          Comentar
         </div>
+      </div>
     </div>
+  </div>
 </div>
 
 <app-modal-input *ngIf=openModal [title]=titleModal [placeholder]=placeholder

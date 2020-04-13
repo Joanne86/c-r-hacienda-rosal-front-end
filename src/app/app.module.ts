@@ -16,7 +16,6 @@ import {CheckBoxModule} from '@syncfusion/ej2-angular-buttons';
 import { HttpModule, JsonpModule } from '@angular/http';
 
 import { DialogModule } from '@syncfusion/ej2-angular-popups';
-import { RegistryComponent } from './modules/resident/registry/registry.component';
 import { HomeComponent } from './modules/resident/home/home.component';
 import { AdminHomeComponent } from './modules/administrator/home/admin-home.component';
 import { HeaderWelcomeComponent } from './modules/common/header-welcome/header-welcome.component';
@@ -29,7 +28,7 @@ import { SendRequestsComponent } from './modules/resident/send-requests/send-req
 import { ModalInputComponent } from './modules/common/modal-input/modal-input.component';
 import { NewsResponseComponent } from './modules/resident/news-response/news-response.component';
 import { RepositoryService } from './core/services/repository.service';
-import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RequestService } from './core/services/request.service';
 import { InputSearchComponent } from './modules/common/input-search/input-search.component';
 import { AddResidentComponent } from './modules/administrator/add-resident/add-resident.component';
@@ -39,7 +38,6 @@ import {SecurityComponentsService} from './core/services/security-components.ser
 const routes: Routes = [
   { path: 'excel', component: SelectExcelDataComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'registry', component: RegistryComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '*', redirectTo: '/login' },
   { path: 'resident-home', component: HomeComponent, children: [
@@ -64,7 +62,6 @@ const routes: Routes = [
     ResidentNewsComponent,
     NotifyResidentsComponent,
     SelectExcelDataComponent,
-    RegistryComponent,
     HomeComponent,
     HeaderWelcomeComponent,
     NavMenuComponent,

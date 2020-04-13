@@ -4,6 +4,28 @@
     justify-content: center;
   background-image: url("../../../../assets/images/parquefondoDarkMin.png");
 }
+.content-super-height{
+  display: flex;
+  height: -webkit-fill-available;
+  justify-content: center;
+  background-image: url("../../../../assets/images/parqueFondoDarkMin.png");
+}
+.content{
+  display: block;
+}
+.subtitle{
+  color: white;
+  text-align: center;
+}
+.icon-empty{
+  color: #a6a9b0;
+  margin: auto;
+  justify-content: center;
+  width: 100%;
+  display: flex;
+  margin-top: 50px;
+}
+
 .title{
     color: white;
     text-align: center;
