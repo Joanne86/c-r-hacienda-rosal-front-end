@@ -33,7 +33,7 @@ export class RequestService {
     get(pUri: string, pParams?: RequestParams, pRequestOptions?: any, pResponseType?: any): Promise<any> {
       let options;
       pParams = pParams || {};
-      options = pParams.requestOptions ? Object.assign(options, pParams.requestOptions) : this.headers;
+      options = pParams.requestOptions ? Object.assign(options, pParams.requestOptions) : '';
       pParams.responseType = pParams.responseType ? pParams.responseType : 'json';
       pUri = pParams.externalEndpoint ? pUri : Properties.baseUrl.concat(pUri);
 
@@ -60,7 +60,7 @@ export class RequestService {
 
       pParams = pParams || {};
       pParams.data = pParams.data ? pParams.data : {};
-      options = pParams.requestOptions ? Object.assign(options, pParams.requestOptions) : this.headers;
+      options = pParams.requestOptions ? Object.assign(options, pParams.requestOptions) : '';
       pParams.responseType = pParams.responseType ? pParams.responseType : 'json';
       pUri = pParams.externalEndpoint ? pUri : Properties.baseUrl.concat(pUri);
 
@@ -92,7 +92,7 @@ export class RequestService {
       pParams = pParams || {};
       pParams.data = pParams.data ? pParams.data : {};
       pParams.queryParams = pParams.queryParams ? pParams.queryParams : null;
-      options = pParams.requestOptions ? Object.assign(options, pParams.requestOptions) : this.headers;
+      options = pParams.requestOptions ? Object.assign(options, pParams.requestOptions) : '';
       pParams.responseType = pParams.responseType ? pParams.responseType : 'json';
       pUri = pParams.externalEndpoint ? pUri : Properties.baseUrl.concat(pUri);
 
@@ -121,7 +121,7 @@ export class RequestService {
       let options: HttpHeaders;
 
       pParams = pParams || {};
-      options = pParams.requestOptions ? Object.assign(options, pParams.requestOptions) : this.headers;
+      options = pParams.requestOptions ? Object.assign(options, pParams.requestOptions) : '';
       pParams.responseType = pParams.responseType ? pParams.responseType : 'json';
       pUri = pParams.externalEndpoint ? pUri : Properties.baseUrl.concat(pUri);
 

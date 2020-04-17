@@ -34,7 +34,7 @@ export class NewsResponseComponent implements OnInit {
       this.requestResidents = response.reverse();
       this.calculateRequest();
     }, error=>{
-
+      alert('Ocurrio un error al traer las solicitudes realizadas, intentelo de nuevo mas tarde');
     });
   }
 

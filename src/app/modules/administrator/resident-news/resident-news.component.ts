@@ -27,6 +27,7 @@ export class ResidentNewsComponent implements OnInit {
   stateRequest = null;
   allTypeRequest;
   allStateRequest;
+  listLength;
 
   typeRequestEnum = {
     1: 'Queja',
@@ -46,6 +47,7 @@ export class ResidentNewsComponent implements OnInit {
     this.requestService.getAllRequest().then(response =>{
       console.log('lista ordenada: ', response);
       console.log('lista al reves: ', response.reverse());
+      this.listLength = response.length;
       this.requestResidents = response.reverse();
       this.requestResidentsAux = response.reverse();
       this.calculateRequest();

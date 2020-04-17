@@ -30,10 +30,12 @@ export class NewsComponent implements OnInit {
       this.news = response.reverse();
       console.log('news: ', this.news);
       let content = document.getElementById('content-super');
-      if(this.news.length>0){
-        content.className = 'content-super';
-      } else {
+      if(this.news.length>0 && this.news.length<3){
         content.className ='content-super-height';
+      } else if(this.news.length===0){
+        content.className = 'content-super-height';
+      } else{
+        content.className = 'content-super';
       }
     },error =>{
 

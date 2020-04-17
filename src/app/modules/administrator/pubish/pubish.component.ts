@@ -30,16 +30,22 @@ export class PubishComponent implements OnInit {
   getNews(){
     this.requestService.getNews().then(response =>{
       this.news = response.reverse();
-      let content = document.getElementById('content-super');
-      if(this.news.length>0){
-        content.className = 'content-super';
-      } else {
-        content.className ='content-super-height';
-      }
+      this.setStyle();
     },error =>{
 
     });
   }
+  setStyle(){
+    let content = document.getElementById('content-super');
+    if(this.news.length>0 && this.news.length<3){
+      content.className ='content-super-height';
+    } else if(this.news.length===0){
+      content.className = 'content-super-height';
+    } else{
+      content.className = 'content-super';
+    }
+  }
+
 
   validateNews(){
     return this.news.length>0;
@@ -60,6 +66,7 @@ export class PubishComponent implements OnInit {
     this.requestService.publish(new_).then(response =>{
       response.commentaries = 0;
       this.news.unshift(response);
+      this.setStyle();
       this.setTextSuccessfulInModal();
     }, error =>{
       this.setTextFailInModal();

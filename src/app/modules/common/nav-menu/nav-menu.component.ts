@@ -16,10 +16,12 @@ export class NavMenuComponent implements OnInit {
   @Input('items') items: Item[];
   itemsAux: Item[];
   navBar;
-
+  name: string;
   constructor() { }
 
   ngOnInit() {
+    let userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+    this.name = userInfo.name;
     this.itemsAux= this.items;
     this.navBar = document.getElementById('navBar');
     this.validateItems();
@@ -31,5 +33,4 @@ export class NavMenuComponent implements OnInit {
       this.items = this.itemsAux;
     }
   }
-
 }

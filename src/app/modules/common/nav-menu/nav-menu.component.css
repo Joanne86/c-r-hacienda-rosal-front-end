@@ -6,7 +6,9 @@
     margin: 0px;
     font-family: 'segoe ui';
   }
-
+  .name{
+    display: none;
+  }
 
   .nav {
     background-color: #59165f;
@@ -64,8 +66,25 @@
   .nav > #nav-check {
     display: none;
   }
+.name{
+  display: block;
+  color: white;
+  font-size: 8px;
+  width: 94px;
+  margin-top: 14px;
+  margin-bottom: 0px;
+}
+
+@media(min-width: 601px){
+  .name{
+    display: none;
+  }
+}
 
   @media (max-width:600px) {
+    .name{
+      display: block;
+    }
     .nav {
         height: 55px;
         width: 100%;

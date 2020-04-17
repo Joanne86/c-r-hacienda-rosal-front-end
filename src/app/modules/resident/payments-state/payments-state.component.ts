@@ -24,7 +24,7 @@ export class PaymentsStateComponent implements OnInit {
     this.requestService.getDebtInfo(this.userInfo.towerNumberHome).then(response =>{
       this.debtInfo = response;
     }, error =>{
-
+      alert('Ocurrio un error al traer la información de pago, intentelo de nuevo mas tarde');
     });
   }
 

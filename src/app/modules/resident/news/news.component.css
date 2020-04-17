@@ -2,13 +2,13 @@
     width: 100%;
     height: auto;
     justify-content: center;
-  background-image: url("../../../../assets/images/parquefondoDarkMin.png");
+  background-image: url("../../../../assets/images/entradaMin.png");
 }
 .content-super-height{
   display: flex;
   height: -webkit-fill-available;
   justify-content: center;
-  background-image: url("../../../../assets/images/parqueFondoDarkMin.png");
+  background-image: url("../../../../assets/images/entradaMin.png");
 }
 .content{
   display: block;

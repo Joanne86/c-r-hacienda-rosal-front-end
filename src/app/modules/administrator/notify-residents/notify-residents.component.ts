@@ -45,7 +45,7 @@ export class NotifyResidentsComponent implements OnInit {
        this.uploadFile = (response === null);
        this.showList = (response !== null);
     }, error =>{
-        console.log('entra al error');
+        alert('Ocurrio un error al traer la información de los residentes');
     });
   }
   public getDataExcel(dataExcel){
@@ -72,17 +72,18 @@ export class NotifyResidentsComponent implements OnInit {
     this.saveResidents();
   }
   saveResidents() {
+
     this.requestService.saveResidents(this.residentList).then(response =>{
       console.log('SE GUARDARON LOS RESIDENTES: ', response);
     }, error => {
-
+      alert('Ocurrio un error al guardar los datos de los residentes, intentelo más tarde.');
     });
-console.log('this.residentDebtorsList.length: ', this.residentDebtorsList.length);
+
     if(this.residentDebtorsList.length>0){
       this.requestService.saveDebtorNumbers(this.residentDebtorsList).then(response =>{
         console.log('SE GUARDARON LOS NUMEROS DE LOS DEUDORES : ', response);
       }, error => {
-
+        alert('Ocurrio un error al guardar los datos de los deudores, intentelo más tarde.');
       });
     }
   }
@@ -181,20 +182,26 @@ console.log('this.residentDebtorsList.length: ', this.residentDebtorsList.length
               this.updateResidentInBD(i);
             }, error =>{
               this.showLoadingUpdate=-1;
+              this.alertToUpdate();
             });
           }else{
             this.updateResidentInBD(i);
           }
-
         }, error =>{
          this.showLoadingUpdate=-1;
+         this.alertToUpdate();
         });
       }, error =>{
         this.showLoadingUpdate=-1;
+        this.alertToUpdate();
       });
     }else{
       this.updateResidentInBD(i);
     }
+  }
+
+  alertToUpdate(){
+    alert('Ocurrio un error al actualizar la información del residente, intentelo de nuevo más tarde');
   }
 
   updateResidentInBD(i){
@@ -205,6 +212,7 @@ console.log('this.residentDebtorsList.length: ', this.residentDebtorsList.length
       this.showLoadingUpdate=-1;
     }, error =>{
       this.showLoadingUpdate=-1;
+      this.alertToUpdate();
     });
   }
 

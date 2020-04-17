@@ -5,14 +5,14 @@
       <i class="fas fa-bell fa-2x icon-title"></i>
       <p class="subtitle">En esta sección usted puede ver y responder las solicitudes que realizan los residentes del conjunto residencial Hacienda el Rosal.</p>
     </div>
-    <div *ngIf="requestResidents.length==0" class="empty-content">
+    <div *ngIf="listLength==0" class="empty-content">
       <p>Los residentes aún no han hecho solicitudes.</p>
       <div class="icon-empty">
         <i class="fas fa-envelope-open-text fa-5x"></i>
       </div>
     </div>
 
-    <div class="all-filters" *ngIf="requestResidents.length>0">
+    <div class="all-filters" *ngIf="listLength>0">
       <div class="filtro">
         <p>Filtrar por tipo de solicitud: </p>
         <select name="select" class="form-control select-filtro"
@@ -34,7 +34,7 @@
       </div>
     </div>
 
-    <div class="content-table" *ngIf="requestResidents.length>0">
+    <div class="content-table" *ngIf="listLength>0">
       <div class="news-table">
         <table class="table" cellspacing="10px">
           <thead class="thead">
