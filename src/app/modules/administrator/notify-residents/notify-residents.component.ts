@@ -74,7 +74,7 @@ export class NotifyResidentsComponent implements OnInit {
   saveResidents() {
 
     this.requestService.saveResidents(this.residentList).then(response =>{
-      console.log('SE GUARDARON LOS RESIDENTES: ', response);
+      alert('SE GUARDARON LOS RESIDENTES CON EXITO!');
     }, error => {
       alert('Ocurrio un error al guardar los datos de los residentes, intentelo más tarde.');
     });
@@ -161,9 +161,16 @@ export class NotifyResidentsComponent implements OnInit {
 
 
   validateFields(i) {
-    return ((this.residentList[i].cellphone !== this.residentListTemp[i].cellphone) ||
+    return (((this.residentList[i].cellphone !== this.residentListTemp[i].cellphone) ||
       (this.residentList[i].months !== this.residentListTemp[i].months)||
-      (this.residentList[i].debt !== this.residentListTemp[i].debt));
+      (this.residentList[i].debt !== this.residentListTemp[i].debt))
+      && this.validateEmptyFields(i));
+  }
+
+  validateEmptyFields(i){
+    return ((this.residentList[i].cellphone !== '')&&
+      (this.residentList[i].months !== null && this.residentList[i].months!== undefined)&&
+      (this.residentList[i].debt !== null && this.residentList[i].debt !== undefined));
   }
 
   saveInfo(i){
