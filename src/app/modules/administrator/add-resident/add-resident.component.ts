@@ -44,7 +44,7 @@ export class AddResidentComponent implements OnInit {
     const patternDocument = /^[0-9]+$/g;
     let documentPass = patternDocument.test(String(this.residentDto.documentNumber));
 
-    const patternName = /^[A-Z-a-z]+$/g;
+    const patternName = /^[ñA-Za-z _]*[ñA-Za-z][ñA-Za-z _]*$/;
     let namePass = patternName.test(String(this.residentDto.name));
 
     const patternCellphone = '^[3].{2}[1-9]\\d{6}$';

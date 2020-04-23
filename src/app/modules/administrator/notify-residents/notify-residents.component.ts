@@ -55,25 +55,28 @@ export class NotifyResidentsComponent implements OnInit {
       const dataLenght = Object.keys(dataExcel).length;
       this.residentList = Array<ResidentDto>();
       this.showList =(dataLenght >=1);
+      if(dataLenght>=1){
+        for ( let i = 0; i < dataLenght ; i++) {
+          const resident = new ResidentDto();
+          resident.towerNumberHome = dataExcel[i].torre + '-' + dataExcel[i].apartamento;
+          resident.name = dataExcel[i].nombre;
+          resident.cellphone = dataExcel[i].celular;
+          resident.documentNumber = dataExcel[i].documento + '';
+          resident.months = dataExcel[i].meses_deuda;
+          resident.debt = dataExcel[i].total_deuda;
+          this.residentList.push(resident);
 
-      for ( let i = 0; i < dataLenght ; i++) {
-        const resident = new ResidentDto();
-        resident.towerNumberHome = dataExcel[i].torre + '-' + dataExcel[i].apartamento;
-        resident.name = dataExcel[i].nombre;
-        resident.cellphone = dataExcel[i].celular;
-        resident.documentNumber = dataExcel[i].documento + '';
-        resident.months = dataExcel[i].meses_deuda;
-        resident.debt = dataExcel[i].total_deuda;
-        this.residentList.push(resident);
-
-        if(resident.debt>0 && resident.months>0){
-          this.residentDebtorsList.push(resident);
+          if(resident.debt>0 && resident.months>0){
+            this.residentDebtorsList.push(resident);
+          }
         }
+        this.resetLists();
+        this.saveResidents();
+      }else{
+        alert('El archivo que acaba de adjuntar no tiene datos, por favor valide la información e intente nuevamente');
       }
-      this.resetLists();
-      this.saveResidents();
     }else{
-      alert('Algunos datos del archivo que acaba de adjuntar no son validos, por favor valide la información');
+      alert('Algunos datos del archivo que acaba de adjuntar no son validos, por favor valide la información e intente nuevamente');
     }
   }
   validateExcelFields(dataExcel){
@@ -88,6 +91,7 @@ export class NotifyResidentsComponent implements OnInit {
         || !this.validateJustNumbers(dataExcel[i].documento)
         || !this.validateJustNumbers(dataExcel[i].meses_deuda)
         || !this.validateJustNumbers(dataExcel[i].total_deuda)){
+        console.log('algun dato invalido');
         invalidFields ++;
       }
     }
@@ -108,7 +112,7 @@ export class NotifyResidentsComponent implements OnInit {
   }
 
   validateName(name){
-    const patternName = /^[A-Z-a-z]+$/g;
+    const patternName = /^[ñA-Za-z _]*[ñA-Za-z][ñA-Za-z _]*$/;
     return patternName.test(String(name));
   }
 
@@ -116,8 +120,9 @@ export class NotifyResidentsComponent implements OnInit {
     const patternCellphone = '^[3].{2}[1-9]\\d{6}$';
     let validCellphone = false;
 
-    if (cellphone) {
-      validCellphone = !!cellphone.match(patternCellphone);
+    let cell = String(cellphone);
+    if (cell) {
+      validCellphone = !!cell.match(patternCellphone);
     }
     return validCellphone;
   }
