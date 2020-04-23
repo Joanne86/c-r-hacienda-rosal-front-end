@@ -50,27 +50,83 @@ export class NotifyResidentsComponent implements OnInit {
   }
   public getDataExcel(dataExcel){
     console.log('llego la data del excel: ', dataExcel);
+    if(this.validateExcelFields(dataExcel)){
+
+      const dataLenght = Object.keys(dataExcel).length;
+      this.residentList = Array<ResidentDto>();
+      this.showList =(dataLenght >=1);
+
+      for ( let i = 0; i < dataLenght ; i++) {
+        const resident = new ResidentDto();
+        resident.towerNumberHome = dataExcel[i].torre + '-' + dataExcel[i].apartamento;
+        resident.name = dataExcel[i].nombre;
+        resident.cellphone = dataExcel[i].celular;
+        resident.documentNumber = dataExcel[i].documento + '';
+        resident.months = dataExcel[i].meses_deuda;
+        resident.debt = dataExcel[i].total_deuda;
+        this.residentList.push(resident);
+
+        if(resident.debt>0 && resident.months>0){
+          this.residentDebtorsList.push(resident);
+        }
+      }
+      this.resetLists();
+      this.saveResidents();
+    }else{
+      alert('Algunos datos del archivo que acaba de adjuntar no son validos, por favor valide la información');
+    }
+  }
+  validateExcelFields(dataExcel){
+    let invalidFields = 0;
+    let validateAllFields = true;
     const dataLenght = Object.keys(dataExcel).length;
-    this.residentList = Array<ResidentDto>();
-    this.showList =(dataLenght >=1);
-
-    for ( let i = 0; i < dataLenght ; i++) {
-      const resident = new ResidentDto();
-      resident.towerNumberHome = dataExcel[i].torre + '-' + dataExcel[i].apartamento;
-      resident.name = dataExcel[i].nombre;
-      resident.cellphone = dataExcel[i].celular;
-      resident.documentNumber = dataExcel[i].documento + '';
-      resident.months = dataExcel[i].meses_deuda;
-      resident.debt = dataExcel[i].total_deuda;
-      this.residentList.push(resident);
-
-      if(resident.debt>0 && resident.months>0){
-        this.residentDebtorsList.push(resident);
+    for ( let i = 0; i < dataLenght ; i++){
+      if(!this.validateTorre(dataExcel[i].torre)
+        || !this.validateApartemento(dataExcel[i].apartamento)
+        || !this.validateName(dataExcel[i].nombre)
+        || !this.validateCellphone(dataExcel[i].celular)
+        || !this.validateJustNumbers(dataExcel[i].documento)
+        || !this.validateJustNumbers(dataExcel[i].meses_deuda)
+        || !this.validateJustNumbers(dataExcel[i].total_deuda)){
+        invalidFields ++;
       }
     }
-    this.resetLists();
-    this.saveResidents();
+    if(invalidFields>0){
+      validateAllFields = false;
+    }
+    return validateAllFields;
   }
+
+  validateTorre(torre){
+    const patron = /^\D*\d{2}$/;
+    return patron.test(torre);
+  }
+
+  validateApartemento(apartamento){
+    const patron = /^\D*\d{3}$/;
+    return patron.test(apartamento);
+  }
+
+  validateName(name){
+    const patternName = /^[A-Z-a-z]+$/g;
+    return patternName.test(String(name));
+  }
+
+  validateCellphone(cellphone){
+    const patternCellphone = '^[3].{2}[1-9]\\d{6}$';
+    let validCellphone = false;
+
+    if (cellphone) {
+      validCellphone = !!cellphone.match(patternCellphone);
+    }
+    return validCellphone;
+  }
+
+  validateJustNumbers(number){
+    const patternNumber = /^[0-9]+$/g;
+    return patternNumber.test(String(number));
+  }
+
   saveResidents() {
 
     this.requestService.saveResidents(this.residentList).then(response =>{
@@ -229,9 +285,6 @@ export class NotifyResidentsComponent implements OnInit {
 
   pushResidentSavedInList(residentSaved){
     this.residentList.push(residentSaved);
-    this.residentListTemp.push(residentSaved);
-    this.residentListSearchShow.push(residentSaved);
-    this.residentListSearch.push(residentSaved);
     this.resetLists();
   }
 

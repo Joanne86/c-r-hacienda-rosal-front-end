@@ -71,5 +71,5 @@
                  (sendText)= "getText($event)"></app-modal-input>
 
 <app-add-resident *ngIf=openModalAddResident (closeModalAddResident)="closeModalAddResident($event)"
-                  (residentSaved)="pushResidentSavedInList($event)"></app-add-resident>
+                  (residentSaved)="pushResidentSavedInList($event)" [residentList]="residentListSearch"></app-add-resident>
 

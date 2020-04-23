@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 import { ResidentDto } from 'src/app/core/models/ResidentDto.model';
 import { RepositoryService } from 'src/app/core/services/repository.service';
 import {MessageDto} from '../../../core/models/MessageDto.model';
@@ -12,6 +12,7 @@ export class AddResidentComponent implements OnInit {
 
   @Output() closeModalAddResident = new EventEmitter<any>();
   @Output() residentSaved = new EventEmitter<any>();
+  @Input() residentList = new Array<ResidentDto>();
   residentDto: ResidentDto = new ResidentDto();
   button;
   modal: HTMLElement;
@@ -22,6 +23,10 @@ export class AddResidentComponent implements OnInit {
   messageFail = 'Ocurrio un error al guardar el residente';
   goodSave;
   showMessage;
+  showAlertDocument: boolean;
+  showAlertCellphone: boolean;
+  showAlertTower: boolean;
+
   constructor(private requestService: RepositoryService) { }
 
   ngOnInit() {
@@ -33,11 +38,14 @@ export class AddResidentComponent implements OnInit {
     this.fields = false;
     this.button.className = 'btn-login-block';
 
-    const patternTowel = /[0-9]{1,2}-[0-9][0-9][0-9]/g;
+    const patternTowel = /[0-9]{2}-[0-9][0-9][0-9]/g;
     let towelPass = patternTowel.test(String(this.residentDto.towerNumberHome));
 
     const patternDocument = /^[0-9]+$/g;
     let documentPass = patternDocument.test(String(this.residentDto.documentNumber));
+
+    const patternName = /^[A-Z-a-z]+$/g;
+    let namePass = patternName.test(String(this.residentDto.name));
 
     const patternCellphone = '^[3].{2}[1-9]\\d{6}$';
     let validCellphone = false;
@@ -46,31 +54,82 @@ export class AddResidentComponent implements OnInit {
       validCellphone = !!this.residentDto.cellphone.match(patternCellphone);
     }
 
-    if(validCellphone && this.residentDto.debt>=0
-      && documentPass && this.residentDto.months>=0
-      && this.residentDto.name && towelPass){
+    if(validCellphone && this.residentDto.debt>=0 && this.residentDto.debt!==undefined && this.residentDto.debt !== null
+      && documentPass && this.residentDto.months>=0 && this.residentDto.months!==undefined && this.residentDto.months !== null
+      && namePass && towelPass){
       this.fields = true;
       this.button.className = 'btn-send';
     }
     return this.fields;
   }
 
+  validateDocumentNumber(documentNumber: string): boolean{
+    let exist = false;
+    for(let i=0; i<this.residentList.length; i++){
+      if(documentNumber === this.residentList[i].documentNumber){
+        exist = true;
+        this.showAlertDocument = true;
+      }
+    }
+    if(!exist){
+      this.showAlertDocument = false;
+    }
+    return exist;
+  }
+
+  validateTowerNumberHome(towerNumberHome: string): boolean{
+    let exist = false;
+    for(let i=0; i<this.residentList.length; i++){
+      if(towerNumberHome === this.residentList[i].towerNumberHome){
+        exist = true;
+        this.showAlertTower= true;
+      }
+    }
+    if(!exist){
+      this.showAlertTower = false;
+    }
+    return exist;
+  }
+
+  validateCellphone(cellphone: string): boolean{
+    let exist = false;
+    for(let i=0; i<this.residentList.length; i++){
+      if(cellphone === this.residentList[i].cellphone){
+        exist = true;
+        this.showAlertCellphone = true;
+      }
+    }
+    if(!exist){
+      this.showAlertCellphone = false;
+    }
+    return exist;
+  }
+
   saveResident(residentDto: ResidentDto){
-    this.setValuesBeforeSave();
-    let request = JSON.parse(JSON.stringify(residentDto));
-    this.requestService.saveResident(request).then(response =>{
-      this.residentSaved.emit(request);
-      this.goodSave=true;
-      this.alertResident(residentDto);
-    }, error =>{
-      this.setValuesWhenSave(error);
-      this.goodSave=false;
-    });
+    this.validateDocumentNumber(residentDto.documentNumber);
+    this.validateCellphone(residentDto.cellphone);
+    this.validateTowerNumberHome(residentDto.towerNumberHome);
+
+    if(!this.showAlertTower &&  !this.showAlertCellphone && !this.showAlertDocument){
+      this.showAlertCellphone = false;
+      this.showAlertTower= false;
+      this.showAlertDocument = false;
+      this.setValuesBeforeSave();
+      let request = JSON.parse(JSON.stringify(residentDto));
+      this.requestService.saveResident(request).then(response =>{
+        this.residentSaved.emit(request);
+        this.goodSave=true;
+        this.alertResident(residentDto);
+      }, error =>{
+        this.setValuesWhenSave(error);
+        this.goodSave=false;
+      });
+    }
   }
   alertResident(residentDto: ResidentDto){
     console.log('requestDto: ', residentDto);
     let messageDto: MessageDto = new MessageDto();
-    messageDto.message = 'usted con cedula '+ residentDto.documentNumber+' se ecuentra registrado en la aplicacion del conjunto residencial, ' +
+    messageDto.message = 'usted con cedula '+ residentDto.documentNumber+' se encuentra registrado en la aplicacion del conjunto residencial, ' +
       'ingrese a este link para acceder a la apliacion web -> conjunto-hacienda-rosal.com/#/login ingresando su cedula en ambos campos';
     messageDto.phoneNumber = '+57'+residentDto.cellphone;
     this.requestService.notifyResident(messageDto).then(response => {
