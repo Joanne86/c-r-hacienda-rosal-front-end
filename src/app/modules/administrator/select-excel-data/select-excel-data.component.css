@@ -24,7 +24,7 @@
       margin: 0;
       text-transform: none;
       padding: 8px 0;
-
+    content: "Adjuntar";
     border-radius: 100px;
     border: solid 1px #8482fd;
     background-color: white;
@@ -37,6 +37,15 @@
     border-radius: 100px;
     border: solid 1px #8482fd;
     background-color: white;
+    content: "Adjuntar";
+  }
+
+  .e-file-drop{
+    visibility: hidden;
+  }
+  .e-file-drop:before{
+    content: "Adjuntar archivo excel.";
+    visibility:visible;
   }
   .upload::before {
     content: '\e725';

@@ -76,6 +76,10 @@ export class RepositoryService {
   public publish(news){
     return this.req.post(`/publish/save-new/`, { data: news });
   }
+
+  public updatePublish(news){
+    return this.req.put(`/publish/update-new/`, { data: news });
+  }
   public saveCommentary(commentaryDto){
     return this.req.post(`/publish/save-commentary/`, { data: commentaryDto });
   }

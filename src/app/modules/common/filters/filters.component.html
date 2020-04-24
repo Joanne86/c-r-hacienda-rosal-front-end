@@ -1,0 +1,21 @@
+<div class="all-filters">
+  <div class="filtro">
+    <p>Filtrar por tipo de solicitud: </p>
+    <select name="select" class="form-control select-filtro"
+            placeholder="Tipo de novedad" (change)="filterRequestType($event.target.value)">
+      <option value="1">Queja</option>
+      <option value="2">Sugerencia</option>
+      <option value="3">Petición</option>
+      <option value="4" selected="selected">Todos</option>
+    </select>
+  </div>
+  <div class="filtro">
+    <p>Filtrar por estado de solicitud: </p>
+    <select name="select" class="form-control select-filtro"
+            placeholder="Tipo de novedad" (change)="filterRequestState($event.target.value)">
+      <option value="1">Sin respuesta</option>
+      <option value="2">Atendido</option>
+      <option value="3" selected="selected">Todos</option>
+    </select>
+  </div>
+</div>

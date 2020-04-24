@@ -1,14 +1,21 @@
 <div class="content-super">
   <div class="content">
     <h3 class="title">Mis solicitudes</h3>
-    <p class="subtitle">En esta sección usted podrá ver las solicitudes que ha enviado al administrador del conjunto.</p>
-    <div *ngIf="requestResidents.length==0" class="empty-content">
+    <div class="text">
+      <i class="fas fa-bell fa-2x icon-title"></i>
+      <p class="subtitle">En esta sección usted podrá ver las solicitudes que ha enviado al administrador del conjunto y ver las respuestas del administrador.</p>
+    </div>
+    <div *ngIf="listLength>0">
+      <app-filters (optionFilterType)="filterRequestType($event)"
+                   (optionFilterState)="filterRequestState($event)"></app-filters>
+    </div>
+    <div *ngIf="listLength==0" class="empty-content">
       <p class="subtitle">Aún no has realizado solicitudes al administrador.</p>
       <div class="icon-empty">
         <i class="fas fa-envelope-open-text fa-5x"></i>
       </div>
     </div>
-    <div class="content-table" *ngIf="requestResidents.length>0">
+    <div class="content-table" *ngIf="listLength>0">
       <div class="news-table">
         <table class="table">
           <thead class="thead">
@@ -31,6 +38,7 @@
               </td>
             <td>{{request.state}}</td>
             <td>
+                <p *ngIf="request.state==='Sin respuesta'">--</p>
                 <i class="far fa-eye fa-2x icon" *ngIf="request.state === 'Atendido'"
                 (click)="showResponse(request)"></i>
             </td>
@@ -40,7 +48,7 @@
       </div>
     </div>
     <div class="total-request">
-      Total solicitudes ({{requestResidents.length}})
+      Total solicitudes ({{listLength}})
       - Con respuesta ({{atendidas}})
       - Sin respuesta ({{sinAtender}})
     </div>

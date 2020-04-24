@@ -15,8 +15,11 @@
         <div class="information">
           {{new.information}}
         </div>
-        <div class="commit" (click)="commit(new)">
-          Comentar
+        <div class="actions">
+          <div class="commentaries" (click)="commit(new)">
+            Comentar
+          </div>
+          <p class="commentaries" (click)="showCommentaries(new)">Comentarios ({{new.commentaries}})</p>
         </div>
       </div>
     </div>
@@ -27,3 +30,7 @@
                  (closeModal)="closeModal($event)" [loadingSend]="loadingSend"
                  [textButton]="modalTextButton" [message]="messageInModal"
                  (sendText)= "getText($event)"></app-modal-input>
+
+<app-modal-commentaries *ngIf=openModalCommentaries
+                        (closeModal)="closeModalCommentaries($event)"
+                        [commentaries]="commentaries"></app-modal-commentaries>

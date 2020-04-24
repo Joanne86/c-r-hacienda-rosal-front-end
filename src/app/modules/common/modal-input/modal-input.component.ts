@@ -15,12 +15,12 @@ export class ModalInputComponent implements OnInit {
   @Input('message') message: string;
   @Input('textArea') textArea = true;
   @Input('parrafo') parrafo;
+  @Input('value') text: string;
 
   @Output() closeModal = new EventEmitter<any>();
   @Output() sendText = new EventEmitter<any>();
   modal: HTMLElement;
   button;
-  text;
   fields;
   maxLength: number;
   textButtonAux: string;

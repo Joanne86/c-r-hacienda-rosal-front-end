@@ -19,6 +19,8 @@ export class RememberDebtorsComponent implements OnInit {
   cellphoneToSendMessage;
   sendAllResidents: boolean;
   showList: boolean;
+  loadingSend: boolean;
+  messageInModal: string;
 
   constructor(private requestService: RepositoryService) { }
 
@@ -53,6 +55,9 @@ export class RememberDebtorsComponent implements OnInit {
     if (this.sendAllResidents) {
       this.requestService.notifyAllDebtors(text).then(response =>{
         console.log('notificacion enviada: ', response);
+        this.setTextSuccessfulInModal();
+      }, error=>{
+        this.setTextFailInModal();
       });
     } else {
       const messageDto: MessageDto = new MessageDto();
@@ -60,9 +65,31 @@ export class RememberDebtorsComponent implements OnInit {
       messageDto.phoneNumber = this.cellphoneToSendMessage;
       this.requestService.notifyResident(messageDto).then(response => {
         console.log('notificacion enviada: ', response);
+        this.setTextSuccessfulInModal();
+      }, error=>{
+        this.setTextFailInModal();
       });
     }
   }
+
+
+  setTextSuccessfulInModal(){
+    this.loadingSend=false;
+    this.messageInModal = 'Mensaje enviando exitosamente!';
+    this.resetMessage();
+  }
+  resetMessage() {
+    setTimeout(() => {
+      this.messageInModal='';
+      this.loadingSend = false;
+    }, 3000);
+  }
+  setTextFailInModal(){
+    this.loadingSend=false;
+    this.messageInModal = 'Ocurrio un error al enviar el mensaje';
+    this.resetMessage();
+  }
+
 
   searchTowelHome(towelHome){
     if(towelHome){

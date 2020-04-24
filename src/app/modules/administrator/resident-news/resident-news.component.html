@@ -11,27 +11,9 @@
         <i class="fas fa-envelope-open-text fa-5x"></i>
       </div>
     </div>
-
-    <div class="all-filters" *ngIf="listLength>0">
-      <div class="filtro">
-        <p>Filtrar por tipo de solicitud: </p>
-        <select name="select" class="form-control select-filtro"
-                placeholder="Tipo de novedad" (change)="filterRequestType($event.target.value)">
-          <option value="1">Queja</option>
-          <option value="2">Sugerencia</option>
-          <option value="3">Petición</option>
-          <option value="4" selected="selected">Todos</option>
-        </select>
-      </div>
-      <div class="filtro">
-        <p>Filtrar por estado de solicitud: </p>
-        <select name="select" class="form-control select-filtro"
-                placeholder="Tipo de novedad" (change)="filterRequestState($event.target.value)">
-          <option value="1">Sin respuesta</option>
-          <option value="2">Atendido</option>
-          <option value="3" selected="selected">Todos</option>
-        </select>
-      </div>
+    <div *ngIf="listLength>0">
+      <app-filters (optionFilterType)="filterRequestType($event)"
+                   (optionFilterState)="filterRequestState($event)"></app-filters>
     </div>
 
     <div class="content-table" *ngIf="listLength>0">
@@ -45,7 +27,7 @@
             <th class="peticion">Petición</th>
             <th>Tipo</th>
             <th>Estado</th>
-            <th></th>
+            <th>Interactuar</th>
           </tr>
           </thead>
           <tbody class="table-body">

@@ -6,9 +6,6 @@
   color: white;
   background-image: url("../../../../assets/images/parque2Min.png");
 }
-.select-filtro{
-  border-color: #6ecbf7;
-}
 .title{
   text-align: center;
   width: 100%;
@@ -51,14 +48,7 @@
   text-align: center;
   display: flex;
 }
-.all-filters{
-  display: block;
-}
-.filtro{
-  width: 220px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
+
 .icon{
   margin-right: 10px;
   color: #008cff;
@@ -117,11 +107,5 @@
     width: 250px;
   }
 }
-@media (min-width: 980px){
-  .all-filters{
-    display: flex;
-    width: 500px;
-    justify-content: space-between;
-  }
-}
+
 

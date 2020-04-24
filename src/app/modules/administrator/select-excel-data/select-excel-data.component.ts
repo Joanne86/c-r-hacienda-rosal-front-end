@@ -28,12 +28,10 @@ export class SelectExcelDataComponent implements OnInit {
     removeUrl: 'https://aspnetmvc.syncfusion.com/services/api/uploadbox/Remove'
 };
 
-  public uploadEle: HTMLElement = createElement('span', { className: 'upload e-icons', innerHTML : 'Browse...'});
-   public clearEle = createElement('span', { className: 'remove e-icons', innerHTML : 'Clear All' });
    public buttons: Object = {
-    browse: 'Subir',
-    clear: this.clearEle,
-    upload: this.uploadEle
+    browse: 'Examinar',
+    clear: 'Borrar',
+    upload: 'Cargar'
    };
 
   ngOnInit(): void {

@@ -7,6 +7,7 @@
           notificar por mensaje de texto un aviso importante para todos los residentes o para uno en específico.</p>
     </div>
     <div *ngIf=!showList>
+      <p class="message-adjunt">Adjunte el archivo excel con los datos de los residentes.</p>
         <app-select-excel-data (dataExcel)="getDataExcel($event)"></app-select-excel-data>
     </div>
     <div class="content-nav" *ngIf=showList>

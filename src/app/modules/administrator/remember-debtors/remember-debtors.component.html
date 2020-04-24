@@ -48,8 +48,10 @@
 
   </div>
 
-  <app-modal-input *ngIf=openModal [title]=titleModal [placeholder]=placeholder [notification]=true [textButton]=modalTextButton
-  (closeModal)="closeModal($event)" (sendText)= "getText($event)"></app-modal-input>
+<app-modal-input *ngIf=openModal [title]=titleModal [placeholder]=placeholder [notification]=true
+                 [textButton]=modalTextButton [loadingSend]=loadingSend
+                 (closeModal)="closeModal($event)" [message]="messageInModal"
+                 (sendText)= "getText($event)"></app-modal-input>
 
 
 

@@ -1,0 +1,22 @@
+.all-filters{
+  display: block;
+}
+
+.filtro{
+  width: 220px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.select-filtro{
+  border-color: #6ecbf7;
+}
+
+@media (min-width: 980px){
+  .all-filters{
+    display: flex;
+    width: 500px;
+    justify-content: space-between;
+  }
+}

@@ -1,6 +1,6 @@
 <div class="content-super">
   <div class="control_wrapper">
-    <ejs-uploader #defaultupload [autoUpload]='false' [dropArea]='dropEle' [asyncSettings]='path' (success)="onUploadSuccess($event)" 
+    <ejs-uploader #defaultupload [buttons]="buttons" [autoUpload]='false' [dropArea]='dropEle' [asyncSettings]='path' (success)="onUploadSuccess($event)"
     (failure)="onUploadFailure($event)" (change)="onSuccess($event)"></ejs-uploader>
   </div>
 </div>

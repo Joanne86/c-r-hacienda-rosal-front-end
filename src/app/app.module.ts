@@ -34,6 +34,7 @@ import { InputSearchComponent } from './modules/common/input-search/input-search
 import { AddResidentComponent } from './modules/administrator/add-resident/add-resident.component';
 import { ModalCommentariesComponent } from './modules/common/modal-commentaries/modal-commentaries.component';
 import {SecurityComponentsService} from './core/services/security-components.service';
+import { FiltersComponent } from './modules/common/filters/filters.component';
 
 const routes: Routes = [
   { path: 'excel', component: SelectExcelDataComponent },
@@ -75,7 +76,8 @@ const routes: Routes = [
     NewsResponseComponent,
     InputSearchComponent,
     AddResidentComponent,
-    ModalCommentariesComponent
+    ModalCommentariesComponent,
+    FiltersComponent
   ],
   imports: [
     RouterModule.forRoot(routes, {useHash: true}),

@@ -10,7 +10,7 @@ import get = Reflect.get;
   styleUrls: ['./pubish.component.css']
 })
 export class PubishComponent implements OnInit {
-
+  new_: New;
   news: New[] =  [];
   openModal = false;
   titleModal = 'Publicar noticia';
@@ -20,6 +20,16 @@ export class PubishComponent implements OnInit {
   messageInModal;
   openModalCommentaries: boolean;
   commentaries: Commentary[];
+
+  openModalEdit = false;
+  titleModalEdit = 'Editar noticia';
+  placeholderEdit = 'Edita la publicación';
+  modalTextButtonEdit = 'Editar';
+  loadingSendEdit;
+  messageInModalEdit;
+  openModalCommentariesEdit: boolean;
+
+  information: string;
 
   constructor(private requestService: RepositoryService) { }
 
@@ -32,7 +42,7 @@ export class PubishComponent implements OnInit {
       this.news = response.reverse();
       this.setStyle();
     },error =>{
-
+      alert('Ocurrio un error al mostrar las noticias');
     });
   }
   setStyle(){
@@ -56,10 +66,14 @@ export class PubishComponent implements OnInit {
   closeModal(event){
     this.openModal=event;
   }
+
+  closeModalEdit(event){
+    this.openModalEdit=event;
+  }
   closeModalCommentaries(event){
     this.openModalCommentaries = event;
   }
-  getText(text) {
+  getTextPublish(text) {
     console.log(text);
     let new_ : New = new New();
     new_.information = text;
@@ -71,6 +85,38 @@ export class PubishComponent implements OnInit {
     }, error =>{
       this.setTextFailInModal();
     });
+  }
+  getTextEdit(text){
+    this.new_.information = text;
+    this.requestService.updatePublish(this.new_).then(response =>{
+      this.new_.publish=response.publish;
+      this.setTextSuccessfulInModalEdit();
+    }, error =>{
+      this.setTextFailInModalEdit();
+    });
+  }
+
+  setTextSuccessfulInModalEdit(){
+    this.loadingSendEdit=false;
+    this.messageInModalEdit = 'Noticia editada exitosamente!';
+    this.resetMessageEdit();
+  }
+  resetMessageEdit() {
+    setTimeout(() => {
+      this.messageInModalEdit='';
+      this.loadingSendEdit = false;
+    }, 3000);
+  }
+  setTextFailInModalEdit(){
+    this.loadingSendEdit=false;
+    this.messageInModalEdit = 'Ocurrio un error al editar noticia';
+    this.resetMessage();
+  }
+
+  showModalEdit(new_: New){
+    this.new_=new_;
+    this.information=new_.information;
+    this.openModalEdit = true;
   }
 
   setTextSuccessfulInModal(){
@@ -94,9 +140,9 @@ export class PubishComponent implements OnInit {
     this.openModalCommentaries = true;
     this.requestService.getCommentaries(new_.id).then(response =>{
       console.log('comentarios: ', response);
-      this.commentaries = response;
+      this.commentaries = response.reverse();
     }, error =>{
-
+      alert('ocurrio un error al obtener los comentarios');
     });
   }
 }

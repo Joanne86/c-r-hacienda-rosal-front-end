@@ -2,22 +2,25 @@
   <div class="content">
     <div class="title">Publicación de noticias</div>
     <div class="no-publish" *ngIf="!validateNews()">
-      <div>
         <p class="subtitle">No hay publicaciones aún, añade una!</p>
-        <i class="fas fa-plus-circle fa-3x icon-plus icon-position" id="myBtn" (click)="addPublish()"></i>
-      </div>
+        <i class="fas fa-plus-circle fa-3x icon-plus-empty icon-position" id="myBtn" (click)="addPublish()"></i>
     </div>
     <div *ngIf="validateNews()">
-      <div class="new" (click)="showCommentaries(new_)" *ngFor="let new_ of news">
+      <div class="new" *ngFor="let new_ of news">
         <div class="date">
           Fecha de publicación: {{new_.publish}}
         </div>
         <div class="information">
           {{new_.information}}
         </div>
-        <p class="commentaries">Comentarios ({{new_.commentaries}})</p>
+        <div class="links">
+          <p class="commentaries" (click)="showCommentaries(new_)">Comentarios ({{new_.commentaries}})</p>
+          <p class="commentaries" (click)="showModalEdit(new_)">Editar</p>
+        </div>
+
       </div>
       <div class="add-publish">
+        <button class="btn-add" (click)="addPublish()">Añadir publicación</button>
         <i class="fas fa-plus-circle fa-3x icon-plus" id="myBtn" (click)="addPublish()"></i>
       </div>
     </div>
@@ -27,7 +30,12 @@
 <app-modal-input *ngIf=openModal [title]=titleModal [placeholder]=placeholder
                  (closeModal)="closeModal($event)" [loadingSend]="loadingSend"
                  [textButton]=modalTextButton [message]="messageInModal"
-                 (sendText)= "getText($event)"></app-modal-input>
+                 (sendText)= "getTextPublish($event)"></app-modal-input>
+
+<app-modal-input *ngIf=openModalEdit [title]=titleModalEdit [placeholder]=placeholderEdit
+                 (closeModal)="closeModalEdit($event)" [loadingSend]="loadingSendEdit"
+                 [textButton]=modalTextButtonEdit [message]="messageInModalEdit" [value]="information"
+                 (sendText)= "getTextEdit($event)"></app-modal-input>
 
 <app-modal-commentaries *ngIf=openModalCommentaries
                         (closeModal)="closeModalCommentaries($event)"

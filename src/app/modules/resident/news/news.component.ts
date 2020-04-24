@@ -18,6 +18,8 @@ export class NewsComponent implements OnInit {
   modalTextButton='Comentar';
   loadingSend: boolean;
   messageInModal: string;
+  openModalCommentaries: boolean;
+  commentaries: Commentary[];
 
   constructor(private requestService: RepositoryService) { }
 
@@ -65,6 +67,7 @@ export class NewsComponent implements OnInit {
 
     this.requestService.saveCommentary(commentaryDto).then(response =>{
     this.setTextSuccessfulInModal();
+    this.newInfo.commentaries++;
     }, error =>{
     this.setTextFailInModal();
     });
@@ -85,5 +88,17 @@ export class NewsComponent implements OnInit {
     this.loadingSend=false;
     this.messageInModal = 'Ocurrio un error al enviar el comentario';
     this.resetMessage();
+  }
+  closeModalCommentaries(event){
+    this.openModalCommentaries = event;
+  }
+
+  showCommentaries(new_: New){
+    this.openModalCommentaries = true;
+    this.requestService.getCommentaries(new_.id).then(response =>{
+      this.commentaries = response.reverse();
+    }, error =>{
+      alert('ocurrio un error al obtener los comentarios');
+    });
   }
 }
