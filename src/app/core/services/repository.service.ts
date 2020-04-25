@@ -12,9 +12,16 @@ const httpOptions = {
 @Injectable()
 export class RepositoryService {
 
-  constructor(private req: RequestService) { }
-  public getUser(userName: string){
-    return this.req.get(`/login/get-user/`, { queryParams: { userName: userName } });
+  constructor(private req: RequestService) {
+  }
+
+
+  public getUser(credentialDto){
+    console.log('credentialDto: ', credentialDto);
+    return this.req.get(`/login/get-user`, { queryParams:
+        { user: credentialDto.user,
+          password: credentialDto.password}
+    });
   }
 
   public getAllResidents() {

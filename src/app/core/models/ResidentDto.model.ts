@@ -6,4 +6,6 @@ export class ResidentDto {
   months: number;
   debt: number;
   userType: number;
+  user: string;
+  password: string;
 }

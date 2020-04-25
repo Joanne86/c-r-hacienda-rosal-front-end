@@ -64,6 +64,8 @@ export class NotifyResidentsComponent implements OnInit {
           resident.documentNumber = dataExcel[i].documento + '';
           resident.months = dataExcel[i].meses_deuda;
           resident.debt = dataExcel[i].total_deuda;
+          resident.user = dataExcel[i].documento + '';
+          resident.password = dataExcel[i].documento + '';
           this.residentList.push(resident);
 
           if(resident.debt>0 && resident.months>0){
@@ -133,7 +135,7 @@ export class NotifyResidentsComponent implements OnInit {
   }
 
   saveResidents() {
-
+    console.log('residentes a guardar: ', this.residentList);
     this.requestService.saveResidents(this.residentList).then(response =>{
       alert('SE GUARDARON LOS RESIDENTES CON EXITO!');
     }, error => {

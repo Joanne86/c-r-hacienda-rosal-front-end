@@ -32,8 +32,12 @@
             </thead>
             <tbody>
               <tr *ngFor="let resident of residentList let i = index">
-                <td>{{resident.towerNumberHome}}</td>
-                <td>{{resident.documentNumber}}</td>
+                <td>
+                  <input class="input-text" type="text" [(ngModel)]="resident.towerNumberHome">
+                </td>
+                <td>
+                  <input class="input-text" type="text" [(ngModel)]="resident.documentNumber">
+                </td>
                 <td>{{resident.name}}</td>
                 <td>
                   <input class="input-text" type="text" [(ngModel)]="resident.cellphone">

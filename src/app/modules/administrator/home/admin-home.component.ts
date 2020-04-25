@@ -18,6 +18,7 @@ export class AdminHomeComponent implements OnInit {
   item3: Item = new Item;
   item4: Item = new Item;
   item5: Item = new Item;
+  item6: Item = new Item;
 
   constructor(private security: SecurityComponentsService) { }
 
@@ -42,11 +43,15 @@ export class AdminHomeComponent implements OnInit {
     this.item4.image='fas fa-bell';
     this.item4.path='/admin-home/resident-news';
 
-    this.item5.titulo='Cerrar sesión';
-    this.item5.image='fas fa-sign-out-alt';
-    this.item5.path='';
+    this.item5.titulo='Actualizar mis datos';
+    this.item5.image='fas fa-edit';
+    this.item5.path='/admin-home/update-info';
 
-    this.items.push(this.item1, this.item2, this.item3, this.item4, this.item5);
+    this.item6.titulo='Cerrar sesión';
+    this.item6.image='fas fa-sign-out-alt';
+    this.item6.path='';
+
+    this.items.push(this.item1, this.item2, this.item3, this.item4, this.item5, this.item6);
   }
 
 }

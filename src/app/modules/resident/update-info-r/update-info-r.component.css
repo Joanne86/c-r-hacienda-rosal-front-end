@@ -1,0 +1,113 @@
+.content-super {
+  height: -webkit-fill-available;
+  background-color: #f6f8fa;
+  display: flex;
+  justify-content: center;
+}
+.content-request{
+  width: 600px;
+  height: 80%;
+  background-color: #f6f8fa;
+}
+.title{
+  margin: auto;
+  text-align: center;
+  margin-bottom: 20px;
+  padding-top: 20px;
+}
+.inputs{
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+.btn-send{
+  margin: auto;
+  width:  235px;
+}
+.btn-login{
+  margin: auto;
+  margin-bottom: 0px;
+  width: 235px;
+  height: 48px;
+  border-radius: 100px;
+  border: solid 1px #fdc130;
+  background-image: linear-gradient(107deg, #fdc130 18%, #f69b31);
+  color: #002c76;
+  outline:none;
+}
+.btn-login-block{
+
+  margin: auto;
+  margin-bottom: 0px;
+  width: 235px;
+  height: 48px;
+  border-radius: 100px;
+  border: solid 2px #8d887d;
+  background-color: #d4ccba;
+  color: #23324d;
+  outline:none;
+}
+.cajas{
+  flex-wrap: wrap;
+  width: 90%;
+  margin: auto;
+  margin-bottom: 20px;
+}
+.input-text {
+  text-align: center;
+  outline: none;
+  width: 90%;
+  height: 42px;
+  border-radius: 6px;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.05);
+  border: solid 1px #6ecbf7;
+  background-color: #ffffff;
+  color: #06161b;
+}
+.division{
+  width: 100%;
+}
+.message-pass{
+  color: red;
+  font-size: 12px;
+}
+.input-text-external{
+  margin-bottom: 10px;
+  margin-top: 8px;
+}
+
+@media (min-width: 590px){
+  .division{
+    width: 50%;
+  }
+  .content-request{
+    width: 700px;
+    height: 80%;
+    background-color: #f6f8fa;
+  }
+  .content-super{
+    background-image: url("../../../../assets/images/entradaMin.png");
+  }
+  .cajas{
+    width: 100%;
+    margin: auto;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-around;
+  }
+  .message-pass{
+    font-size: 14px;
+  }
+
+  .title{
+    font-size: 24px;
+  }
+
+  .content-request{
+    margin-top: 30px;
+    box-shadow: 0 3px 13px 0 rgba(0, 0, 0, 0.11);
+    border-radius: 12px;
+    padding: 40px;
+    background-color: #f6f8fa;
+  }
+}

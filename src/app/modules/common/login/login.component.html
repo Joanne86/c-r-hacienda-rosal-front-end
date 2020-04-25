@@ -7,8 +7,8 @@
   </div>
   <div class="login">
       <p class="login__title"> <i class="fas fa-user-alt" style="color: blueviolet;"></i>  Ingresa tu usuario y contraseña</p>
-      <input class="input" [(ngModel)]="user.user" type="text" name="user" placeholder="Usuario">
-      <input class="input" [(ngModel)]="user.password" type="password" name="pass" placeholder="Contraseña">
+      <input class="input" [(ngModel)]="credentialDto.user" type="text" name="user" placeholder="Usuario">
+      <input class="input" [(ngModel)]="credentialDto.password" type="password" name="pass" placeholder="Contraseña">
       <p class="message">{{showText}}</p>
       <button [disabled]="!validateFields()" type="submit" name="login" id="btn-start" (click)="start()">
         <i *ngIf=loading class="fas fa-spinner fa-spin"></i>

@@ -1,0 +1,46 @@
+<div class="content-super">
+  <div class="content-request">
+    <div class="title">
+      Actualizar mis datos
+    </div>
+    <div class="inputs">
+      <div class="cajas">
+        <div class="division">
+          <p>Nombre</p>
+          <div class="input-text-external">
+            <input class="input-text" type="text" [(ngModel)]="name" placeholder="Nombre completo">
+          </div>
+          <p>Nombre de usuario</p>
+          <div class="input-text-external">
+            <input class="input-text" type="text" [(ngModel)]="user" placeholder="Usuario">
+          </div>
+        </div>
+        <div class="division">
+          <p>Contraseña actual</p>
+          <div class="input-text-external">
+            <input class="input-text" type="password" [(ngModel)]="writeActualPass" placeholder="Contraseña actual">
+          </div>
+          <p class="message-pass" *ngIf="!validateActualPassword() && this.writeActualPass">Las contraseñas actual es incorrecta</p>
+          <p>Contraseña nueva</p>
+          <div class="input-text-external">
+            <input class="input-text" type="password" [(ngModel)]="passwordNew" placeholder="Contraseña nueva">
+          </div>
+          <p class="message-pass" *ngIf="validateNewPassWithOldPass() && validateEmptyNewPassword()">La contraseña debe ser diferente a la actual</p>
+          <p>Confirmación de contraseña nueva</p>
+          <div class="input-text-external">
+            <input class="input-text" type="password" [(ngModel)]="passwordConfirm" placeholder="Confirma la contraseña">
+          </div>
+          <p class="message-pass" *ngIf="!validatePasswords()">Las contraseñas no coinciden</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-send">
+      <button [disabled]="!validateButton()" type="submit" name="login" id="btn-start" (click)="updateInfo()">
+        <i *ngIf=showLoading class="fas fa-spinner fa-spin"></i>
+        Actualizar ›</button>
+      <p *ngIf="responseText">{{responseText}}</p>
+    </div>
+  </div>
+</div>
+

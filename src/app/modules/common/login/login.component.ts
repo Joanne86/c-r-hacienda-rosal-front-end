@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Session } from 'src/app/core/models/Session.model';
+import { CredentialDto } from 'src/app/core/models/Credential.model';
 import { RepositoryService } from 'src/app/core/services/repository.service';
 import { UserType } from 'src/app/core/enums/UserType.enum';
 import { Router } from '@angular/router';
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  user: Session = new Session();
+  credentialDto: CredentialDto = new CredentialDto();
   fields;
   button;
   loading;
@@ -24,14 +24,10 @@ export class LoginComponent implements OnInit {
     sessionStorage.clear();
   }
 
-  login() {
-
-  }
-
   validateFields(){
     this.fields = false;
     this.button.className = 'btn-login-block';
-    if(this.user.user && this.user.password){
+    if(this.credentialDto.user && this.credentialDto.password){
       this.fields = true;
       this.button.className = 'btn-login';
     }
@@ -40,7 +36,7 @@ export class LoginComponent implements OnInit {
 
   start() {
     this.loading = true;
-    this.requestService.getUser(this.user.user).then(response =>{
+    this.requestService.getUser(this.credentialDto).then(response =>{
       sessionStorage.setItem('userInfo', JSON.stringify(response));
       console.log('response: ', response);
       this.loading =false;
@@ -54,7 +50,6 @@ export class LoginComponent implements OnInit {
       alert('Ocurrio un error al iniciar la sesión intentelo de nuevo mas tarde.');
       this.loading =false;
     });
-    console.log('ingresa');
   }
   validateUser(userResponse){
     if(userResponse.userType === UserType.ADMINISTRADOR){

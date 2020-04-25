@@ -35,6 +35,8 @@ import { AddResidentComponent } from './modules/administrator/add-resident/add-r
 import { ModalCommentariesComponent } from './modules/common/modal-commentaries/modal-commentaries.component';
 import {SecurityComponentsService} from './core/services/security-components.service';
 import { FiltersComponent } from './modules/common/filters/filters.component';
+import { UpdateInfoComponent } from './modules/administrator/update-info/update-info.component';
+import { UpdateInfoRComponent } from './modules/resident/update-info-r/update-info-r.component';
 
 const routes: Routes = [
   { path: 'excel', component: SelectExcelDataComponent },
@@ -45,13 +47,15 @@ const routes: Routes = [
     { path: 'news', component: NewsComponent },
     { path: 'payments-state', component: PaymentsStateComponent },
     { path: 'send-requests', component: SendRequestsComponent },
-    { path: 'responses', component: NewsResponseComponent }
+    { path: 'responses', component: NewsResponseComponent },
+      { path: 'update-info', component: UpdateInfoRComponent }
   ]},
-  { path: 'admin-home', component: AdminHomeComponent, children: [
+    { path: 'admin-home', component: AdminHomeComponent, children: [
     {path: 'publish', component: PubishComponent},
     {path: 'send-sms', component: NotifyResidentsComponent},
     {path: 'resident-news', component: ResidentNewsComponent},
-    {path: 'remember-debtors', component: RememberDebtorsComponent}
+    {path: 'remember-debtors', component: RememberDebtorsComponent},
+      { path: 'update-info', component: UpdateInfoComponent }
   ]}
 
 ];
@@ -77,7 +81,9 @@ const routes: Routes = [
     InputSearchComponent,
     AddResidentComponent,
     ModalCommentariesComponent,
-    FiltersComponent
+    FiltersComponent,
+    UpdateInfoComponent,
+    UpdateInfoRComponent
   ],
   imports: [
     RouterModule.forRoot(routes, {useHash: true}),
