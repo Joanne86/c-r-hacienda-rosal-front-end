@@ -8,9 +8,11 @@ export class SecurityComponentsService {
 
   constructor(private route: Router) { }
 
-  validateLogin(){
-    let userInfo = sessionStorage.getItem('userInfo');
+  validateLogin(type){
+    let userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
     if(!userInfo){
+      this.route.navigate(['/login']);
+    }else if(type !== userInfo.userType){
       this.route.navigate(['/login']);
     }
   }

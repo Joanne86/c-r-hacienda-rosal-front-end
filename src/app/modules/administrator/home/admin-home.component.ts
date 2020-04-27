@@ -23,7 +23,7 @@ export class AdminHomeComponent implements OnInit {
   constructor(private security: SecurityComponentsService) { }
 
   ngOnInit() {
-    this.security.validateLogin();
+    this.security.validateLogin(2);
     this.infoUser = JSON.parse(sessionStorage.getItem('userInfo'));
     this.name = this.infoUser.name;
 

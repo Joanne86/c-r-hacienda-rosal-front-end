@@ -132,7 +132,11 @@ export class AddResidentComponent implements OnInit {
   alertResident(residentDto: ResidentDto){
     console.log('requestDto: ', residentDto);
     let messageDto: MessageDto = new MessageDto();
-    messageDto.message = 'usted con cedula '+ residentDto.documentNumber+' se encuentra registrado en la aplicacion del conjunto residencial, ' +
+
+    let documentSMS = residentDto.documentNumber.slice(6,10);
+    let documentArstSMS = '******'.concat(documentSMS);
+
+    messageDto.message = 'usted con cedula terminada en '+documentArstSMS+' se encuentra registrado en la aplicacion del conjunto residencial, ' +
       'ingrese a este link para acceder a la apliacion web -> conjunto-hacienda-rosal.com/#/login ingresando su cedula en ambos campos';
     messageDto.phoneNumber = '+57'+residentDto.cellphone;
     this.requestService.notifyResident(messageDto).then(response => {
