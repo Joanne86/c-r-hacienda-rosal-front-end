@@ -106,6 +106,8 @@ export class AddResidentComponent implements OnInit {
   }
 
   saveResident(residentDto: ResidentDto){
+    residentDto.user = residentDto.documentNumber;
+    residentDto.password = residentDto.documentNumber;
     this.validateDocumentNumber(residentDto.documentNumber);
     this.validateCellphone(residentDto.cellphone);
     this.validateTowerNumberHome(residentDto.towerNumberHome);
@@ -116,6 +118,7 @@ export class AddResidentComponent implements OnInit {
       this.showAlertDocument = false;
       this.setValuesBeforeSave();
       let request = JSON.parse(JSON.stringify(residentDto));
+
       this.requestService.saveResident(request).then(response =>{
         this.residentSaved.emit(request);
         this.goodSave=true;

@@ -1,5 +1,5 @@
 export class New {
-  id: number;
+    id: number;
     information: string;
     publish: string;
     commentaries: number;

@@ -6,26 +6,29 @@
     <div class="inputs">
         <div class="cajas">
           <div class="division">
-            <p>Nombre</p>
+            <p>Nombre completo</p>
             <div class="input-text-external">
               <input class="input-text" type="text" [(ngModel)]="name" placeholder="Nombre completo">
             </div>
-            <p>Cédula</p>
-            <div class="input-text-external">
-              <input class="input-text" type="text" [maxLength]=10 [(ngModel)]="documentNumber" placeholder="Cédula">
-            </div>
-            <p class="message-pass" *ngIf="!validateJustNumbers(documentNumber)">La cédula invalida</p>
+            <p class="message-pass" *ngIf="!validateJustLetters(name)">Nombre inválido</p>
             <p>Nombre de usuario</p>
             <div class="input-text-external">
               <input class="input-text" type="text" [(ngModel)]="user" placeholder="Usuario">
             </div>
+            <p class="message-pass" *ngIf="showUserExist">El nombre de usuario ya existe</p>
+            <p>Cédula</p>
+            <div class="input-text-external">
+              <input class="input-text" type="text" maxlength=10 [(ngModel)]="documentNumber" placeholder="Usuario">
+            </div>
+            <p class="message-pass" *ngIf="showDocumentExist">Cédula invalida</p>
+            <p class="message-pass" *ngIf="!validateJustNumbers(documentNumber)">Cédula invalida</p>
           </div>
           <div class="division">
-            <p>Contraseña actual</p>
+            <p>Contraseña actual *</p>
             <div class="input-text-external">
               <input class="input-text" type="password" [(ngModel)]="writeActualPass" placeholder="Contraseña actual">
             </div>
-            <p class="message-pass" *ngIf="!validateActualPassword() && this.writeActualPass">Las contraseñas actual es incorrecta</p>
+            <p class="message-pass" *ngIf="!validateActualPassword() && this.writeActualPass">La contraseña actual es incorrecta</p>
             <p>Contraseña nueva</p>
             <div class="input-text-external">
               <input class="input-text" type="password" [(ngModel)]="passwordNew" placeholder="Contraseña nueva">
@@ -35,7 +38,7 @@
             <div class="input-text-external">
               <input class="input-text" type="password" [(ngModel)]="passwordConfirm" placeholder="Confirma la contraseña">
             </div>
-            <p class="message-pass" *ngIf="!validatePasswords()">Las contraseñas no coinciden</p>
+            <p class="message-pass" *ngIf="!validatePasswords() && passwordConfirm">Las contraseñas no coinciden</p>
           </div>
         </div>
     </div>

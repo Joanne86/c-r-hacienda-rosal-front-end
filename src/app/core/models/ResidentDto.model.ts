@@ -8,4 +8,6 @@ export class ResidentDto {
   userType: number;
   user: string;
   password: string;
+  idSession: number;
+  idUser: number;
 }

@@ -91,7 +91,7 @@
 
 @media (min-width: 425px){
   .modal-content{
-    height: 40%;
+    height: 50%;
   }
   .modal-content p {
     font-size: 18px;

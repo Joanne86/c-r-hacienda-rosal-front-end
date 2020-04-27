@@ -109,8 +109,15 @@ export class NotifyResidentsComponent implements OnInit {
   }
 
   validateApartemento(apartamento){
+    console.log('apartamento: ', apartamento);
     const patron = /^\D*\d{3}$/;
+    console.log(patron.test(apartamento));
     return patron.test(apartamento);
+  }
+
+  validateTorreApartamento(torreApart){
+    const patternTowel = /[0-9]{2}-[0-9][0-9][0-9]/g;
+    return patternTowel.test(String(torreApart));
   }
 
   validateName(name){
@@ -126,6 +133,7 @@ export class NotifyResidentsComponent implements OnInit {
     if (cell) {
       validCellphone = !!cell.match(patternCellphone);
     }
+    console.log('valid cellphone: ', validCellphone);
     return validCellphone;
   }
 
@@ -224,14 +232,72 @@ export class NotifyResidentsComponent implements OnInit {
 
 
   validateFields(i) {
-    return (((this.residentList[i].cellphone !== this.residentListTemp[i].cellphone) ||
+    return ((this.validateAllCellphone(i) ||
       (this.residentList[i].months !== this.residentListTemp[i].months)||
-      (this.residentList[i].debt !== this.residentListTemp[i].debt))
-      && this.validateEmptyFields(i));
+      (this.residentList[i].debt !== this.residentListTemp[i].debt) ||
+      (this.validateAllTower(i))) && this.validateEmptyFields(i) && this.validateFormats(i));
   }
 
+  validateFormats(i){
+    return (this.validateTowerPattern(i) && this.validateCellphonePattern(i))
+  }
+
+  validateAllCellphone(i){
+    return (this.validateCellphoneDiff(i)  && !this.validateCellphoneDontRepeat(i));
+  }
+
+  validateAllTower(i){
+    return (this.validateTowerDiff(i) && !this.validateTowerDontRepeat(i));
+  }
+
+
+  validateCellphoneDiff(i){
+    return (this.residentList[i].cellphone !== this.residentListTemp[i].cellphone);
+  }
+
+  validateCellphonePattern(i){
+    return (this.validateCellphone(this.residentList[i].cellphone));
+  }
+
+  validateCellphoneDontRepeat(j){
+    let exist = false;
+    if(this.validateCellphoneDiff(j)){
+      for(let i=0; i < this.residentListTemp.length; i++){
+        if(this.residentListTemp[i].cellphone === this.residentList[j].cellphone){
+          exist = true;
+        }
+      }
+    }
+    return  exist;
+  }
+
+  validateTowerDiff(i){
+    return (this.residentList[i].towerNumberHome !== this.residentListTemp[i].towerNumberHome);
+  }
+
+  validateTowerPattern(i){
+    return (this.validateTorreApartamento(this.residentList[i].towerNumberHome));
+  }
+
+  validateTowerDontRepeat(j){
+    let exist = false;
+    if(this.validateTowerDiff(j)){
+      for(let i=0; i< this.residentListTemp.length; i++){
+        console.log('this.residentListTemp[i].towerNumberHome', this.residentListTemp[i].towerNumberHome);
+        console.log('this.residentList[j].towerNumberHome', this.residentList[j].towerNumberHome);
+        console.log('------------------------------------');
+        if(this.residentListTemp[i].towerNumberHome === this.residentList[j].towerNumberHome){
+          exist = true;
+        }
+      }
+    }
+    return  exist;
+  }
+
+
+
   validateEmptyFields(i){
-    return ((this.residentList[i].cellphone !== '')&&
+    return ((this.residentList[i].cellphone !== '') && (this.residentList[i].towerNumberHome !== '') &&
       (this.residentList[i].months !== null && this.residentList[i].months!== undefined)&&
       (this.residentList[i].debt !== null && this.residentList[i].debt !== undefined));
   }
@@ -279,6 +345,7 @@ export class NotifyResidentsComponent implements OnInit {
       this.residentListTemp[i].cellphone = this.residentList[i].cellphone;
       this.residentListTemp[i].months = this.residentList[i].months;
       this.residentListTemp[i].debt = this.residentList[i].debt;
+      this.residentListTemp[i].towerNumberHome = this.residentList[i].towerNumberHome;
       this.showLoadingUpdate=-1;
     }, error =>{
       this.showLoadingUpdate=-1;

@@ -17,11 +17,24 @@ export class RepositoryService {
 
 
   public getUser(credentialDto){
-    console.log('credentialDto: ', credentialDto);
     return this.req.get(`/login/get-user`, { queryParams:
         { user: credentialDto.user,
           password: credentialDto.password}
     });
+  }
+
+  public validateUserName(userName){
+    return this.req.get(`/login/validate-user-name`, { queryParams:{ userName: userName}
+    });
+  }
+
+  public validateDocument(documentNumber){
+    return this.req.get(`/login/validate-document`, { queryParams:{ documentNumber: documentNumber}
+    });
+  }
+
+  public updateUser(userDto){
+    return this.req.put(`/login/update-user-data`, { data: userDto});
   }
 
   public getAllResidents() {
