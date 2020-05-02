@@ -137,7 +137,7 @@ export class AddResidentComponent implements OnInit {
     let documentArstSMS = '******'.concat(documentSMS);
 
     messageDto.message = 'usted con cedula terminada en '+documentArstSMS+' se encuentra registrado en la aplicacion del conjunto residencial, ' +
-      'ingrese a este link para acceder a la apliacion web -> conjunto-hacienda-rosal.com/#/login ingresando su cedula en ambos campos';
+      'ingrese a este link para acceder a la aplicacion web -> conjunto-hacienda-rosal.com/#/login ingresando su cedula en ambos campos';
     messageDto.phoneNumber = '+57'+residentDto.cellphone;
     this.requestService.notifyResident(messageDto).then(response => {
       this.setValuesWhenSave();

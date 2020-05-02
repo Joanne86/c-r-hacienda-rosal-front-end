@@ -62,6 +62,9 @@
   justify-content: space-between;
   margin-bottom: 20px;
 }
+.cajas-editables-text{
+  color: white;
+}
 
 .btn-add{
   margin-top: 20px;

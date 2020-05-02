@@ -78,7 +78,7 @@ export class NotifyResidentsComponent implements OnInit {
         alert('El archivo que acaba de adjuntar no tiene datos, por favor valide la información e intente nuevamente');
       }
     }else{
-      alert('Algunos datos del archivo que acaba de adjuntar no son validos, por favor valide la información e intente nuevamente');
+      alert('Algunos datos del archivo que acaba de adjuntar no son válidos, por favor valide la información e intente nuevamente');
     }
   }
   validateExcelFields(dataExcel){

@@ -62,7 +62,7 @@ export class RememberDebtorsComponent implements OnInit {
     } else {
       const messageDto: MessageDto = new MessageDto();
       messageDto.message = text;
-      messageDto.phoneNumber = this.cellphoneToSendMessage;
+      messageDto.phoneNumber = '+57'.concat(this.cellphoneToSendMessage);
       this.requestService.notifyResident(messageDto).then(response => {
         console.log('notificacion enviada: ', response);
         this.setTextSuccessfulInModal();

@@ -10,6 +10,7 @@
       <p class="message-adjunt">Adjunte el archivo excel con los datos de los residentes.</p>
         <app-select-excel-data (dataExcel)="getDataExcel($event)"></app-select-excel-data>
     </div>
+    <p class="cajas-editables-text">Los datos que se encuentran en una caja de texto son editables.</p>
     <div class="content-nav" *ngIf=showList>
       <app-input-search (textSearch)="searchTowelHome($event)"></app-input-search>
       <button class="btn-add" (click)="addResident()">Añadir residente</button>

@@ -5,11 +5,11 @@
       <p>Añadir residente</p>
       <label>Torre - apartamento</label>
       <input class= "input-publish"  type="text" placeholder="ejem: 01-104" [maxlength]=6 [(ngModel)]="residentDto.towerNumberHome">
-      <label class="message-document-per" *ngIf="showAlertTower">Este apartamento ta esta registrado</label>
+      <label class="message-document-per" *ngIf="showAlertTower">Este apartamento ya está registrado</label>
 
       <label>Número de documento</label>
       <input class= "input-publish"  type="text" placeholder=Documento [maxLength]=10 [(ngModel)]="residentDto.documentNumber">
-      <label class="message-document-per" *ngIf="showAlertDocument">Este número de documento ya esta registrado</label>
+      <label class="message-document-per" *ngIf="showAlertDocument">Este número de documento ya está registrado</label>
 
       <label>Nombre completo</label>
       <input class= "input-publish"  type="text" placeholder=Nombre [(ngModel)]="residentDto.name">
