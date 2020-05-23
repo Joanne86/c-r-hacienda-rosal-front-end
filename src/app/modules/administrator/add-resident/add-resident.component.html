@@ -4,25 +4,34 @@
 
       <p>Añadir residente</p>
       <label>Torre - apartamento</label>
-      <input class= "input-publish"  type="text" placeholder="ejem: 01-104" [maxlength]=6 [(ngModel)]="residentDto.towerNumberHome">
+      <input class= "input-publish"  type="text" placeholder="ejem: 01-104"
+             [maxlength]=6 [(ngModel)]="residentDto.towerNumberHome" (ngModelChange)="validateTowerPattern()">
       <label class="message-document-per" *ngIf="showAlertTower">Este apartamento ya está registrado</label>
+      <label class="message-document-per" *ngIf="!towelPass">Torre o apartamento inválido</label>
 
       <label>Número de documento</label>
-      <input class= "input-publish"  type="text" placeholder=Documento [maxLength]=10 [(ngModel)]="residentDto.documentNumber">
+      <input class= "input-publish"  type="text" placeholder=Documento
+             [maxLength]=10 [(ngModel)]="residentDto.documentNumber" (ngModelChange)="validateDocumentPattern()">
       <label class="message-document-per" *ngIf="showAlertDocument">Este número de documento ya está registrado</label>
+      <label class="message-document-per" *ngIf="!documentPass">El número de documento es incorrecto</label>
 
       <label>Nombre completo</label>
-      <input class= "input-publish"  type="text" placeholder=Nombre [(ngModel)]="residentDto.name">
+      <input class= "input-publish"  type="text" placeholder=Nombre [(ngModel)]="residentDto.name" (ngModelChange)="validateNamePattern()">
+      <label class="message-document-per" *ngIf="!namePass">Nombre inválido</label>
 
       <label>Número de celular</label>
-      <input class= "input-publish"  type="text" placeholder=Celular [maxLength]=10 [(ngModel)]="residentDto.cellphone">
+      <input class= "input-publish"  type="text" placeholder=Celular
+             [maxLength]=10 [(ngModel)]="residentDto.cellphone" (ngModelChange)="validateCellphonePattern()">
       <label class="message-document-per" *ngIf="showAlertCellphone">Este número de celular ya está registrado</label>
+      <label class="message-document-per" *ngIf="!validCellphone">Número de celular inválido</label>
 
       <label>Número de meses en deuda de administración</label>
-      <input class= "input-publish"  type="number" placeholder=Meses [(ngModel)]="residentDto.months">
+      <input class= "input-publish"  type="number" placeholder=Meses [(ngModel)]="residentDto.months" (ngModelChange)="validateMonths()">
+      <label class="message-document-per" *ngIf="!monthsPass">Número de meses inválido</label>
 
       <label>Deuda total</label>
-      <input class= "input-publish"  type="number" placeholder=Total [(ngModel)]="residentDto.debt">
+      <input class= "input-publish"  type="number" placeholder=Total [(ngModel)]="residentDto.debt" (ngModelChange)="validateDebt()">
+      <label class="message-document-per" *ngIf="!debtPass">Deuda total inválida</label>
 
       <div class="buttons">
           <button [disabled]="!validateButton()" id="btn-save" class="btn-send" (click)="saveResident(residentDto)">

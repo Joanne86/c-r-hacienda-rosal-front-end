@@ -10,6 +10,22 @@
   text-align: center;
   margin-top: 10px;
 }
+.conditions-terms{
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+  margin: auto;
+  width: 100%;
+  color: rgb(26, 2, 26);
+  height: 106px;
+  background-color: rgba(210, 180, 238, 0.774);
+  bottom: 0;
+  position: fixed;
+}
+.terms{
+  margin-bottom: 5px;
+  font-size: 13px;
+}
 .welcome-title{
     text-align: center;
 }

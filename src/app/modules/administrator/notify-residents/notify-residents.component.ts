@@ -233,9 +233,33 @@ export class NotifyResidentsComponent implements OnInit {
 
   validateFields(i) {
     return ((this.validateAllCellphone(i) ||
-      (this.residentList[i].months !== this.residentListTemp[i].months)||
-      (this.residentList[i].debt !== this.residentListTemp[i].debt) ||
+      this.validateAllMonth(i)||
+       this.validateAllDebt(i) ||
       (this.validateAllTower(i))) && this.validateEmptyFields(i) && this.validateFormats(i));
+  }
+
+  validateAllMonth(i){
+    return (this.validateAllMonthDiff(i) && this.validateMonth(i));
+  }
+
+  validateAllMonthDiff(i){
+    return (this.residentList[i].months !== this.residentListTemp[i].months);
+  }
+
+  validateMonth(i){
+    return (this.residentList[i].months >= 0);
+  }
+
+  validateAllDebt(i){
+    return (this.validateAllDebtDiff(i) && this.validateDebt(i));
+  }
+
+  validateAllDebtDiff(i){
+    return (this.residentList[i].debt !== this.residentListTemp[i].debt);
+  }
+
+  validateDebt(i){
+    return (this.residentList[i].debt >= 0);
   }
 
   validateFormats(i){

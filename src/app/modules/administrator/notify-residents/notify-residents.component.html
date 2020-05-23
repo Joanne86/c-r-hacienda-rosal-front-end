@@ -34,20 +34,34 @@
             <tbody>
               <tr *ngFor="let resident of residentList let i = index">
                 <td>
-                  <input class="input-text" type="text"  maxlength=6 [(ngModel)]="resident.towerNumberHome">
+                  <div class="cajas-edit">
+                    <input class="input-text" type="text"  maxlength=6 [(ngModel)]="resident.towerNumberHome" (ngModelChange)="validateTowerPattern(i)">
+                    <p *ngIf="!validateTowerPattern(i)" class="error-cajas">Torre o apartamento inválido</p>
+                  </div>
                 </td>
                 <td>
                   {{resident.documentNumber}}
                 </td>
                 <td>{{resident.name}}</td>
                 <td>
-                  <input class="input-text" type="text" maxlength=10 [(ngModel)]="resident.cellphone">
+                  <div class="cajas-edit">
+                    <input class="input-text" type="text" maxlength=10 [(ngModel)]="resident.cellphone">
+                    <p *ngIf="!validateCellphonePattern(i)" class="error-cajas">Número de celular inválido</p>
+                  </div>
                 </td>
                 <td>
-                  <input class="input-text" type="number" [(ngModel)]="resident.months">
+                  <div class="cajas-edit">
+                    <input class="input-text" type="number" [(ngModel)]="resident.months">
+                    <p *ngIf="!validateMonth(i)" class="error-cajas">Número de meses inválido</p>
+                  </div>
                 </td>
                 <td class="td-currency">
-                  $<input class="input-text" type="number" [(ngModel)]="resident.debt">
+                  <div class="cajas-edit">
+                    <div class="debt-input">
+                      $<input class="input-text" type="number" [(ngModel)]="resident.debt">
+                    </div>
+                    <p *ngIf="!validateDebt(i)" class="error-cajas">Deuda total inválida</p>
+                  </div>
                 </td>
                 <td> <i class="fas fa-save fa-2x icon-save" (click)="saveInfo(i)" *ngIf="validateFields(i) && !validateShowLoadingUpdate(i)"></i>
                   <img *ngIf="validateShowLoadingUpdate(i)" alt="" src="../../../../assets/gif/loading.gif">

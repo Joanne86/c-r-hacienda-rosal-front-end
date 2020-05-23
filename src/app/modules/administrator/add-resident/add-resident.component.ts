@@ -27,6 +27,13 @@ export class AddResidentComponent implements OnInit {
   showAlertCellphone: boolean;
   showAlertTower: boolean;
 
+  validCellphone = true;
+  namePass = true;
+  towelPass = true;
+  documentPass = true;
+  debtPass = true;
+  monthsPass= true;
+
   constructor(private requestService: RepositoryService) { }
 
   ngOnInit() {
@@ -63,6 +70,45 @@ export class AddResidentComponent implements OnInit {
     return this.fields;
   }
 
+  validateDebt(){
+    this.debtPass = (this.residentDto.debt>=0 && this.residentDto.debt!==undefined && this.residentDto.debt !== null);
+    return this.debtPass;
+  }
+
+  validateMonths(){
+    this.monthsPass = (this.residentDto.months>=0 && this.residentDto.months!==undefined && this.residentDto.months !== null);
+    return this.monthsPass;
+  }
+
+  validateDocumentPattern(){
+    const patternDocument = /^[0-9]+$/g;
+    this.documentPass = patternDocument.test(String(this.residentDto.documentNumber));
+    return this.documentPass;
+  }
+
+  validateTowerPattern(){
+
+    const patternTower = /[0-9]{2}-[0-9][0-9][0-9]/g;
+    if(this.residentDto.towerNumberHome.length === 6){
+      this.towelPass = patternTower.test(String(this.residentDto.towerNumberHome));
+    }
+    return this.towelPass;
+  }
+
+  validateNamePattern(){
+    const patternName = /^[ñA-Za-z _]*[ñA-Za-z][ñA-Za-z _]*$/;
+    this.namePass = patternName.test(String(this.residentDto.name));
+    return this.namePass;
+  }
+
+  validateCellphonePattern(){
+    const patternCellphone = '^[3].{2}[1-9]\\d{6}$';
+    if (this.residentDto.cellphone) {
+      this.validCellphone = !!this.residentDto.cellphone.match(patternCellphone);
+    }
+    return this.validCellphone;
+  }
+
   validateDocumentNumber(documentNumber: string): boolean{
     let exist = false;
     for(let i=0; i<this.residentList.length; i++){
@@ -91,7 +137,7 @@ export class AddResidentComponent implements OnInit {
     return exist;
   }
 
-  validateCellphone(cellphone: string): boolean{
+  validateCellphoneExist(cellphone: string): boolean{
     let exist = false;
     for(let i=0; i<this.residentList.length; i++){
       if(cellphone === this.residentList[i].cellphone){
@@ -109,7 +155,7 @@ export class AddResidentComponent implements OnInit {
     residentDto.user = residentDto.documentNumber;
     residentDto.password = residentDto.documentNumber;
     this.validateDocumentNumber(residentDto.documentNumber);
-    this.validateCellphone(residentDto.cellphone);
+    this.validateCellphoneExist(residentDto.cellphone);
     this.validateTowerNumberHome(residentDto.towerNumberHome);
 
     if(!this.showAlertTower &&  !this.showAlertCellphone && !this.showAlertDocument){

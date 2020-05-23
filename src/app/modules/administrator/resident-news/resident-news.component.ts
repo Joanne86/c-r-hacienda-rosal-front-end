@@ -130,6 +130,9 @@ export class ResidentNewsComponent implements OnInit {
     this.requestService.updateResponse(this.requestToUpdateResponse).then(response =>{
       this.setTextSuccessfulInModal();
       this.calculateRequest();
+      setTimeout(() => {
+        this.openModal = false;
+      }, 4000);
     }, error =>{
       this.setTextFailInModal();
     });
